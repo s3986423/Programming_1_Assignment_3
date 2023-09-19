@@ -12,19 +12,19 @@ public abstract class Container {
         this.weight = weight;
     }
 
-    public int getContainerID() {
+    protected int getContainerID() {
         return containerID;
     }
 
-    public void setContainerID(int containerID) {
+    protected void setContainerID(int containerID) {
         this.containerID = containerID;
     }
 
-    public double getWeight() {
+    protected double getWeight() {
         return weight;
     }
 
-    public void setWeight(double weight) {
+    protected void setWeight(double weight) {
         this.weight = weight;
     }
 }
@@ -38,19 +38,19 @@ class Liquid extends Container {
         this.fuelPerKmTruck = 5.3;
     }
 
-    public static double getFuelPerKmShip() {
+    protected static double getFuelPerKmShip() {
         return fuelPerKmShip;
     }
 
-    public static void setFuelPerKmShip(double fuelPerKmShip) {
+    protected static void setFuelPerKmShip(double fuelPerKmShip) {
         Liquid.fuelPerKmShip = fuelPerKmShip;
     }
 
-    public static double getFuelPerKmTruck() {
+    protected static double getFuelPerKmTruck() {
         return fuelPerKmTruck;
     }
 
-    public static void setFuelPerKmTruck(double fuelPerKmTruck) {
+    protected static void setFuelPerKmTruck(double fuelPerKmTruck) {
         Liquid.fuelPerKmTruck = fuelPerKmTruck;
     }
 }
@@ -64,19 +64,19 @@ class Refrigerated extends Container {
         this.fuelPerKmTruck = 5.4;
     }
 
-    public static double getFuelPerKmShip() {
+    protected static double getFuelPerKmShip() {
         return fuelPerKmShip;
     }
 
-    public static void setFuelPerKmShip(double fuelPerKmShip) {
+    protected static void setFuelPerKmShip(double fuelPerKmShip) {
         Refrigerated.fuelPerKmShip = fuelPerKmShip;
     }
 
-    public static double getFuelPerKmTruck() {
+    protected static double getFuelPerKmTruck() {
         return fuelPerKmTruck;
     }
 
-    public static void setFuelPerKmTruck(double fuelPerKmTruck) {
+    protected static void setFuelPerKmTruck(double fuelPerKmTruck) {
         Refrigerated.fuelPerKmTruck = fuelPerKmTruck;
     }
 }
@@ -90,19 +90,19 @@ class openSide extends Container {
         this.fuelPerKmTruck = 3.2;
     }
 
-    public static double getFuelPerKmShip() {
+    protected static double getFuelPerKmShip() {
         return fuelPerKmShip;
     }
 
-    public static void setFuelPerKmShip(double fuelPerKmShip) {
+    protected static void setFuelPerKmShip(double fuelPerKmShip) {
         openSide.fuelPerKmShip = fuelPerKmShip;
     }
 
-    public static double getFuelPerKmTruck() {
+    protected static double getFuelPerKmTruck() {
         return fuelPerKmTruck;
     }
 
-    public static void setFuelPerKmTruck(double fuelPerKmTruck) {
+    protected static void setFuelPerKmTruck(double fuelPerKmTruck) {
         openSide.fuelPerKmTruck = fuelPerKmTruck;
     }
 }
@@ -116,19 +116,19 @@ class openTop extends Container {
         this.fuelPerKmTruck = 3.2;
     }
 
-    public static double getFuelPerKmShip() {
+    protected static double getFuelPerKmShip() {
         return fuelPerKmShip;
     }
 
-    public static void setFuelPerKmShip(double fuelPerKmShip) {
+    protected static void setFuelPerKmShip(double fuelPerKmShip) {
         openTop.fuelPerKmShip = fuelPerKmShip;
     }
 
-    public static double getFuelPerKmTruck() {
+    protected static double getFuelPerKmTruck() {
         return fuelPerKmTruck;
     }
 
-    public static void setFuelPerKmTruck(double fuelPerKmTruck) {
+    protected static void setFuelPerKmTruck(double fuelPerKmTruck) {
         openTop.fuelPerKmTruck = fuelPerKmTruck;
     }
 }
@@ -142,19 +142,19 @@ class dryStorage extends Container {
         this.fuelPerKmTruck = 4.6;
     }
 
-    public static double getFuelPerKmShip() {
+    protected static double getFuelPerKmShip() {
         return fuelPerKmShip;
     }
 
-    public static void setFuelPerKmShip(double fuelPerKmShip) {
+    protected static void setFuelPerKmShip(double fuelPerKmShip) {
         dryStorage.fuelPerKmShip = fuelPerKmShip;
     }
 
-    public static double getFuelPerKmTruck() {
+    protected static double getFuelPerKmTruck() {
         return fuelPerKmTruck;
     }
 
-    public static void setFuelPerKmTruck(double fuelPerKmTruck) {
+    protected static void setFuelPerKmTruck(double fuelPerKmTruck) {
         dryStorage.fuelPerKmTruck = fuelPerKmTruck;
     }
 }
