@@ -110,11 +110,12 @@ class Ship extends Vehicles{
     }
 
     // Load(Container) (Ship)
-
     @Override
     public void load(Container container) {
         if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
             System.out.println("The vehicle does not have enough capacity for this container");
+        } else if (this.getCurrentPort() == null) {
+            System.out.println("The vehicle is moving and can not load");
         }
         else {
             this.getCurrentPort().removeContainer(container);
