@@ -4,7 +4,7 @@ public class Port {
     private int portID;
     private String name;
     private double latitude;
-    private double longtitude;
+    private double longititude;
     private double storingCapacity;
     private boolean landingAbility;
     private PortManager portManager;
