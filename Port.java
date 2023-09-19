@@ -1,15 +1,16 @@
-import java.util.List;
+import java.util.ArrayList;
 
 public class Port {
     private int portID;
     private String name;
     private double latitude;
+    private double longtitude;
     private double storingCapacity;
     private boolean landingAbility;
     private PortManager portManager;
-    private List<Container> containers;
-    private List<Vehicles> vehicles;
-    private List<Trip> trafficHistory;
-    
+    private ArrayList<Container> containers;
+    private ArrayList<Vehicles> vehicles;
+    private ArrayList<Trip> trafficHistory;
+
 }
 
