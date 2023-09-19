@@ -1,16 +1,16 @@
 import java.util.ArrayList;
 
 public class Port {
-    private int portID;
-    private String name;
-    private double latitude;
-    private double longitude;
-    private double storingCapacity;
-    private boolean landingAbility;
-    private PortManager portManager;
-    private ArrayList<Container> containers;
-    private ArrayList<Vehicles> vehicles;
-    private ArrayList<Trip> trafficHistory;
+    private int portID; //The ID of the port
+    private String name; //Name of the port
+    private double latitude; //The latitude coordinate of the port
+    private double longitude; //the longitude coordinate of the port
+    private double storingCapacity; //Storing capacity of the port
+    private boolean landingAbility; //the Landing ability of the port
+    private PortManager portManager; //Port manager who take control of the port
+    private ArrayList<Container> containers; //List of containers at the port
+    private ArrayList<Vehicles> vehicles; //List of vehicles at the port
+    private ArrayList<Trip> trafficHistory; //History of trips 
 
     public Port() {}
 
@@ -131,7 +131,3 @@ public class Port {
     }
 
 }
-
-
-
-
