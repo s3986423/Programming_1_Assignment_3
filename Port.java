@@ -113,6 +113,40 @@ public class Port {
         this.trafficHistory = trafficHistory;
     }
 
+    public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory) {
+        this.portID = portID;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longititude;
+        this.storingCapacity = storingCapacity;
+        this.landingAbility = landingAbility;
+        this.portManager = portManager;
+        this.containers = containers;
+        this.vehicles = vehicles;
+        this.trafficHistory = trafficHistory;
+    }
+
+    public void addContainer (Container container) {
+        if (this.calCurrentCapacity() + container.getWeight() > this.storingCapacity) {
+            System.out.println("The port does not have enough capacity for this container");
+        } else {
+            this.containers.add(container);
+        }
+    }
+    public void removeContainer (Container container) {
+        if (this.containers.contains(container)) {
+            this.containers.remove(container);
+        }else {
+            System.out.println("That container does not exist in the port");
+        }
+    }
+    public double calCurrentCapacity() {
+        double currentCapacity = 0;
+        for (Container container : this.getContainers()) {
+            currentCapacity += container.getWeight();
+        }
+        return currentCapacity;
+    }
     public double calDistance(Port port) {
         double earthRadius = 6371; // Radius of the Earth in kilometers
 

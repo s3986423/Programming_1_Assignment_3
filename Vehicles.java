@@ -90,6 +90,13 @@ public abstract class Vehicles {
     public abstract void unload(Container container);
     public abstract boolean calMove(Port port);
     public abstract void Move(Port port);
+    public double calCurrentCapacity() {
+        double currentCapacity = 0;
+        for (Container container : this.numContainer) {
+            currentCapacity += container.getWeight();
+        }
+        return currentCapacity;
+    }
     public void refuel() {
         setCurrentFuel(this.fuelCapacity);
     }
@@ -114,11 +121,18 @@ class Ship extends Vehicles{
 
     @Override
     public void load(Container container) {
-
+        if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
+            System.out.println("The vehicle does not have enough capacity for this container");
+        }
+        else {
+            this.getCurrentPort().removeContainer(container);
+            this.getNumContainer().add(container);
+        }
     }
     @Override
     public void unload(Container container) {
-
+        this.getCurrentPort().addContainer(container);
+        this.getNumContainer().remove(container);
     }
     @Override
     public boolean calMove(Port port) {
@@ -157,16 +171,18 @@ class basicTruck extends Truck {
     public void load(Container container) {
         if (container instanceof Refrigerated || container instanceof Liquid) {
             System.out.println("This container can not be load on this truck");
-        }else if (this.getCurrentPort().getContainers().contains(container)){
-            this.getCurrentPort().getContainers().remove(this.getCurrentPort().getContainers().indexOf(container));
+        }else if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
+            System.out.println("The vehicle does not have enough capacity for this container");
+        }
+        else {
+            this.getCurrentPort().removeContainer(container);
             this.getNumContainer().add(container);
-        }else {
-            System.out.println("That container does not exist in the port");
         }
     }
     @Override
     public void unload(Container container) {
-
+        this.getNumContainer().remove(container);
+        this.getCurrentPort().addContainer(container);
     }
 }
 
