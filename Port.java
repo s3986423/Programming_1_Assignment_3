@@ -108,8 +108,7 @@ public class Port {
     }
 
     public double calDistance(Port port) {
-
-
+        return 0;
     }
 
 }
