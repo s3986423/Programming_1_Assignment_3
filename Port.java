@@ -12,12 +12,7 @@ public class Port {
     private ArrayList <Vehicles> vehicles;
     private ArrayList<Trip> trafficHistory;
 
-    // Constructors (including overloaded constructors)
-    public Port() {
-        this.containers = new ArrayList<>();
-        this.vehicles = new ArrayList<>();
-        this.trafficHistory = new ArrayList<>();
-    }
+    // Constructors (including overloaded constructors
 
     public Port(int portID, String name, double latitude, double longitude, double storingCapacity, boolean landingAbility) {
         this.portID = portID;
@@ -33,83 +28,83 @@ public class Port {
     }
 
     // Getter and setter methods
-    public int getPortID() {
+    protected int getPortID() {
         return portID;
     }
 
-    public void setPortID(int portID) {
+    protected void setPortID(int portID) {
         this.portID = portID;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 
-    public double getLatitude() {
+    protected double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    protected void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    protected double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    protected void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public double getStoringCapacity() {
+    protected double getStoringCapacity() {
         return storingCapacity;
     }
 
-    public void setStoringCapacity(double storingCapacity) {
+    protected void setStoringCapacity(double storingCapacity) {
         this.storingCapacity = storingCapacity;
     }
 
-    public boolean isLandingAbility() {
+    protected boolean isLandingAbility() {
         return landingAbility;
     }
 
-    public void setLandingAbility(boolean landingAbility) {
+    protected void setLandingAbility(boolean landingAbility) {
         this.landingAbility = landingAbility;
     }
 
-    public PortManager getPortManager() {
+    protected PortManager getPortManager() {
         return portManager;
     }
 
-    public void setPortManager(PortManager portManager) {
+    protected void setPortManager(PortManager portManager) {
         this.portManager = portManager;
     }
 
-    public ArrayList<Container> getContainers() {
+    protected ArrayList<Container> getContainers() {
         return containers;
     }
 
-    public void setContainers(ArrayList<Container> containers) {
+    protected void setContainers(ArrayList<Container> containers) {
         this.containers = containers;
     }
 
-    public ArrayList<Vehicles> getVehicles() {
+    protected ArrayList<Vehicles> getVehicles() {
         return vehicles;
     }
 
-    public void setVehicles(ArrayList<Vehicles> vehicles) {
+    protected void setVehicles(ArrayList<Vehicles> vehicles) {
         this.vehicles = vehicles;
     }
 
-    public ArrayList<Trip> getTrafficHistory() {
+    protected ArrayList<Trip> getTrafficHistory() {
         return trafficHistory;
     }
 
-    public void setTrafficHistory(ArrayList<Trip> trafficHistory) {
+    protected void setTrafficHistory(ArrayList<Trip> trafficHistory) {
         this.trafficHistory = trafficHistory;
     }
 
