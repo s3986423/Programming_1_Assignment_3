@@ -145,7 +145,14 @@ class basicTruck extends Truck {
     }
     @Override
     public void load(Container container) {
-
+        if (container instanceof Refrigerated || container instanceof Liquid) {
+            System.out.println("This container can not be load on this truck");
+        }else if (this.getCurrentPort().getContainers().contains(container)){
+            this.getCurrentPort().getContainers().remove(this.getCurrentPort().getContainers().indexOf(container));
+            this.getNumContainer().add(container);
+        }else {
+            System.out.println("That container does not exist in the port");
+        }
     }
     @Override
     public void unload(Container container) {
