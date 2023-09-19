@@ -110,8 +110,28 @@ public class Port {
 
 
     public double calDistance(Port port) {
-        return 0;
+        double earthRadius = 6371; // Radius of the Earth in kilometers
+
+        double lat1Rad = Math.toRadians(this.latitude);
+        double lon1Rad = Math.toRadians(this.longitude);
+        double lat2Rad = Math.toRadians(port.getLatitude());
+        double lon2Rad = Math.toRadians(port.getLongitude());
+
+        double dLat = lat2Rad - lat1Rad;
+        double dLon = lon2Rad - lon1Rad;
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+                        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distance = earthRadius * c; // Distance in kilometers
+        return distance;
     }
 
 }
+
+
+
 
