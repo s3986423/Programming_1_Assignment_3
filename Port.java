@@ -14,19 +14,6 @@ public class Port {
 
     public Port() {}
 
-    public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory) {
-        this.portID = portID;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longititude;
-        this.storingCapacity = storingCapacity;
-        this.landingAbility = landingAbility;
-        this.portManager = portManager;
-        this.containers = containers;
-        this.vehicles = vehicles;
-        this.trafficHistory = trafficHistory;
-    }
-
     public int getPortID() {
         return portID;
     }
@@ -106,6 +93,21 @@ public class Port {
     public void setTrafficHistory(ArrayList<Trip> trafficHistory) {
         this.trafficHistory = trafficHistory;
     }
+
+    public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory) {
+        this.portID = portID;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longititude;
+        this.storingCapacity = storingCapacity;
+        this.landingAbility = landingAbility;
+        this.portManager = portManager;
+        this.containers = containers;
+        this.vehicles = vehicles;
+        this.trafficHistory = trafficHistory;
+    }
+
+
 
     public double calDistance(Port port) {
 
