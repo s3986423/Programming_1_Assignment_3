@@ -4,9 +4,7 @@ public abstract class User {
 }
 class PortManager extends User {
 
-
-
-    }
+}
 class SystemAdmin extends User {
 
 }
