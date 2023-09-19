@@ -24,8 +24,91 @@ public class Port {
         this.vehicles = vehicles;
         this.trafficHistory = trafficHistory;
     }
-    public double calDistance(Port port) {
-        return 0;
+
+    public int getPortID() {
+        return portID;
     }
+
+    public void setPortID(int portID) {
+        this.portID = portID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public double getStoringCapacity() {
+        return storingCapacity;
+    }
+
+    public void setStoringCapacity(double storingCapacity) {
+        this.storingCapacity = storingCapacity;
+    }
+
+    public boolean isLandingAbility() {
+        return landingAbility;
+    }
+
+    public void setLandingAbility(boolean landingAbility) {
+        this.landingAbility = landingAbility;
+    }
+
+    public PortManager getPortManager() {
+        return portManager;
+    }
+
+    public void setPortManager(PortManager portManager) {
+        this.portManager = portManager;
+    }
+
+    public ArrayList<Container> getContainers() {
+        return containers;
+    }
+
+    public void setContainers(ArrayList<Container> containers) {
+        this.containers = containers;
+    }
+
+    public ArrayList<Vehicles> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(ArrayList<Vehicles> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public ArrayList<Trip> getTrafficHistory() {
+        return trafficHistory;
+    }
+
+    public void setTrafficHistory(ArrayList<Trip> trafficHistory) {
+        this.trafficHistory = trafficHistory;
+    }
+
+    public double calDistance(Port port) {
+
+
+    }
+
 }
 
