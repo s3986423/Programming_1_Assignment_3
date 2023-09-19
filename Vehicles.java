@@ -115,15 +115,22 @@ class Ship extends Vehicles{
     public void load(Container container) {
         if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
             System.out.println("The vehicle does not have enough capacity for this container");
+        } else if (this.getCurrentPort() == null){
+            System.out.println("This vehicle is moving and cannot load the container");
         }
         else {
-            this.getCurrentPort().removeContainer(container);
+            this.getCurrentPort().getContainers().remove(container);
             this.getNumContainer().add(container);
         }
     }
     @Override
     public void unload(Container container) {
-        this.getCurrentPort().addContainer(container);
+        if (this.calCurrentCapacity() + container.getWeight() > this.getCurrentPort().getStoringCapacity()) {
+            System.out.println("The port does not have enough capacity for this container");
+        } else if (this.getCurrentPort() == null) {
+            System.out.println("The vehicle is moving and cannot unload the container");
+        }
+        this.getCurrentPort().getContainers().add(container);
         this.getNumContainer().remove(container);
     }
     @Override
