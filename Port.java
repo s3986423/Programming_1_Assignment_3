@@ -5,7 +5,11 @@ public class Port {
 
     private String name;
     private double latitude;
+<<<<<<< Updated upstream
     private double longititude;
+=======
+    private double longitude;
+>>>>>>> Stashed changes
     private double storingCapacity;
     private boolean landingAbility;
     private PortManager portManager;
@@ -13,6 +17,7 @@ public class Port {
     private ArrayList<Vehicles> vehicles;
     private ArrayList<Trip> trafficHistory;
 
+<<<<<<< Updated upstream
     public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory) {
         this.portID = portID;
         this.name = name;
@@ -24,6 +29,10 @@ public class Port {
         this.containers = containers;
         this.vehicles = vehicles;
         this.trafficHistory = trafficHistory;
+=======
+    public double calDistance (Port port) {
+        return 0;
+>>>>>>> Stashed changes
     }
 }
 
