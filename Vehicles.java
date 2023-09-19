@@ -86,7 +86,18 @@ public abstract class Vehicles {
         this.trip = trip;
     }
 
-    public abstract void load(Container container);
+    public void load(Container container) {
+        if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
+            System.out.println("The vehicle does not have enough capacity for this container");
+        } else if (this.getCurrentPort() == null) {
+            System.out.println("The vehicle is moving and can not load the container");
+        } else if (!this.getCurrentPort().getContainers().contains(container)) {
+            System.out.println("The container does not exist in the port");
+        } else {
+            this.getCurrentPort().getContainers().remove(container);
+            this.getNumContainer().add(container);
+        }
+    }
     public void unload(Container container) {
         if (this.getCurrentPort().calCurrentCapacity() + container.getWeight() > this.getCurrentPort().getStoringCapacity()) {
             System.out.println("The port does not have enough capacity for this container");
@@ -121,19 +132,6 @@ class Ship extends Vehicles{
     }
 
     // Load(Container) (Ship)
-    @Override
-    public void load(Container container) {
-        if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
-            System.out.println("The vehicle does not have enough capacity for this container");
-        } else if (this.getCurrentPort() == null) {
-            System.out.println("The vehicle is moving and can not load the container");
-        } else if (!this.getCurrentPort().getContainers().contains(container)) {
-            System.out.println("The container does not exist in the port");
-        } else {
-            this.getCurrentPort().getContainers().remove(container);
-            this.getNumContainer().add(container);
-        }
-    }
     @Override
     public boolean calMove(Port port) {
         return true;
@@ -170,17 +168,8 @@ class basicTruck extends Truck {
     @Override
     public void load(Container container) {
         if (container instanceof Refrigerated || container instanceof Liquid) {
-            System.out.println("This container can not be load on this truck");
-        }else if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
-            System.out.println("The vehicle does not have enough capacity for this container");
-        }else if (this.getCurrentPort() == null) {
-            System.out.println("The vehicle is moving and can not load the container");
-        }else if (!this.getCurrentPort().getContainers().contains(container)) {
-            System.out.println("The container does not exist in the port");
-        }else {
-            this.getCurrentPort().getContainers().remove(container);
-            this.getNumContainer().add(container);
-        }
+            System.out.println("The container can not be load on this truck");
+        }else super.load(container);
     }
 }
 
@@ -191,7 +180,11 @@ class reeferTruck extends Truck {
     }
     @Override
     public void load(Container container) {
-
+        if (container instanceof Refrigerated) {
+            super.load(container);
+        }else {
+            System.out.println("The container can not be load on this truck");
+        }
     }
 }
 
@@ -202,6 +195,10 @@ class tankerTruck extends Truck {
     }
     @Override
     public void load(Container container) {
-
+        if (container instanceof Liquid) {
+            super.load(container);
+        }else {
+            System.out.println("The container can not be load on this truck");
+        }
     }
 }
