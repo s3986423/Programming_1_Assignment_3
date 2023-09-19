@@ -12,6 +12,8 @@ public class Port {
     private ArrayList<Vehicles> vehicles;
     private ArrayList<Trip> trafficHistory;
 
+    public Port() {}
+
     public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory) {
         this.portID = portID;
         this.name = name;
