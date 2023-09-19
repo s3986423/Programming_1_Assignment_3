@@ -1,19 +1,38 @@
 import java.util.ArrayList;
 
 public class Port {
-    private int portID; //The ID of the port
-    private String name; //Name of the port
-    private double latitude; //The latitude coordinate of the port
-    private double longitude; //the longitude coordinate of the port
-    private double storingCapacity; //Storing capacity of the port
-    private boolean landingAbility; //the Landing ability of the port
-    private PortManager portManager; //Port manager who take control of the port
-    private ArrayList<Container> containers; //List of containers at the port
-    private ArrayList<Vehicles> vehicles; //List of vehicles at the port
-    private ArrayList<Trip> trafficHistory; //History of trips
+    private int portID;
+    private String name;
+    private double latitude;
+    private double longitude;
+    private double storingCapacity;
+    private boolean landingAbility;
+    private PortManager portManager;
+    private ArrayList<Container> containers;
+    private ArrayList <Vehicles> vehicles;
+    private ArrayList<Trip> trafficHistory;
 
-    public Port() {}
+    // Constructors (including overloaded constructors)
+    public Port() {
+        this.containers = new ArrayList<>();
+        this.vehicles = new ArrayList<>();
+        this.trafficHistory = new ArrayList<>();
+    }
 
+    public Port(int portID, String name, double latitude, double longitude, double storingCapacity, boolean landingAbility) {
+        this.portID = portID;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.storingCapacity = storingCapacity;
+        this.landingAbility = landingAbility;
+        this.portManager = null; // Initialize to null by default
+        this.containers = new ArrayList<>();
+        this.vehicles = new ArrayList<>();
+        this.trafficHistory = new ArrayList<>();
+    }
+
+    // Getter and setter methods
     public int getPortID() {
         return portID;
     }
@@ -94,21 +113,6 @@ public class Port {
         this.trafficHistory = trafficHistory;
     }
 
-    public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory) {
-        this.portID = portID;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longititude;
-        this.storingCapacity = storingCapacity;
-        this.landingAbility = landingAbility;
-        this.portManager = portManager;
-        this.containers = containers;
-        this.vehicles = vehicles;
-        this.trafficHistory = trafficHistory;
-    }
-
-
-
     public double calDistance(Port port) {
         double earthRadius = 6371; // Radius of the Earth in kilometers
 
@@ -129,5 +133,4 @@ public class Port {
         double distance = earthRadius * c; // Distance in kilometers
         return distance;
     }
-
 }
