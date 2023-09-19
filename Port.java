@@ -10,7 +10,7 @@ public class Port {
     private PortManager portManager; //Port manager who take control of the port
     private ArrayList<Container> containers; //List of containers at the port
     private ArrayList<Vehicles> vehicles; //List of vehicles at the port
-    private ArrayList<Trip> trafficHistory; //History of trips 
+    private ArrayList<Trip> trafficHistory; //History of trips
 
     public Port() {}
 
