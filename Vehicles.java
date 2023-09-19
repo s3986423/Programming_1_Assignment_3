@@ -87,7 +87,18 @@ public abstract class Vehicles {
     }
 
     public abstract void load(Container container);
-    public abstract void unload(Container container);
+    public void unload(Container container) {
+        if (this.getCurrentPort().calCurrentCapacity() + container.getWeight() > this.getCurrentPort().getStoringCapacity()) {
+            System.out.println("The port does not have enough capacity for this container");
+        } else if (this.getCurrentPort() == null) {
+            System.out.println("The vehicle is moving and cannot unload the container");
+        } else if (!this.getNumContainer().contains(container)) {
+            System.out.println("The container does not exist on the vehicles");
+        } else {
+            this.getCurrentPort().getContainers().add(container);
+            this.getNumContainer().remove(container);
+        }
+    }
     public abstract boolean calMove(Port port);
     public abstract void Move(Port port);
     public double calCurrentCapacity() {
@@ -116,21 +127,12 @@ class Ship extends Vehicles{
             System.out.println("The vehicle does not have enough capacity for this container");
         } else if (this.getCurrentPort() == null) {
             System.out.println("The vehicle is moving and can not load the container");
-        }
-        else {
+        } else if (!this.getCurrentPort().getContainers().contains(container)) {
+            System.out.println("The container does not exist in the port");
+        } else {
             this.getCurrentPort().getContainers().remove(container);
             this.getNumContainer().add(container);
         }
-    }
-    @Override
-    public void unload(Container container) {
-        if (this.calCurrentCapacity() + container.getWeight() > this.getCurrentPort().getStoringCapacity()) {
-            System.out.println("The port does not have enough capacity for this container");
-        } else if (this.getCurrentPort() == null) {
-            System.out.println("The vehicle is moving and cannot unload the container");
-        }
-        this.getCurrentPort().getContainers().add(container);
-        this.getNumContainer().remove(container);
     }
     @Override
     public boolean calMove(Port port) {
@@ -171,16 +173,14 @@ class basicTruck extends Truck {
             System.out.println("This container can not be load on this truck");
         }else if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
             System.out.println("The vehicle does not have enough capacity for this container");
-        }
-        else {
-            this.getCurrentPort().removeContainer(container);
+        }else if (this.getCurrentPort() == null) {
+            System.out.println("The vehicle is moving and can not load the container");
+        }else if (!this.getCurrentPort().getContainers().contains(container)) {
+            System.out.println("The container does not exist in the port");
+        }else {
+            this.getCurrentPort().getContainers().remove(container);
             this.getNumContainer().add(container);
         }
-    }
-    @Override
-    public void unload(Container container) {
-        this.getNumContainer().remove(container);
-        this.getCurrentPort().addContainer(container);
     }
 }
 
@@ -193,10 +193,6 @@ class reeferTruck extends Truck {
     public void load(Container container) {
 
     }
-    @Override
-    public void unload(Container container) {
-
-    }
 }
 
 class tankerTruck extends Truck {
@@ -206,10 +202,6 @@ class tankerTruck extends Truck {
     }
     @Override
     public void load(Container container) {
-
-    }
-    @Override
-    public void unload(Container container) {
 
     }
 }

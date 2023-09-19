@@ -120,21 +120,6 @@ public class Port {
         this.vehicles = vehicles;
         this.trafficHistory = trafficHistory;
     }
-
-    public void addContainer (Container container) {
-        if (this.calCurrentCapacity() + container.getWeight() > this.storingCapacity) {
-            System.out.println("The port does not have enough capacity for this container");
-        } else {
-            this.containers.add(container);
-        }
-    }
-    public void removeContainer (Container container) {
-        if (this.containers.contains(container)) {
-            this.containers.remove(container);
-        }else {
-            System.out.println("That container does not exist in the port");
-        }
-    }
     public double calCurrentCapacity() {
         double currentCapacity = 0;
         for (Container container : this.getContainers()) {
