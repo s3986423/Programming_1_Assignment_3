@@ -40,6 +40,13 @@ public abstract class Container {
 }
 
 class Liquid extends Container {
+    public Liquid() {
+    }
+
+    public Liquid(int containerID, double weight) {
+        super(containerID, weight);
+    }
+
     @Override
     public double getFuelPerKmShip() {
         return 4.8;
@@ -58,6 +65,13 @@ class Liquid extends Container {
 }
 
 class Refrigerated extends Container {
+    public Refrigerated() {
+    }
+
+    public Refrigerated(int containerID, double weight) {
+        super(containerID, weight);
+    }
+
     @Override
     public double getFuelPerKmShip() {
         return 4.5;
@@ -76,6 +90,13 @@ class Refrigerated extends Container {
 }
 
 class openSide extends Container {
+    public openSide() {
+    }
+
+    public openSide(int containerID, double weight) {
+        super(containerID, weight);
+    }
+
     @Override
     public double getFuelPerKmShip() {
         return 2.7;
@@ -94,6 +115,13 @@ class openSide extends Container {
 }
 
 class openTop extends Container {
+    public openTop() {
+    }
+
+    public openTop(int containerID, double weight) {
+        super(containerID, weight);
+    }
+
     @Override
     public double getFuelPerKmShip() {
         return 4.8;
@@ -112,6 +140,13 @@ class openTop extends Container {
 }
 
 class dryStorage extends Container {
+    public dryStorage() {
+    }
+
+    public dryStorage(int containerID, double weight) {
+        super(containerID, weight);
+    }
+
     @Override
     public double getFuelPerKmShip() {
         return 3.5;
