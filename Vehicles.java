@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public abstract class Vehicles {
     private int VehicleID;
@@ -10,7 +12,8 @@ public abstract class Vehicles {
     private ArrayList<Container> numContainer;
     private ArrayList<Trip> trip;
 
-    public Vehicles() {}
+    public Vehicles() {
+    }
 
     public Vehicles(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
         VehicleID = vehicleID;
@@ -22,6 +25,7 @@ public abstract class Vehicles {
         this.numContainer = numContainer;
         this.trip = trip;
     }
+
     protected int getVehicleID() {
         return VehicleID;
     }
@@ -98,6 +102,7 @@ public abstract class Vehicles {
             this.getNumContainer().add(container);
         }
     }
+
     public void unload(Container container) {
         if (this.getCurrentPort().calCurrentCapacity() + container.getWeight() > this.getCurrentPort().getStoringCapacity()) {
             System.out.println("The port does not have enough capacity for this container");
@@ -110,8 +115,11 @@ public abstract class Vehicles {
             this.getNumContainer().remove(container);
         }
     }
+
     public abstract boolean calMove(Port port);
+
     public abstract void Move(Port port);
+
     public double calCurrentCapacity() {
         double currentCapacity = 0;
         for (Container container : this.numContainer) {
@@ -119,6 +127,7 @@ public abstract class Vehicles {
         }
         return currentCapacity;
     }
+
     public void refuel() {
         setCurrentFuel(this.fuelCapacity);
     }
@@ -134,6 +143,14 @@ class Ship extends Vehicles{
     // Load(Container) (Ship)
     @Override
     public boolean calMove(Port port) {
+        double distance = this.getCurrentPort().calDistance(port);
+        double fuelPerKm = 0;
+        for (Container container : this.getNumContainer()) {
+            fuelPerKm += container.getFuelPerKmShip();
+        }
+        if (fuelPerKm * distance > this.getCurrentFuel()){
+            return false;
+        }
         return true;
     }
     @Override
@@ -152,6 +169,17 @@ abstract class Truck extends Vehicles {
 
     @Override
     public boolean calMove(Port port) {
+        if (this.getCurrentPort().getLandingAbility() == false || port.getLandingAbility() == false) {
+            return false;
+        }
+        double distance = this.getCurrentPort().calDistance(port);
+        double fuelPerKm = 0;
+        for (Container container : this.getNumContainer()) {
+            fuelPerKm += container.getFuelPerKmShip();
+        }
+        if (fuelPerKm * distance > this.getCurrentFuel()){
+            return false;
+        }
         return true;
     }
     @Override

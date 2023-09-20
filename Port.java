@@ -68,7 +68,7 @@ public class Port {
         this.storingCapacity = storingCapacity;
     }
 
-    protected boolean isLandingAbility() {
+    protected boolean getLandingAbility() {
         return landingAbility;
     }
 
