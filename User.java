@@ -25,6 +25,11 @@ public abstract class User {
         @Override
          public void Create(){
             Scanner scanner = new Scanner(System.in);
+
+            //Input the container weight
+            System.out.println("Please input the container weight: ");
+            double containerWeight = scanner.nextDouble();
+
             // Display container type options to the user
             System.out.println("Select the container type:");
             System.out.println("1. Liquid");
@@ -34,26 +39,27 @@ public abstract class User {
             System.out.println("5. Dry Storage");
 
             int containerTypeChoice = scanner.nextInt();
-            if (containerTypeChoice == 1 ){
-                Container container = new Liquid();
+            Container container;
+            switch (containerTypeChoice) {
+                case 1:
+                    container = new Liquid(containerWeight);
+                    break;
+                case 2:
+                    container = new Refrigerated(containerWeight);
+                    break;
+                case 3:
+                    container = new openSide(containerWeight);
+                    break;
+                case 4:
+                    container = new openTop(containerWeight);
+                    break;
+                case 5:
+                    container = new dryStorage(containerWeight);
+                    break;
+                default:
+                    System.out.println("You did not enter a valid value");
+                    break;
             }
-            else if (containerTypeChoice == 2 ) {
-                Container container = new Refrigerated();
-            }
-            else if (containerTypeChoice == 3){
-                Container container = new openSide();
-            }
-            else if (containerTypeChoice == 4){
-                Container container = new openTop();
-            }
-            else if (containerTypeChoice == 5){
-                Container container = new dryStorage();
-            }
-
-
-
-            //Input the container weight
-            System.out.println("Please input the container weight");
             
         }
          @Override

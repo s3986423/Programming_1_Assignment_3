@@ -1,15 +1,18 @@
 public abstract class Container {
     private int containerID;
     private double weight;
+    private static int containerNum = 0;
     private double fuelPerKmShip;
     private double fuelPerKmTruck;
     public Container() {
-        this.containerID = 0;
+        this.containerID = containerNum;
+        containerNum++;
         this.weight = 0;
     }
 
-    public Container(int containerID, double weight) {
-        this.containerID = containerID;
+    public Container(double weight) {
+        this.containerID = containerNum;
+        containerNum++;
         this.weight = weight;
     }
 
@@ -29,22 +32,23 @@ public abstract class Container {
         this.weight = weight;
     }
 
-    public abstract double getFuelPerKmShip();
+    protected abstract double getFuelPerKmShip();
 
-    public abstract void setFuelPerKmShip(double fuelPerKmShip);
+    protected abstract void setFuelPerKmShip(double fuelPerKmShip);
 
-    public abstract double getFuelPerKmTruck();
+    protected abstract double getFuelPerKmTruck();
 
-    public abstract void setFuelPerKmTruck(double fuelPerKmTruck);
+    protected abstract void setFuelPerKmTruck(double fuelPerKmTruck);
 
 }
 
 class Liquid extends Container {
     public Liquid() {
+        super();
     }
 
-    public Liquid(int containerID, double weight) {
-        super(containerID, weight);
+    public Liquid(double weight) {
+        super(weight);
     }
 
     @Override
@@ -66,102 +70,106 @@ class Liquid extends Container {
 
 class Refrigerated extends Container {
     public Refrigerated() {
+        super();
     }
 
-    public Refrigerated(int containerID, double weight) {
-        super(containerID, weight);
+    public Refrigerated(double weight) {
+        super(weight);
     }
 
     @Override
-    public double getFuelPerKmShip() {
+    protected double getFuelPerKmShip() {
         return 4.5;
     }
 
     @Override
-    public void setFuelPerKmShip(double fuelPerKmShip) {}
+    protected void setFuelPerKmShip(double fuelPerKmShip) {}
 
     @Override
-    public double getFuelPerKmTruck() {
+    protected double getFuelPerKmTruck() {
         return 5.4;
     }
 
     @Override
-    public void setFuelPerKmTruck(double fuelPerKmTruck) {}
+    protected void setFuelPerKmTruck(double fuelPerKmTruck) {}
 }
 
 class openSide extends Container {
     public openSide() {
+        super();
     }
 
-    public openSide(int containerID, double weight) {
-        super(containerID, weight);
+    public openSide(double weight) {
+        super(weight);
     }
 
     @Override
-    public double getFuelPerKmShip() {
+    protected double getFuelPerKmShip() {
         return 2.7;
     }
 
     @Override
-    public void setFuelPerKmShip(double fuelPerKmShip) {}
+    protected void setFuelPerKmShip(double fuelPerKmShip) {}
 
     @Override
-    public double getFuelPerKmTruck() {
+    protected double getFuelPerKmTruck() {
         return 3.2;
     }
 
     @Override
-    public void setFuelPerKmTruck(double fuelPerKmTruck) {}
+    protected void setFuelPerKmTruck(double fuelPerKmTruck) {}
 }
 
 class openTop extends Container {
     public openTop() {
+        super();
     }
 
-    public openTop(int containerID, double weight) {
-        super(containerID, weight);
+    public openTop(double weight) {
+        super(weight);
     }
 
     @Override
-    public double getFuelPerKmShip() {
+    protected double getFuelPerKmShip() {
         return 4.8;
     }
 
     @Override
-    public void setFuelPerKmShip(double fuelPerKmShip) {}
+    protected void setFuelPerKmShip(double fuelPerKmShip) {}
 
     @Override
-    public double getFuelPerKmTruck() {
+    protected double getFuelPerKmTruck() {
         return 5.3;
     }
 
     @Override
-    public void setFuelPerKmTruck(double fuelPerKmTruck) {}
+    protected void setFuelPerKmTruck(double fuelPerKmTruck) {}
 }
 
 class dryStorage extends Container {
     public dryStorage() {
+        super();
     }
 
-    public dryStorage(int containerID, double weight) {
-        super(containerID, weight);
+    public dryStorage(double weight) {
+        super(weight);
     }
 
     @Override
-    public double getFuelPerKmShip() {
+    protected double getFuelPerKmShip() {
         return 3.5;
     }
 
     @Override
-    public void setFuelPerKmShip(double fuelPerKmShip) {}
+    protected void setFuelPerKmShip(double fuelPerKmShip) {}
 
     @Override
-    public double getFuelPerKmTruck() {
+    protected double getFuelPerKmTruck() {
         return 4.6;
     }
 
     @Override
-    public void setFuelPerKmTruck(double fuelPerKmTruck) {}
+    protected void setFuelPerKmTruck(double fuelPerKmTruck) {}
 }
 
 
