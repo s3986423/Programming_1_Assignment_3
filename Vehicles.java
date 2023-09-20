@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.time.LocalDate;
 
 public abstract class Vehicles {
     private int VehicleID;
@@ -118,7 +119,9 @@ public abstract class Vehicles {
 
     public abstract boolean calMove(Port port);
 
-    public abstract void Move(Port port);
+    public abstract void Move(Port arrivalPort, LocalDate arrivalDate);
+
+    public abstract void Arrived();
 
     public double calCurrentCapacity() {
         double currentCapacity = 0;
@@ -132,7 +135,7 @@ public abstract class Vehicles {
         setCurrentFuel(this.fuelCapacity);
     }
 }
-class Ship extends Vehicles{
+class Ship extends Vehicles {
 
     public Ship() {}
 
@@ -154,7 +157,12 @@ class Ship extends Vehicles{
         return true;
     }
     @Override
-    public void Move(Port port) {
+    public void Move(Port arrivalPort, LocalDate arrivalDate) {
+
+    }
+
+    @Override
+    public void Arrived() {
 
     }
 }
@@ -169,13 +177,16 @@ abstract class Truck extends Vehicles {
 
     @Override
     public boolean calMove(Port port) {
-        if (this.getCurrentPort().getLandingAbility() == false || port.getLandingAbility() == false) {
+        if (this.getCurrentPort() == null) {
+            return false;
+        }
+        else if (this.getCurrentPort().getLandingAbility() == false || port.getLandingAbility() == false) {
             return false;
         }
         double distance = this.getCurrentPort().calDistance(port);
         double fuelPerKm = 0;
         for (Container container : this.getNumContainer()) {
-            fuelPerKm += container.getFuelPerKmShip();
+            fuelPerKm += container.getFuelPerKmTruck();
         }
         if (fuelPerKm * distance > this.getCurrentFuel()){
             return false;
@@ -183,8 +194,26 @@ abstract class Truck extends Vehicles {
         return true;
     }
     @Override
-    public void Move(Port port) {
+    public void Move(Port arrivalPort, LocalDate arrivalDate) {
+        if (!calMove(arrivalPort)) {
+            System.out.println("This vehicle cannot move");
+        } else {
+            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "moving");
+            }
+    }
 
+    @Override
+    public void Arrived() {
+        Trip trip = this.getTrip().get(this.getTrip().size()-1);
+        trip.setStatus("Completed");
+        this.setCurrentPort(trip.getArrivalPort());
+
+        double distance = this.getCurrentPort().calDistance(trip.getDeparturePort());
+        double fuelPerKm = 0;
+        for (Container container : this.getNumContainer()) {
+            fuelPerKm += container.getFuelPerKmTruck();
+        }
+        this.setCurrentFuel(this.getCurrentFuel() - (distance * fuelPerKm));
     }
 }
 
