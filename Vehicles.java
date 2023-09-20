@@ -143,7 +143,6 @@ class Ship extends Vehicles {
         super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip);
     }
 
-    // Load(Container) (Ship)
     @Override
     public boolean calMove(Port port) {
         double distance = this.getCurrentPort().calDistance(port);

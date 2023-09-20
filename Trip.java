@@ -16,7 +16,10 @@ public class Trip {
         this.arrivalDate = arrivalDate;
         this.departurePort = departurePort;
         this.arrivalPort = arrivalPort;
-        Status = status;
+        this.Status = status;
+        vehicles.getTrip().add(this);
+        departurePort.getTrafficHistory().add(this);
+        arrivalPort.getTrafficHistory().add(this);
     }
 
     protected Vehicles getVehicles() {

@@ -36,6 +36,10 @@ public abstract class Container {
     public abstract double getFuelPerKmTruck();
 
     public abstract void setFuelPerKmTruck(double fuelPerKmTruck);
+
+    public static void main(String[] args) {
+        Container c = new Liquid();
+    }
 }
 
 class Liquid extends Container {
