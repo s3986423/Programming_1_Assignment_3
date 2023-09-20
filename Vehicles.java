@@ -210,8 +210,8 @@ abstract class Truck extends Vehicles {
         if (!calMove(arrivalPort)) {
             System.out.println("This vehicle cannot move");
         } else {
-            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "moving");
-            }
+            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "Moving");
+        }
     }
 
     @Override
@@ -219,7 +219,6 @@ abstract class Truck extends Vehicles {
         Trip trip = this.getTrip().get(this.getTrip().size()-1);
         trip.setStatus("Completed");
         this.setCurrentPort(trip.getArrivalPort());
-
         double distance = this.getCurrentPort().calDistance(trip.getDeparturePort());
         double fuelPerKm = 0;
         for (Container container : this.getNumContainer()) {
