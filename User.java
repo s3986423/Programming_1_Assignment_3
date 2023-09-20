@@ -60,28 +60,7 @@ public abstract class User {
                     System.out.println("You did not enter a valid value");
                     break;
             }
-<<<<<<< Updated upstream
             
-=======
-            else if (containerTypeChoice == 2 ) {
-                Container container = new Refrigerated();
-            }
-            else if (containerTypeChoice == 3){
-                Container container = new openSide();
-            }
-            else if (containerTypeChoice == 4){
-                Container container = new openTop();
-            }
-            else if (containerTypeChoice == 5){
-                Container container = new dryStorage();
-            }
-
-
-
-            //Input the container weight
-            System.out.println("Please input the container weight");
-
->>>>>>> Stashed changes
         }
          @Override
          public void Read(){
