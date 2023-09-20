@@ -158,12 +158,25 @@ class Ship extends Vehicles {
     }
     @Override
     public void Move(Port arrivalPort, LocalDate arrivalDate) {
-
+        if (!calMove(arrivalPort)) {
+            System.out.println("This vehicle cannot move");
+        } else {
+            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "moving");
+        }
     }
 
     @Override
     public void Arrived() {
+        Trip trip = this.getTrip().get(this.getTrip().size()-1);
+        trip.setStatus("Completed");
+        this.setCurrentPort(trip.getArrivalPort());
 
+        double distance = this.getCurrentPort().calDistance(trip.getDeparturePort());
+        double fuelPerKm = 0;
+        for (Container container : this.getNumContainer()) {
+            fuelPerKm += container.getFuelPerKmShip();
+        }
+        this.setCurrentFuel(this.getCurrentFuel() - (distance * fuelPerKm));
     }
 }
 
