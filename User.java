@@ -60,7 +60,7 @@ public abstract class User {
                     System.out.println("You did not enter a valid value");
                     break;
             }
-            
+
         }
          @Override
          public void Read(){
