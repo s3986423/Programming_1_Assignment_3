@@ -45,6 +45,8 @@ public abstract class Container {
 class Liquid extends Container {
     public Liquid() {
         super();
+        this.fuelPerKmShip = 4.8;
+        this.fuelPerKmTruck = 5.3;
     }
 
     public Liquid(double weight) {
@@ -79,6 +81,8 @@ class Refrigerated extends Container {
 
     public Refrigerated(double weight) {
         super(weight);
+        this.fuelPerKmShip = 4.5;
+        this.fuelPerKmTruck = 5.4;
     }
 
     @Override
@@ -107,6 +111,8 @@ class openSide extends Container {
 
     public openSide(double weight) {
         super(weight);
+        this.fuelPerKmShip = 2.7;
+        this.fuelPerKmTruck = 3.2;
     }
 
     @Override
@@ -135,6 +141,8 @@ class openTop extends Container {
 
     public openTop(double weight) {
         super(weight);
+        this.fuelPerKmShip = 4.8;
+        this.fuelPerKmTruck = 5.3;
     }
 
     @Override
@@ -163,6 +171,8 @@ class dryStorage extends Container {
 
     public dryStorage(double weight) {
         super(weight);
+        this.fuelPerKmShip = 3.5;
+        this.fuelPerKmTruck = 4.6;
     }
 
     @Override
