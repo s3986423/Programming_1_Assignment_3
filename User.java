@@ -57,6 +57,7 @@ public abstract class User {
                 System.out.println("Container added to the port.");
             }
         }
+        scanner.close();
     }
     public void readContainerAtPort(Port port){
         ArrayList<Container> containersAtPort = port.getContainers();
@@ -165,7 +166,7 @@ public abstract class User {
             deleteContainerAtPort(this.assignedPort);
         }
     }
-    class SystemAdmin extends User {
+    class SystemAdmin extends User implements CRUD {
         private ArrayList<Port> portList;
         private ArrayList<Vehicles> vehiclesList;
         private ArrayList<PortManager> managersList;
@@ -189,5 +190,70 @@ public abstract class User {
             return portList;
         }
 
-     }
+        @Override
+        public void Create() {
+            Scanner adminCreate = new Scanner(System.in);
+            System.out.println("Please choose what you want to create: ");
+            // Display create options to the user
+            System.out.println("1. Vehicle");
+            System.out.println("2. Port");
+            System.out.println("3. Container");
+            System.out.println("4. Manager");
+
+            int createChoice = adminCreate.nextInt();
+            switch (createChoice) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    System.out.println("Enter the ID of the port you want to create the container at: ");
+                    int portIDToCreate = adminCreate.nextInt();
+                    boolean foundPort = false;
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToCreate) {
+                            // Port found, create a container
+                            this.createContainerAtPort(port);
+                            foundPort = true;
+                            adminCreate.close();
+                            break;
+                        }
+                    }
+                    if (foundPort = false) {
+                        System.out.println("The port ID does not exist");
+                        adminCreate.close();
+                    }
+                    System.out.println("-------------------------------------------------");
+                case 4:
+                    break;
+                default:
+                    System.out.println("You did not enter a valid value");
+                    break;
+            }
+
+        }
+
+        @Override
+        public void Read() {
+            Scanner adminRead = new Scanner(System.in);
+            System.out.println("Please choose what you want to read: ");
+            // Display create options to the user
+            System.out.println("1. All Vehicles");
+            System.out.println("2. All Ports");
+            System.out.println("3. All Containers at a port");
+            System.out.println("4. All Containers on a vehicle");
+            System.out.println("5. All Managers");
+
+        }
+
+        @Override
+        public void Update() {
+
+        }
+
+        @Override
+        public void Delete() {
+
+        }
+    }
 
