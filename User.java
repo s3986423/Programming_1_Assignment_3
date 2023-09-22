@@ -56,9 +56,8 @@ public abstract class User {
     void Update();
     void Delete();
     }
-     class PortManager extends User implements CRUD {
+    class PortManager extends User implements CRUD {
         private Port assignedPort; // Reference to the port managed by this manager
-
         public PortManager(String username, String password, Port assignedPort) {
             super(username, password);
             this.assignedPort = assignedPort;
@@ -81,42 +80,35 @@ public abstract class User {
         }
 
 
-         @Override
-         public void Read() {
-             List<Container> containersAtPort = assignedPort.getContainers();
+        @Override
+        public void Read() {
+            ArrayList<Container> containersAtPort = assignedPort.getContainers();
 
-             if (containersAtPort.isEmpty()) {
+            if (containersAtPort.isEmpty()) {
                  System.out.println("No containers at the port.");
-             } else {
-                 System.out.println("Containers at the port:");
-                 for (Container container : containersAtPort) {
+            } else {
+                System.out.println("Containers at the port:");
+                for (Container container : containersAtPort) {
                      System.out.println("Container ID: C-" + container.getContainerID());
                      System.out.println("Container type:" +container.getClass().getSimpleName());
                      System.out.println("Container Weight: " + container.getWeight());
                      System.out.println("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
                      System.out.println("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
                      System.out.println("-----------------------------------");
-                 }
+                }
              }
-         }
-         @Override
-         public void Update(){
-
-         }
-         @Override
-         public void Delete(){
-
-         }
+        }
+        @Override
+        public void Update(){}
+        @Override
+        public void Delete(){}
     }
-     class SystemAdmin extends User {
+    class SystemAdmin extends User {
         public SystemAdmin(String username, String password){
             super(username, password);
         }
 
-
-
-
-         public static void main(String[] args) {
+        public static void main(String[] args) {
              // Create a sample Port and PortManager
              Port port = new Port(
                      1,             // Port ID (int)
