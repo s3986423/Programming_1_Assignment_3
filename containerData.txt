@@ -1,12 +1,31 @@
+
 Container ID: C-0
-Container Type: openSide
-Container Weight: 3.0
-Fuel Per Km (Ship): 2.7
-Fuel Per Km (Truck): 3.2
+Container Type: Liquid
+Container Weight: 1.0
+Fuel Per Km (Ship): 4.8
+Fuel Per Km (Truck): 5.3
 -----------------------------------
 Container ID: C-0
 Container Type: dryStorage
-Container Weight: 2.0
+Container Weight: 5.0
 Fuel Per Km (Ship): 3.5
 Fuel Per Km (Truck): 4.6
+-----------------------------------
+Container ID: C-0
+Container Type: Liquid
+Container Weight: 12.0
+Fuel Per Km (Ship): 4.8
+Fuel Per Km (Truck): 5.3
+-----------------------------------
+Container ID: C-0
+Container Type: Liquid
+Container Weight: 10.0
+Fuel Per Km (Ship): 4.8
+Fuel Per Km (Truck): 5.3
+-----------------------------------
+Container ID: C-0
+Container Type: Refrigerated
+Container Weight: 100.0
+Fuel Per Km (Ship): 4.5
+Fuel Per Km (Truck): 5.4
 -----------------------------------
