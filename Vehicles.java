@@ -13,10 +13,12 @@ public abstract class Vehicles {
     private ArrayList<Container> numContainer;
     private ArrayList<Trip> trip;
 
+    private SystemAdmin admin;
+
     public Vehicles() {
     }
 
-    public Vehicles(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
+    public Vehicles(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip, SystemAdmin admin) {
         VehicleID = vehicleID;
         this.name = name;
         this.currentFuel = currentFuel;
@@ -25,6 +27,8 @@ public abstract class Vehicles {
         this.currentPort = currentPort;
         this.numContainer = numContainer;
         this.trip = trip;
+        this.admin = admin;
+        this.admin.getVehiclesList().add(this);
     }
 
     protected int getVehicleID() {
@@ -139,8 +143,8 @@ class Ship extends Vehicles {
 
     public Ship() {}
 
-    public Ship(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
-        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip);
+    public Ship(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip, SystemAdmin admin) {
+        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip, admin);
     }
 
     @Override
@@ -183,8 +187,8 @@ abstract class Truck extends Vehicles {
     public Truck() {
     }
 
-    public Truck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
-        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip);
+    public Truck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip, SystemAdmin admin) {
+        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip, admin);
     }
 
     @Override
@@ -230,8 +234,8 @@ abstract class Truck extends Vehicles {
 
 class basicTruck extends Truck {
     public basicTruck() {}
-    public basicTruck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
-        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip);
+    public basicTruck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip, SystemAdmin admin) {
+        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip, admin);
     }
     @Override
     public void load(Container container) {
@@ -243,8 +247,8 @@ class basicTruck extends Truck {
 
 class reeferTruck extends Truck {
     public reeferTruck() {}
-    public reeferTruck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
-        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip);
+    public reeferTruck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip, SystemAdmin admin) {
+        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip, admin);
     }
     @Override
     public void load(Container container) {
@@ -258,8 +262,8 @@ class reeferTruck extends Truck {
 
 class tankerTruck extends Truck {
     public tankerTruck() {}
-    public tankerTruck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip) {
-        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip);
+    public tankerTruck(int vehicleID, String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, ArrayList<Container> numContainer, ArrayList<Trip> trip, SystemAdmin admin) {
+        super(vehicleID, name, currentFuel, carryingCapacity, fuelCapacity, currentPort, numContainer, trip, admin);
     }
     @Override
     public void load(Container container) {

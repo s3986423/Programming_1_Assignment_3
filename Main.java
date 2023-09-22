@@ -12,7 +12,7 @@ public class Main {
                 true,           // Landing Ability (boolean)
                 admin
         );
-        PortManager portManager = new PortManager("managerUsername", "managerPassword", port);
+        PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
 
         // Simulate user input for creating containers
         portManager.Create();

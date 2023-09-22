@@ -66,7 +66,7 @@ public abstract class User {
     }
     public void updateContainerAtPort(Port port) {
         Scanner update = new Scanner(System.in);
-        List<Container> containersAtPort = port.getContainers();
+        ArrayList<Container> containersAtPort = port.getContainers();
 
         if (containersAtPort.isEmpty()) {
             System.out.println("No container at port.");
@@ -95,7 +95,7 @@ public abstract class User {
     }
     public void deleteContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
-        List<Container> containersAtPort = port.getContainers();
+        ArrayList<Container> containersAtPort = port.getContainers();
 
         if (containersAtPort.isEmpty()) {
             System.out.println("No containers at the port.");
@@ -128,10 +128,12 @@ public abstract class User {
     }
     class PortManager extends User implements CRUD {
         private Port assignedPort; // Reference to the port managed by this manager
-        public PortManager(String username, String password, Port assignedPort) {
+        private SystemAdmin admin;
+        public PortManager(String username, String password, Port assignedPort, SystemAdmin admin) {
             super(username, password);
             this.assignedPort = assignedPort;
             assignedPort.setPortManager(this);
+            this.admin.getManagersList().add(this);
         }
         @Override
         public void Create(){
@@ -165,10 +167,22 @@ public abstract class User {
     }
     class SystemAdmin extends User {
         private ArrayList<Port> portList;
+        private ArrayList<Vehicles> vehiclesList;
+        private ArrayList<PortManager> managersList;
 
         public SystemAdmin(String username, String password){
             super(username, password);
             this.portList = new ArrayList<>();
+            this.managersList = new ArrayList<>();
+            this.vehiclesList = new ArrayList<>();
+        }
+
+        protected ArrayList<Vehicles> getVehiclesList() {
+            return vehiclesList;
+        }
+
+        protected ArrayList<PortManager> getManagersList() {
+            return managersList;
         }
 
         protected ArrayList<Port> getPortList() {
