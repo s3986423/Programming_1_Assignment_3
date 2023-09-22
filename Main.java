@@ -13,7 +13,6 @@ public class Main {
         );
         PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
 
-<<<<<<< Updated upstream
         // Simulate user input for creating containers
 //      portManager.Create();
 //        //Display all containers
@@ -22,23 +21,19 @@ public class Main {
 //        portManager.Read();
 //        portManager.Delete();
 //        portManager.Read();
-=======
         try {
             // Simulate user input for creating containers
             portManager.Create();
             // Display all containers after creating
->>>>>>> Stashed changes
 
             // Simulate user input for updating containers
             portManager.Update();
             // Display all containers after updating
 
-<<<<<<< Updated upstream
         admin.Create();
         admin.Read();
-=======
             // Simulate user input for deleting containers
->>>>>>> Stashed changes
+
 
             // Display all containers after deleting
 
