@@ -45,7 +45,6 @@ public abstract class User {
                 System.out.println("You did not enter a valid value");
                 break;
         }
-        scanner.close();
         return container;
 
     }
@@ -98,32 +97,68 @@ public abstract class User {
                 }
              }
         }
+        public void Update() {
+            Scanner update = new Scanner(System.in);
+            List<Container> containersAtPort = assignedPort.getContainers();
+
+            if (containersAtPort.isEmpty()) {
+                System.out.println("No container at port.");
+            } else {
+                System.out.println("Enter the ID of the container you want to update: ");
+                int containerIDToUpdate = update.nextInt();
+                boolean containerFound = false;
+
+                for (Container container : containersAtPort) {
+                    if (container.getContainerID() == containerIDToUpdate) {
+                        // Container found, update its weight
+                        System.out.println("Enter the new weight for the container: ");
+                        double newWeight = update.nextDouble();
+                        container.setWeight(newWeight);
+                        containerFound = true;
+                        System.out.println("Container updated successfully.");
+                        break;
+                    }
+                }
+
+                if (!containerFound) {
+                    System.out.println("Container with ID " + containerIDToUpdate + " not found.");
+                }
+            }
+        }
         @Override
-        public void Update(){}
-        @Override
-        public void Delete(){}
+        public void Delete() {
+            Scanner scanner = new Scanner(System.in);
+            List<Container> containersAtPort = assignedPort.getContainers();
+
+            if (containersAtPort.isEmpty()) {
+                System.out.println("No containers at the port.");
+            } else {
+                System.out.println("Enter the ID of the container you want to delete: ");
+                int containerIDToDelete = scanner.nextInt();
+                boolean containerFound = false;
+
+                for (Container container : containersAtPort) {
+                    if (container.getContainerID() == containerIDToDelete) {
+                        // Container found, remove it from the list
+                        containersAtPort.remove(container);
+                        containerFound = true;
+                        System.out.println("Container deleted successfully.");
+                        break;
+                    }
+                }
+
+                if (!containerFound) {
+                    System.out.println("Container with ID " + containerIDToDelete + " not found.");
+                }
+            }
+        }
     }
     class SystemAdmin extends User {
-        public SystemAdmin(String username, String password){
+        public SystemAdmin(String username, String password) {
             super(username, password);
         }
 
-        public static void main(String[] args) {
-             // Create a sample Port and PortManager
-             Port port = new Port(
-                     1,             // Port ID (int)
-                     "PortName",    // Port Name (String)
-                     123.456,       // Latitude (double)
-                     789.012,       // Longitude (double)
-                     10000.0,       // Storing Capacity (double)
-                     true           // Landing Ability (boolean)
-             );
-             PortManager portManager = new PortManager("managerUsername", "managerPassword", port);
 
-             // Simulate user input for creating containers
-             portManager.Create();
-             // Display all containers
-             portManager.Read();
-         }
+
      }
 
