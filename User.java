@@ -4,10 +4,50 @@ import java.util.ArrayList;
 public abstract class User {
     private String username;
     private String password;
-
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+    public Container createContainer() {
+        Scanner scanner = new Scanner(System.in);
+
+        //Input the container weight
+        System.out.println("Please input the container weight: ");
+        double containerWeight = scanner.nextDouble();
+
+        // Display container type options to the user
+        System.out.println("Select the container type:");
+        System.out.println("1. Liquid");
+        System.out.println("2. Refrigerated");
+        System.out.println("3. Open Side");
+        System.out.println("4. Open Top");
+        System.out.println("5. Dry Storage");
+
+        int containerTypeChoice = scanner.nextInt();
+        Container container = null; // Initialize the container variable
+        switch (containerTypeChoice) {
+            case 1:
+                container = new Liquid(containerWeight);
+                break;
+            case 2:
+                container = new Refrigerated(containerWeight);
+                break;
+            case 3:
+                container = new openSide(containerWeight);
+                break;
+            case 4:
+                container = new openTop(containerWeight);
+                break;
+            case 5:
+                container = new dryStorage(containerWeight);
+                break;
+            default:
+                System.out.println("You did not enter a valid value");
+                break;
+        }
+        scanner.close();
+        return container;
+
     }
 }
     interface CRUD{
@@ -24,49 +64,19 @@ public abstract class User {
             this.assignedPort = assignedPort;
         }
         @Override
-         public void Create(){
-            Scanner scanner = new Scanner(System.in);
-
-            //Input the container weight
-            System.out.println("Please input the container weight: ");
-            double containerWeight = scanner.nextDouble();
-
-            // Display container type options to the user
-            System.out.println("Select the container type:");
-            System.out.println("1. Liquid");
-            System.out.println("2. Refrigerated");
-            System.out.println("3. Open Side");
-            System.out.println("4. Open Top");
-            System.out.println("5. Dry Storage");
-
-            int containerTypeChoice = scanner.nextInt();
-            Container container = null; // Initialize the container variable
-            switch (containerTypeChoice) {
-                case 1:
-                    container = new Liquid(containerWeight);
-                    break;
-                case 2:
-                    container = new Refrigerated(containerWeight);
-                    break;
-                case 3:
-                    container = new openSide(containerWeight);
-                    break;
-                case 4:
-                    container = new openTop(containerWeight);
-                    break;
-                case 5:
-                    container = new dryStorage(containerWeight);
-                    break;
-                default:
-                    System.out.println("You did not enter a valid value");
-                    break;
-            }
+        public void Create(){
+            Container container = this.createContainer();
             if (container != null) {
-                // Now, add the created container directly to the port's list
-                assignedPort.getContainers().add(container);
+                // Check if the port have enough storing capacity for the container
+                if (this.assignedPort.calCurrentCapacity() + container.getWeight() > this.assignedPort.getStoringCapacity()){
+                    System.out.println("The port does not have enough capacity for the container");
+                }else {
+                    // Now, add the created container directly to the port's list
+                    assignedPort.getContainers().add(container);
 
-                // Optionally, you can print a confirmation message
-                System.out.println("Container added to the port.");
+                    // Optionally, you can print a confirmation message
+                    System.out.println("Container added to the port.");
+                }
             }
         }
 
@@ -80,7 +90,7 @@ public abstract class User {
              } else {
                  System.out.println("Containers at the port:");
                  for (Container container : containersAtPort) {
-                     System.out.println("Container ID: " + container.getContainerID());
+                     System.out.println("Container ID: C-" + container.getContainerID());
                      System.out.println("Container type:" +container.getClass().getSimpleName());
                      System.out.println("Container Weight: " + container.getWeight());
                      System.out.println("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
@@ -119,6 +129,7 @@ public abstract class User {
              PortManager portManager = new PortManager("managerUsername", "managerPassword", port);
 
              // Simulate user input for creating containers
+             portManager.Create();
              // Display all containers
              portManager.Read();
          }

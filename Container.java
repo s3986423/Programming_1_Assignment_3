@@ -2,8 +2,8 @@ public abstract class Container {
     private int containerID;
     private double weight;
     private static int containerNum = 0;
-    private double fuelPerKmShip;
-    private double fuelPerKmTruck;
+    protected double fuelPerKmShip;
+    protected double fuelPerKmTruck;
     public Container() {
         this.containerID = containerNum;
         containerNum++;
@@ -15,8 +15,6 @@ public abstract class Container {
         containerNum++;
         this.weight = weight;
     }
-
-
 
     protected int getContainerID() {
         return containerID;
@@ -30,12 +28,9 @@ public abstract class Container {
         return weight;
     }
 
-
     protected void setWeight(double weight) {
         this.weight = weight;
     }
-
-
 
     protected abstract double getFuelPerKmShip();
 
@@ -54,11 +49,13 @@ class Liquid extends Container {
 
     public Liquid(double weight) {
         super(weight);
+        this.fuelPerKmShip = 4.8;
+        this.fuelPerKmTruck = 5.3;
     }
 
     @Override
     public double getFuelPerKmShip() {
-        return 4.8;
+        return this.fuelPerKmShip;
     }
 
     @Override
@@ -66,7 +63,7 @@ class Liquid extends Container {
 
     @Override
     public double getFuelPerKmTruck() {
-        return 5.3;
+        return this.fuelPerKmTruck;
     }
 
     @Override
@@ -76,16 +73,17 @@ class Liquid extends Container {
 class Refrigerated extends Container {
     public Refrigerated() {
         super();
+        this.fuelPerKmShip = 4.5;
+        this.fuelPerKmTruck = 5.4;
     }
 
     public Refrigerated(double weight) {
         super(weight);
-
     }
 
     @Override
     protected double getFuelPerKmShip() {
-        return 4.5;
+        return this.fuelPerKmShip;
     }
 
     @Override
@@ -93,7 +91,7 @@ class Refrigerated extends Container {
 
     @Override
     protected double getFuelPerKmTruck() {
-        return 5.4;
+        return this.fuelPerKmTruck;
     }
 
     @Override
@@ -103,7 +101,8 @@ class Refrigerated extends Container {
 class openSide extends Container {
     public openSide() {
         super();
-
+        this.fuelPerKmShip = 2.7;
+        this.fuelPerKmTruck = 3.2;
     }
 
     public openSide(double weight) {
@@ -112,7 +111,7 @@ class openSide extends Container {
 
     @Override
     protected double getFuelPerKmShip() {
-        return 2.7;
+        return this.fuelPerKmShip;
     }
 
     @Override
@@ -120,7 +119,7 @@ class openSide extends Container {
 
     @Override
     protected double getFuelPerKmTruck() {
-        return 3.2;
+        return this.fuelPerKmTruck;
     }
 
     @Override
@@ -130,6 +129,8 @@ class openSide extends Container {
 class openTop extends Container {
     public openTop() {
         super();
+        this.fuelPerKmShip = 4.8;
+        this.fuelPerKmTruck = 5.3;
     }
 
     public openTop(double weight) {
@@ -138,7 +139,7 @@ class openTop extends Container {
 
     @Override
     protected double getFuelPerKmShip() {
-        return 4.8;
+        return this.fuelPerKmShip;
     }
 
     @Override
@@ -146,7 +147,7 @@ class openTop extends Container {
 
     @Override
     protected double getFuelPerKmTruck() {
-        return 5.3;
+        return this.fuelPerKmTruck;
     }
 
     @Override
@@ -156,6 +157,8 @@ class openTop extends Container {
 class dryStorage extends Container {
     public dryStorage() {
         super();
+        this.fuelPerKmShip = 3.5;
+        this.fuelPerKmTruck = 4.6;
     }
 
     public dryStorage(double weight) {
@@ -164,7 +167,7 @@ class dryStorage extends Container {
 
     @Override
     protected double getFuelPerKmShip() {
-        return 3.5;
+        return fuelPerKmShip;
     }
 
     @Override
@@ -172,7 +175,7 @@ class dryStorage extends Container {
 
     @Override
     protected double getFuelPerKmTruck() {
-        return 4.6;
+        return fuelPerKmTruck;
     }
 
     @Override
