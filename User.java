@@ -60,6 +60,7 @@ public abstract class User {
         public PortManager(String username, String password, Port assignedPort) {
             super(username, password);
             this.assignedPort = assignedPort;
+            assignedPort.setPortManager(this);
         }
         @Override
         public void Create(){
@@ -154,8 +155,15 @@ public abstract class User {
         }
     }
     class SystemAdmin extends User {
-        public SystemAdmin(String username, String password) {
+        private ArrayList<Port> portList;
+
+        public SystemAdmin(String username, String password){
             super(username, password);
+            this.portList = new ArrayList<>();
+        }
+
+        protected ArrayList<Port> getPortList() {
+            return portList;
         }
 
 

@@ -11,8 +11,9 @@ public class Port {
     private ArrayList<Container> containers;
     private ArrayList <Vehicles> vehicles;
     private ArrayList<Trip> trafficHistory;
+    private SystemAdmin admin;
 
-    // Constructors (including overloaded constructors
+    // Constructors (including overloaded constructors)
 
     public Port(int portID, String name, double latitude, double longitude, double storingCapacity, boolean landingAbility) {
         this.portID = portID;
@@ -25,6 +26,7 @@ public class Port {
         this.containers = new ArrayList<>();
         this.vehicles = new ArrayList<>();
         this.trafficHistory = new ArrayList<>();
+        this.admin.getPortList().add(this);
     }
 
     // Getter and setter methods
@@ -119,6 +121,7 @@ public class Port {
         this.containers = containers;
         this.vehicles = vehicles;
         this.trafficHistory = trafficHistory;
+        this.admin.getPortList().add(this);
     }
     public double calCurrentCapacity() {
         double currentCapacity = 0;
