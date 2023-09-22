@@ -46,7 +46,78 @@ public abstract class User {
                 break;
         }
         return container;
+    }
+    public void readContainerAtPort(Port port){
+        ArrayList<Container> containersAtPort = port.getContainers();
 
+        if (containersAtPort.isEmpty()) {
+            System.out.println("No containers at the port.");
+        } else {
+            System.out.println("Containers at the port:");
+            for (Container container : containersAtPort) {
+                System.out.println("Container ID: C-" + container.getContainerID());
+                System.out.println("Container type:" +container.getClass().getSimpleName());
+                System.out.println("Container Weight: " + container.getWeight());
+                System.out.println("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
+                System.out.println("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
+                System.out.println("-----------------------------------");
+            }
+        }
+    }
+    public void updateContainerAtPort(Port port) {
+        Scanner update = new Scanner(System.in);
+        List<Container> containersAtPort = port.getContainers();
+
+        if (containersAtPort.isEmpty()) {
+            System.out.println("No container at port.");
+        } else {
+            System.out.println("Enter the ID of the container you want to update: ");
+            int containerIDToUpdate = update.nextInt();
+            boolean containerFound = false;
+
+            for (Container container : containersAtPort) {
+                if (container.getContainerID() == containerIDToUpdate) {
+                    // Container found, update its weight
+                    System.out.println("Enter the new weight for the container: ");
+                    double newWeight = update.nextDouble();
+                    container.setWeight(newWeight);
+                    containerFound = true;
+                    System.out.println("Container updated successfully.");
+                    break;
+                }
+            }
+
+            if (!containerFound) {
+                System.out.println("Container with ID " + containerIDToUpdate + " not found.");
+            }
+        }
+        update.close();
+    }
+    public void deleteContainerAtPort(Port port) {
+        Scanner scanner = new Scanner(System.in);
+        List<Container> containersAtPort = port.getContainers();
+
+        if (containersAtPort.isEmpty()) {
+            System.out.println("No containers at the port.");
+        } else {
+            System.out.println("Enter the ID of the container you want to delete: ");
+            int containerIDToDelete = scanner.nextInt();
+            boolean containerFound = false;
+
+            for (Container container : containersAtPort) {
+                if (container.getContainerID() == containerIDToDelete) {
+                    // Container found, remove it from the list
+                    containersAtPort.remove(container);
+                    containerFound = true;
+                    System.out.println("Container deleted successfully.");
+                    break;
+                }
+            }
+
+            if (!containerFound) {
+                System.out.println("Container with ID " + containerIDToDelete + " not found.");
+            }
+        }
     }
 }
     interface CRUD{
@@ -82,76 +153,14 @@ public abstract class User {
 
         @Override
         public void Read() {
-            ArrayList<Container> containersAtPort = assignedPort.getContainers();
-
-            if (containersAtPort.isEmpty()) {
-                 System.out.println("No containers at the port.");
-            } else {
-                System.out.println("Containers at the port:");
-                for (Container container : containersAtPort) {
-                     System.out.println("Container ID: C-" + container.getContainerID());
-                     System.out.println("Container type:" +container.getClass().getSimpleName());
-                     System.out.println("Container Weight: " + container.getWeight());
-                     System.out.println("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
-                     System.out.println("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
-                     System.out.println("-----------------------------------");
-                }
-             }
+            readContainerAtPort(this.assignedPort);
         }
         public void Update() {
-            Scanner update = new Scanner(System.in);
-            List<Container> containersAtPort = assignedPort.getContainers();
-
-            if (containersAtPort.isEmpty()) {
-                System.out.println("No container at port.");
-            } else {
-                System.out.println("Enter the ID of the container you want to update: ");
-                int containerIDToUpdate = update.nextInt();
-                boolean containerFound = false;
-
-                for (Container container : containersAtPort) {
-                    if (container.getContainerID() == containerIDToUpdate) {
-                        // Container found, update its weight
-                        System.out.println("Enter the new weight for the container: ");
-                        double newWeight = update.nextDouble();
-                        container.setWeight(newWeight);
-                        containerFound = true;
-                        System.out.println("Container updated successfully.");
-                        break;
-                    }
-                }
-
-                if (!containerFound) {
-                    System.out.println("Container with ID " + containerIDToUpdate + " not found.");
-                }
-            }
+            updateContainerAtPort(this.assignedPort);
         }
         @Override
         public void Delete() {
-            Scanner scanner = new Scanner(System.in);
-            List<Container> containersAtPort = assignedPort.getContainers();
-
-            if (containersAtPort.isEmpty()) {
-                System.out.println("No containers at the port.");
-            } else {
-                System.out.println("Enter the ID of the container you want to delete: ");
-                int containerIDToDelete = scanner.nextInt();
-                boolean containerFound = false;
-
-                for (Container container : containersAtPort) {
-                    if (container.getContainerID() == containerIDToDelete) {
-                        // Container found, remove it from the list
-                        containersAtPort.remove(container);
-                        containerFound = true;
-                        System.out.println("Container deleted successfully.");
-                        break;
-                    }
-                }
-
-                if (!containerFound) {
-                    System.out.println("Container with ID " + containerIDToDelete + " not found.");
-                }
-            }
+            deleteContainerAtPort(this.assignedPort);
         }
     }
     class SystemAdmin extends User {
@@ -165,8 +174,6 @@ public abstract class User {
         protected ArrayList<Port> getPortList() {
             return portList;
         }
-
-
 
      }
 
