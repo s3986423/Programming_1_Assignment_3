@@ -16,6 +16,8 @@ public abstract class Container {
         this.weight = weight;
     }
 
+
+
     protected int getContainerID() {
         return containerID;
     }
@@ -28,9 +30,12 @@ public abstract class Container {
         return weight;
     }
 
+
     protected void setWeight(double weight) {
         this.weight = weight;
     }
+
+
 
     protected abstract double getFuelPerKmShip();
 
@@ -75,6 +80,7 @@ class Refrigerated extends Container {
 
     public Refrigerated(double weight) {
         super(weight);
+
     }
 
     @Override
@@ -97,6 +103,7 @@ class Refrigerated extends Container {
 class openSide extends Container {
     public openSide() {
         super();
+
     }
 
     public openSide(double weight) {

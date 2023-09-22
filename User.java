@@ -1,5 +1,6 @@
 import java.util.Scanner;
-
+import java.util.List;
+import java.util.ArrayList;
 public abstract class User {
     private String username;
     private String password;
@@ -39,7 +40,7 @@ public abstract class User {
             System.out.println("5. Dry Storage");
 
             int containerTypeChoice = scanner.nextInt();
-            Container container;
+            Container container = null; // Initialize the container variable
             switch (containerTypeChoice) {
                 case 1:
                     container = new Liquid(containerWeight);
@@ -60,11 +61,33 @@ public abstract class User {
                     System.out.println("You did not enter a valid value");
                     break;
             }
+            if (container != null) {
+                // Now, add the created container directly to the port's list
+                assignedPort.getContainers().add(container);
 
+                // Optionally, you can print a confirmation message
+                System.out.println("Container added to the port.");
+            }
         }
-         @Override
-         public void Read(){
 
+
+         @Override
+         public void Read() {
+             List<Container> containersAtPort = assignedPort.getContainers();
+
+             if (containersAtPort.isEmpty()) {
+                 System.out.println("No containers at the port.");
+             } else {
+                 System.out.println("Containers at the port:");
+                 for (Container container : containersAtPort) {
+                     System.out.println("Container ID: " + container.getContainerID());
+                     System.out.println("Container type:" +container.getClass().getSimpleName());
+                     System.out.println("Container Weight: " + container.getWeight());
+                     System.out.println("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
+                     System.out.println("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
+                     System.out.println("-----------------------------------");
+                 }
+             }
          }
          @Override
          public void Update(){
@@ -79,4 +102,25 @@ public abstract class User {
         public SystemAdmin(String username, String password){
             super(username, password);
         }
-}
+
+
+
+
+         public static void main(String[] args) {
+             // Create a sample Port and PortManager
+             Port port = new Port(
+                     1,             // Port ID (int)
+                     "PortName",    // Port Name (String)
+                     123.456,       // Latitude (double)
+                     789.012,       // Longitude (double)
+                     10000.0,       // Storing Capacity (double)
+                     true           // Landing Ability (boolean)
+             );
+             PortManager portManager = new PortManager("managerUsername", "managerPassword", port);
+
+             // Simulate user input for creating containers
+             // Display all containers
+             portManager.Read();
+         }
+     }
+
