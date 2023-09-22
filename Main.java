@@ -14,7 +14,7 @@ public class Main {
         PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
 
         // Simulate user input for creating containers
-//        portManager.Create();
+//      portManager.Create();
 //        //Display all containers
 //        portManager.Read();
 //        portManager.Update();
@@ -23,8 +23,8 @@ public class Main {
 //        portManager.Read();
 
 
-        //admin.Create();
-        //admin.Read();
+        admin.Create();
+        admin.Read();
 
     }
 }

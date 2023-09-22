@@ -57,7 +57,7 @@ public abstract class User {
                 System.out.println("Container added to the port.");
             }
         }
-        scanner.close();
+
     }
     public void readContainerAtPort(Port port){
         ArrayList<Container> containersAtPort = port.getContainers();
@@ -103,7 +103,7 @@ public abstract class User {
                 System.out.println("Container with ID " + containerIDToUpdate + " not found.");
             }
         }
-        update.close();
+
     }
     public void deleteContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
@@ -226,13 +226,13 @@ public abstract class User {
                             // Port found, create a container
                             this.createContainerAtPort(port);
                             foundPort = true;
-                            adminCreate.close();
+
                             break;
                         }
                     }
                     if (foundPort = false) {
                         System.out.println("The port ID does not exist");
-                        adminCreate.close();
+
                     }
                     System.out.println("-------------------------------------------------");
                 case 4:
