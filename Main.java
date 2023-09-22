@@ -21,24 +21,16 @@ public class Main {
 //        portManager.Read();
 //        portManager.Delete();
 //        portManager.Read();
-        try {
-            // Simulate user input for creating containers
-            portManager.Create();
-            // Display all containers after creating
 
-            // Simulate user input for updating containers
-            portManager.Update();
-            // Display all containers after updating
+        // Simulate user input for creating containers
+        portManager.Create();
+        // Display all containers after creating
+
 
         admin.Create();
-        admin.Read();
-            // Simulate user input for deleting containers
+           admin.Read();
+           // Simulate user input for deleting containers
 
 
-            // Display all containers after deleting
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
