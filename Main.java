@@ -22,7 +22,9 @@ public class Main {
 //        portManager.Delete();
 //        portManager.Read();
 
-        admin.Create();
+
+        //admin.Create();
+        //admin.Read();
 
     }
 }
