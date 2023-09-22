@@ -8,6 +8,7 @@ public class Port {
     private double storingCapacity;
     private boolean landingAbility;
     private PortManager portManager;
+    private static int portNum = 0;
     private ArrayList<Container> containers;
     private ArrayList <Vehicles> vehicles;
     private ArrayList<Trip> trafficHistory;
@@ -15,8 +16,9 @@ public class Port {
 
     // Constructors (including overloaded constructors)
 
-    public Port(int portID, String name, double latitude, double longitude, double storingCapacity, boolean landingAbility, SystemAdmin admin) {
-        this.portID = portID;
+    public Port(String name, double latitude, double longitude, double storingCapacity, boolean landingAbility, SystemAdmin admin) {
+        this.portID = portNum;
+        portNum++;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -111,7 +113,7 @@ public class Port {
         this.trafficHistory = trafficHistory;
     }
 
-    public Port(int portID, String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory, SystemAdmin admin) {
+    public Port(String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory, SystemAdmin admin) {
         this.portID = portID;
         this.name = name;
         this.latitude = latitude;

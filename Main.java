@@ -4,13 +4,12 @@ public class Main {
         SystemAdmin admin = new SystemAdmin("admin123", "12345");
 
         Port port = new Port(
-                1,             // Port ID (int)
                 "PortName",    // Port Name (String)
                 123.456,       // Latitude (double)
                 789.012,       // Longitude (double)
                 10000.0,       // Storing Capacity (double)
                 true,           // Landing Ability (boolean)
-                admin
+                admin           // System Admin (System Admin)
         );
         PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
 

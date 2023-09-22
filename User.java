@@ -8,7 +8,7 @@ public abstract class User {
         this.username = username;
         this.password = password;
     }
-    public Container createContainer() {
+    public void createContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
 
         //Input the container weight
@@ -45,7 +45,18 @@ public abstract class User {
                 System.out.println("You did not enter a valid value");
                 break;
         }
-        return container;
+        if (container != null) {
+            // Check if the port have enough storing capacity for the container
+            if (port.calCurrentCapacity() + container.getWeight() > port.getStoringCapacity()){
+                System.out.println("The port does not have enough capacity for the container");
+            }else {
+                // Now, add the created container directly to the port's list
+                port.getContainers().add(container);
+
+                // Optionally, you can print a confirmation message
+                System.out.println("Container added to the port.");
+            }
+        }
     }
     public void readContainerAtPort(Port port){
         ArrayList<Container> containersAtPort = port.getContainers();
@@ -133,23 +144,12 @@ public abstract class User {
             super(username, password);
             this.assignedPort = assignedPort;
             assignedPort.setPortManager(this);
+            this.admin = admin;
             this.admin.getManagersList().add(this);
         }
         @Override
         public void Create(){
-            Container container = this.createContainer();
-            if (container != null) {
-                // Check if the port have enough storing capacity for the container
-                if (this.assignedPort.calCurrentCapacity() + container.getWeight() > this.assignedPort.getStoringCapacity()){
-                    System.out.println("The port does not have enough capacity for the container");
-                }else {
-                    // Now, add the created container directly to the port's list
-                    assignedPort.getContainers().add(container);
-
-                    // Optionally, you can print a confirmation message
-                    System.out.println("Container added to the port.");
-                }
-            }
+            createContainerAtPort(this.assignedPort);
         }
 
 
