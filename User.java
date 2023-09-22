@@ -1,17 +1,21 @@
 import java.util.Scanner;
-import java.util.List;
 import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 public abstract class User {
     private String username;
     private String password;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
+
     public void createContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
 
-        //Input the container weight
+        // Input the container weight
         System.out.println("Please input the container weight: ");
         double containerWeight = scanner.nextDouble();
 
@@ -25,6 +29,7 @@ public abstract class User {
 
         int containerTypeChoice = scanner.nextInt();
         Container container = null; // Initialize the container variable
+
         switch (containerTypeChoice) {
             case 1:
                 container = new Liquid(containerWeight);
@@ -45,6 +50,7 @@ public abstract class User {
                 System.out.println("You did not enter a valid value");
                 break;
         }
+
         if (container != null) {
             // Check if the port have enough storing capacity for the container
             if (port.calCurrentCapacity() + container.getWeight() > port.getStoringCapacity()){
@@ -58,7 +64,36 @@ public abstract class User {
             }
         }
 
+        // Write container data to the file
+        String filePath = "containerData.txt";
+        writeContainerToFile(container, filePath);
     }
+
+    // Method to write container data to a file
+    public void writeContainerToFile(Container container, String filePath) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
+
+            // Write container information to the file
+            writer.write("Container ID: C-" + container.getContainerID());
+            writer.newLine();
+            writer.write("Container Type: " + container.getClass().getSimpleName());
+            writer.newLine();
+            writer.write("Container Weight: " + container.getWeight());
+            writer.newLine();
+            writer.write("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
+            writer.newLine();
+            writer.write("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
+            writer.newLine();
+            writer.write("-----------------------------------");
+            writer.newLine();
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void readContainerAtPort(Port port){
         ArrayList<Container> containersAtPort = port.getContainers();
 

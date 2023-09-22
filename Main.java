@@ -26,9 +26,9 @@ public class Main {
         portManager.Create();
         // Display all containers after creating
 
-
-        admin.Create();
-           admin.Read();
+        portManager.Read();
+        portManager.Update();
+        portManager.Read();
            // Simulate user input for deleting containers
 
 
