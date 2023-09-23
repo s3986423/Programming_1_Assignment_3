@@ -5,7 +5,6 @@ import java.io.IOException;
 public abstract class Container {
     private int containerID;
     private double weight;
-    private static int containerNum = 0;
     protected double fuelPerKmShip;
     protected double fuelPerKmTruck;
     public Container() {
