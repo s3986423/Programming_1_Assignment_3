@@ -33,6 +33,9 @@ public class Main {
         //portManager.Create();
         //portManager.Create();
 
+        portManager.weightEachTypeContainer();
+        portManager.weightEachTypeContainer();
+
 
          //Display all containers after creating
 
@@ -45,10 +48,10 @@ public class Main {
 
 
 
-        // Specify the path to the container data file
-        String filePath = "containerData.txt";
-
-        // Read and print the container data from the file
-        portManager.readAndPrintContainerData(filePath);
+//        // Specify the path to the container data file
+//        String filePath = "containerData.txt";
+//
+//        // Read and print the container data from the file
+//        portManager.readAndPrintContainerData(filePath);
     }
 }

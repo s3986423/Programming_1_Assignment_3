@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -128,16 +129,7 @@ public abstract class User {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
-
         }
-
-
-
-
-
-
     public void readContainerAtPort(Port port){
         ArrayList<Container> containersAtPort = port.getContainers();
 
@@ -210,6 +202,70 @@ public abstract class User {
             }
         }
     }
+    public static double calContainerTypeWeight(String containerType){
+        String fileName = "containerData.txt"; // Specify the file name
+
+        double totalWeight = 0.0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            String currentContainerType = null;
+            double currentContainerWeight = 0.0;
+
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("Container Type: ")) {
+                    currentContainerType = line.substring("Container Type: ".length());
+                } else if (line.startsWith("Container Weight: ")) {
+                    currentContainerWeight = Double.parseDouble(line.substring("Container Weight: ".length()));
+                } else if (line.equals("-----------------------------------")) {
+                    // Check if the current container matches the specified type
+                    if (currentContainerType != null && currentContainerType.trim().equals(containerType)) {
+                        totalWeight += currentContainerWeight;
+                    }
+                    // Reset values for the next container
+                    currentContainerType = null;
+                    currentContainerWeight = 0.0;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return totalWeight;
+    }
+    public void weightEachTypeContainer() {
+        Scanner weightType = new Scanner(System.in);
+
+        System.out.println("Please input the container type you want to calculate total weight for: ");
+        System.out.println("'1' for liquid");
+        System.out.println("'2' for refrigerated");
+        System.out.println("'3' for open side");
+        System.out.println("'4' for open top");
+        System.out.println("'5' for dry storage");
+        int containerType = weightType.nextInt();
+        switch (containerType) {
+            case 1:
+                System.out.println("The total weight of all container type liquid is: "
+                        + calContainerTypeWeight("Liquid"));
+                break;
+            case 2:
+                System.out.println("The total weight of all container type refrigerated is: "
+                        + calContainerTypeWeight("Refrigerated"));
+                break;
+            case 3:
+                System.out.println("The total weight of all container type open side is: "
+                        + calContainerTypeWeight("openSide"));
+                break;
+            case 4:
+                System.out.println("The total weight of all container type open top is: "
+                        + calContainerTypeWeight("openTop"));
+                break;
+            default:
+                System.out.println("The total weight of all container type dry storage is: "
+                        + calContainerTypeWeight("dryStorage"));
+                break;
+        }
+    }
 }
     interface CRUD{
     void Create();
@@ -217,25 +273,37 @@ public abstract class User {
     void Update();
     void Delete();
     }
+    interface statisticOperations{
+    void calFuelUseInDay();
+    void weightEachTypeContainer();
+    void listAllShipInPort();
+    void listAllTripsInDay();
+    void listAllTripsInPeriod();
+//
+    }
     class PortManager extends User implements CRUD {
         private Port assignedPort; // Reference to the port managed by this manager
-        private String username; // Add username field
         private SystemAdmin admin;
         public PortManager(String username, String password, Port assignedPort, SystemAdmin admin) {
             super(username, password);
-            this.username = username; // Set the username
             this.assignedPort = assignedPort;
             assignedPort.setPortManager(this);
             this.admin = admin;
             this.admin.getManagersList().add(this);
         }
 
+        public PortManager(String username, String password, SystemAdmin admin) {
+            super(username, password);
+            this.admin = admin;
+            admin.getManagersList().add(this);
+        }
+
         protected String getUsername() {
-            return username;
+            return super.getUsername();
         }
 
         protected void setUsername(String username) {
-            this.username = username;
+            super.setUsername(username);
         }
 
         protected Port getAssignedPort() {

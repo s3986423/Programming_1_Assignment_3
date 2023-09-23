@@ -22,3 +22,15 @@ Container Weight: 400.0
 Fuel Per Km (Ship): 2.7
 Fuel Per Km (Truck): 3.2
 -----------------------------------
+Container ID: c-4
+Container Type: openTop
+Container Weight: 300.0
+Fuel Per Km (Ship): 4.8
+Fuel Per Km (Truck): 5.3
+-----------------------------------
+Container ID: c-5
+Container Type: openTop
+Container Weight: 500.0
+Fuel Per Km (Ship): 4.8
+Fuel Per Km (Truck): 5.3
+-----------------------------------
