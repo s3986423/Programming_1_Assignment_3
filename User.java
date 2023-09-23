@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public abstract class User {
+public abstract class User  {
     private String username;
     private String password;
 
@@ -255,7 +255,7 @@ public abstract class User {
     void listAllTripsInPeriod();
 //
     }
-    class PortManager extends User implements CRUD {
+    class PortManager extends User implements CRUD  {
         private Port assignedPort; // Reference to the port managed by this manager
         private SystemAdmin admin;
         public PortManager(String username, String password, Port assignedPort, SystemAdmin admin) {
@@ -271,6 +271,8 @@ public abstract class User {
             this.admin = admin;
             admin.getManagersList().add(this);
         }
+
+
 
         protected String getUsername() {
             return super.getUsername();
@@ -363,6 +365,9 @@ public abstract class User {
             }
             System.out.println("---");
         }
+
+
+
 
         @Override
         public void Create() {
