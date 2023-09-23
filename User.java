@@ -264,6 +264,45 @@ public abstract class User {
             return portList;
         }
 
+        private void createVehicleAtPort (Port port) {
+            Scanner createVehicle = new Scanner(System.in);
+            System.out.println("Please input the name of your vehicle: ");
+            String vehicleName = createVehicle.next();
+            System.out.println("---");
+            System.out.println("Please input your vehicle carrying capacity: ");
+            double carryingCapacity = createVehicle.nextDouble();
+            System.out.println("---");
+            System.out.println("Please input your vehicle fuel capacity: ");
+            double fuelCapacity = createVehicle.nextDouble();
+            System.out.println("Your vehicle will start out with its fuel full");
+            System.out.println("---");
+            System.out.println("Please input the type of vehicle you want to create: ");
+            System.out.println("1. for Ship");
+            System.out.println("2. for Basic Truck");
+            System.out.println("3. for Reefer Truck");
+            System.out.println("4. for Tanker Truck");
+            int vehicleType = createVehicle.nextInt();
+            Vehicles vehicle = null;
+            switch (vehicleType) {
+                case 1:
+                    vehicle = new Ship(vehicleName, fuelCapacity, carryingCapacity, fuelCapacity, port, this);
+                    break;
+                case 2:
+                     vehicle = new basicTruck(vehicleName, fuelCapacity, carryingCapacity, fuelCapacity, port, this);
+                     break;
+                case 3:
+                    vehicle = new reeferTruck(vehicleName, fuelCapacity, carryingCapacity, fuelCapacity, port, this);
+                    break;
+                case 4:
+                    vehicle = new tankerTruck(vehicleName, fuelCapacity, carryingCapacity, fuelCapacity, port, this);
+                    break;
+                default:
+                    System.out.println("You did not enter a valid value");
+                    break;
+            }
+            System.out.println("---");
+        }
+
         @Override
         public void Create() {
             Scanner adminCreate = new Scanner(System.in);
@@ -277,22 +316,36 @@ public abstract class User {
             int createChoice = adminCreate.nextInt();
             switch (createChoice) {
                 case 1:
+                    System.out.println("Enter the ID of the port you want to create the vehicle at: ");
+                    int portIDToCreate1 = adminCreate.nextInt();
+                    boolean foundPort1 = false;
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToCreate1) {
+                            this.createVehicleAtPort(port);
+                            foundPort1 = true;
+                            break;
+                        }
+                    }
+                    if (foundPort1 == false) {
+                        System.out.println("The port ID does not exist");
+                    }
+                    System.out.println("-------------------------------------------------");
                     break;
                 case 2:
                     break;
                 case 3:
                     System.out.println("Enter the ID of the port you want to create the container at: ");
-                    int portIDToCreate = adminCreate.nextInt();
-                    boolean foundPort = false;
+                    int portIDToCreate3 = adminCreate.nextInt();
+                    boolean foundPort3 = false;
                     for (Port port : this.getPortList()) {
-                        if (port.getPortID() == portIDToCreate) {
+                        if (port.getPortID() == portIDToCreate3) {
                             // Port found, create a container
                             this.createContainerAtPort(port);
-                            foundPort = true;
+                            foundPort3 = true;
                             break;
                         }
                     }
-                    if (foundPort = false) {
+                    if (foundPort3 == false) {
                         System.out.println("The port ID does not exist");
                     }
                     System.out.println("-------------------------------------------------");

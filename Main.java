@@ -27,14 +27,14 @@ public class Main {
 
         // Simulate user input for creating containers
 //        portManager.Create();
-        portManager.Create();
+//        portManager.Create();
 
         // Display all containers after creating
-        portManager.Read();
+//        portManager.Read();
 
         // Simulate user input for updating a container
-        portManager.Update();
-        portManager.Read();
+//        portManager.Update();
+//        portManager.Read();
            // Simulate user input for deleting containers
         admin.Create();
         admin.Read();
@@ -43,9 +43,9 @@ public class Main {
 
 
         // Specify the path to the container data file
-        String filePath = "containerData.txt";
-
-        // Read and print the container data from the file
-        portManager.readAndPrintContainerData(filePath);
+//        String filePath = "containerData.txt";
+//
+//        // Read and print the container data from the file
+//        portManager.readAndPrintContainerData(filePath);
     }
 }
