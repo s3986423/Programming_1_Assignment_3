@@ -1,8 +1,14 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
+
 public abstract class User {
     private String username;
     private String password;
@@ -18,6 +24,12 @@ public abstract class User {
         // Input the container weight
         System.out.println("Please input the container weight: ");
         double containerWeight = scanner.nextDouble();
+
+        // Check if the port has enough storing capacity for the container
+        if (port.calCurrentCapacity() + containerWeight > port.getStoringCapacity()) {
+            System.out.println("The port does not have enough capacity for the container.");
+            return; // Exit the method without creating the container
+        }
 
         // Display container type options to the user
         System.out.println("Select the container type:");
@@ -52,22 +64,18 @@ public abstract class User {
         }
 
         if (container != null) {
-            // Check if the port have enough storing capacity for the container
-            if (port.calCurrentCapacity() + container.getWeight() > port.getStoringCapacity()){
-                System.out.println("The port does not have enough capacity for the container");
-            }else {
-                // Now, add the created container directly to the port's list
-                port.getContainers().add(container);
+            // Now, add the created container directly to the port's list
+            port.getContainers().add(container);
 
-                // Optionally, you can print a confirmation message
-                System.out.println("Container added to the port.");
-            }
+            // Optionally, you can print a confirmation message
+            System.out.println("Container added to the port.");
         }
 
         // Write container data to the file
         String filePath = "containerData.txt";
         writeContainerToFile(container, filePath);
     }
+
 
     // Method to write container data to a file
     public void writeContainerToFile(Container container, String filePath) {
@@ -93,6 +101,26 @@ public abstract class User {
             e.printStackTrace();
         }
     }
+        public static void readAndPrintContainerData(String filePath) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                String line;
+
+                while ((line = reader.readLine()) != null) {
+                    // Print each line from the file
+                    System.out.println(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+        }
+
+
+
+
+
 
     public void readContainerAtPort(Port port){
         ArrayList<Container> containersAtPort = port.getContainers();
