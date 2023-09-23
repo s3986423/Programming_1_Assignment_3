@@ -1,6 +1,0 @@
-Container ID: C-0
-Container Type: openSide
-Container Weight: 3.0
-Fuel Per Km (Ship): 2.7
-Fuel Per Km (Truck): 3.2
------------------------------------

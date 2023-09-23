@@ -261,13 +261,11 @@ public abstract class User {
                             // Port found, create a container
                             this.createContainerAtPort(port);
                             foundPort = true;
-
                             break;
                         }
                     }
                     if (foundPort = false) {
                         System.out.println("The port ID does not exist");
-
                     }
                     System.out.println("-------------------------------------------------");
                 case 4:

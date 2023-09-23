@@ -23,13 +23,16 @@ public class Main {
 //        portManager.Read();
 
         // Simulate user input for creating containers
-        portManager.Create();
+//        portManager.Create();
         // Display all containers after creating
 
         portManager.Read();
         portManager.Update();
         portManager.Read();
            // Simulate user input for deleting containers
+        admin.Create();
+        admin.Read();
+        // Simulate user input for deleting containers
 
 
     }
