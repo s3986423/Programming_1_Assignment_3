@@ -70,3 +70,171 @@ Vehicle carrying capacity: 50.0
 Vehicle fuel capacity: 50.0
 Vehicle current port: Port@1b28cdfa
 -----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------
+Vehicle ID: sh-0
+Vehicle Type: Ship
+Vehicle name: Ship1
+Vehicle current fuel: 50.0
+Vehicle carrying capacity: 50.0
+Vehicle fuel capacity: 50.0
+Vehicle current port: Port@1b28cdfa
+-----------------------------------

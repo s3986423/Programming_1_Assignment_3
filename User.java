@@ -371,6 +371,8 @@ public abstract class User  {
 
         @Override
         public void Create() {
+            SystemAdmin systemAdmin = new SystemAdmin("admin123", "12345"); // Create a SystemAdmin instance
+            AdminMenu adminMenu = new AdminMenu();
             Scanner adminCreate = new Scanner(System.in);
             System.out.println("Please choose what you want to create: ");
             // Display create options to the user
@@ -378,6 +380,8 @@ public abstract class User  {
             System.out.println("'2' for Port");
             System.out.println("'3' for Container");
             System.out.println("'4' for Manager");
+            System.out.println("'5' to go back to CRUD Menu");
+
 
             int createChoice = adminCreate.nextInt();
             switch (createChoice) {
@@ -479,6 +483,8 @@ public abstract class User  {
                         System.out.println("Port with ID " + portIDToAssign + " not found. Port Manager creation failed.");
                     }
                     break;
+                case 5:
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 default:
                     System.out.println("You did not enter a valid value");
                     break;
@@ -488,6 +494,8 @@ public abstract class User  {
 
         @Override
         public void Read() {
+            SystemAdmin systemAdmin = new SystemAdmin("admin123", "12345"); // Create a SystemAdmin instance
+            AdminMenu adminMenu = new AdminMenu();
             Scanner adminRead = new Scanner(System.in);
             System.out.println("Please choose what you want to read: ");
             // Display create options to the user
@@ -496,6 +504,8 @@ public abstract class User  {
             System.out.println("'3' for all Containers at a port");
             System.out.println("'4' for all Containers on a vehicle");
             System.out.println("'5' for all Managers");
+            System.out.println("'6' to go back to CRUD Menu");
+
 
             int readChoice = adminRead.nextInt();
             switch (readChoice) {
@@ -516,7 +526,7 @@ public abstract class User  {
                             System.out.println("-----------------------------------");
                         }
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 case 2:
                     // Option 2: Read all Ports
                     if (this.getPortList().isEmpty()) {
@@ -534,7 +544,7 @@ public abstract class User  {
                             System.out.println("-----------------------------------");
                         }
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 case 3:
                     // Option 3: Read all containers at a port
                     System.out.println("Enter the ID of the port you want to read containers from: ");
@@ -554,13 +564,15 @@ public abstract class User  {
                                 }
                             }
                             foundPortForContainers = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+
                         }
                     }
                     if (!foundPortForContainers) {
                         System.out.println("Port with ID " + portIDToReadContainers + " not found.");
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+
                 case 4:
                     // Option 4: Read all containers on a vehicle
                     System.out.println("Enter the ID of the vehicle you want to read containers from (number only): ");
@@ -580,13 +592,13 @@ public abstract class User  {
                                 }
                             }
                             foundVehicleForContainers = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                         }
                     }
                     if (!foundVehicleForContainers) {
                         System.out.println("Vehicle with ID " + vehicleIDToReadContainers + " not found.");
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 case 5:
                     // Option 5: Read all Port Managers
                     if (this.getManagersList().isEmpty()) {
@@ -599,15 +611,19 @@ public abstract class User  {
                             System.out.println("-----------------------------------");
                         }
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+                case 6:
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 default:
                     System.out.println("You did not enter a valid value.");
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
             }
         }
 
         @Override
         public void Update() {
+            SystemAdmin systemAdmin = new SystemAdmin("admin123", "12345"); // Create a SystemAdmin instance
+            AdminMenu adminMenu = new AdminMenu();
             Scanner adminUpdate = new Scanner(System.in);
             System.out.println("Please choose what you want to update: ");
             // Display update options to the user
@@ -615,6 +631,7 @@ public abstract class User  {
             System.out.println("'2' for Port");
             System.out.println("'3' for Container");
             System.out.println("'4' for Manager");
+            System.out.println("'5' to go back to CRUD Menu");
 
             int updateChoice = adminUpdate.nextInt();
             switch (updateChoice) {
@@ -644,7 +661,8 @@ public abstract class User  {
 
                             System.out.println("Vehicle updated successfully.");
                             foundVehicleForUpdate = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+
                         }
                     }
 
@@ -687,7 +705,8 @@ public abstract class User  {
 
                             System.out.println("Port updated successfully.");
                             foundPortForUpdate = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+
                         }
                     }
 
@@ -716,7 +735,8 @@ public abstract class User  {
 
                                 System.out.println("Container updated successfully.");
                                 foundContainerForUpdate = true;
-                                break;
+                                adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+
                             }
                         }
                     }
@@ -725,7 +745,7 @@ public abstract class User  {
                         System.out.println("Container with ID " + containerIDToUpdate + " not found.");
                     }
 
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 case 4:
 
             }
@@ -733,6 +753,8 @@ public abstract class User  {
 
         @Override
         public void Delete() {
+            SystemAdmin systemAdmin = new SystemAdmin("admin123", "12345"); // Create a SystemAdmin instance
+            AdminMenu adminMenu = new AdminMenu();
             Scanner adminDelete = new Scanner(System.in);
             System.out.println("Please choose what you want to delete: ");
             // Display delete options to the user
@@ -740,6 +762,7 @@ public abstract class User  {
             System.out.println("'2' to delete a Port");
             System.out.println("'3' to delete a Container");
             System.out.println("'4' to delete a Manager");
+            System.out.println("'5' to go back to CRUD menu");
 
             int deleteChoice = adminDelete.nextInt();
             switch (deleteChoice) {
@@ -755,14 +778,14 @@ public abstract class User  {
                             this.getVehiclesList().remove(vehicle);
                             System.out.println("Vehicle with ID " + vehicleIDToDelete + " has been deleted.");
                             foundVehicleForDeletion = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                         }
                     }
 
                     if (!foundVehicleForDeletion) {
                         System.out.println("Vehicle with ID " + vehicleIDToDelete + " not found.");
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
 
                 case 2:
                     // Delete a Port
@@ -776,14 +799,14 @@ public abstract class User  {
                             this.getPortList().remove(port);
                             System.out.println("Port with ID " + portIDToDelete + " has been deleted.");
                             foundPortForDeletion = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                         }
                     }
 
                     if (!foundPortForDeletion) {
                         System.out.println("Port with ID " + portIDToDelete + " not found.");
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
 
                 case 3:
                     // Delete a Container
@@ -798,18 +821,18 @@ public abstract class User  {
                                 port.getContainers().remove(container);
                                 System.out.println("Container with ID " + containerIDToDelete + " has been deleted.");
                                 foundContainerForDeletion = true;
-                                break;
+                                adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                             }
                         }
                         if (foundContainerForDeletion) {
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                         }
                     }
 
                     if (!foundContainerForDeletion) {
                         System.out.println("Container with ID " + containerIDToDelete + " not found.");
                     }
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
 
                 case 4:
                     // Delete a Manager
@@ -823,20 +846,20 @@ public abstract class User  {
                             this.getManagersList().remove(manager);
                             System.out.println("Manager with username '" + managerUsernameToDelete + "' has been deleted.");
                             foundManagerForDeletion = true;
-                            break;
+                            adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                         }
                     }
 
                     if (!foundManagerForDeletion) {
                         System.out.println("Manager with username '" + managerUsernameToDelete + "' not found.");
                     }
-                    break;
-
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
+                case 5:
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
                 default:
                     System.out.println("You did not enter a valid value.");
-                    break;
+                    adminMenu.CRUDadminMenu(systemAdmin); // Pass the SystemAdmin instance to the method
             }
         }
 
     }
-

@@ -19,12 +19,18 @@ public class MainMenu {
         int menuchoice = scanner.nextInt();
         AdminMenu adminMenu = new AdminMenu();
         PortManagerMenu portManagerMenu = new PortManagerMenu();
+
         switch (menuchoice){
             case 1:
                 portManagerMenu.displayPortManagerMenu();
+                break;
             case 2:
                 adminMenu.displayAdminMenu();
+                break;
             case 3:
+                return; // Exit the loop and the menu
+            default:
+                System.out.println("Invalid choice. Please enter a valid option.");
                 break;
         }
     }

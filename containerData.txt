@@ -40,3 +40,33 @@ Container Weight: 2.0
 Fuel Per Km (Ship): 0.0
 Fuel Per Km (Truck): 0.0
 -----------------------------------
+Container ID: c-7
+Container Type: Liquid
+Container Weight: 10.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-8
+Container Type: Liquid
+Container Weight: 1.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-9
+Container Type: Liquid
+Container Weight: 1.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-10
+Container Type: Liquid
+Container Weight: 20.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-11
+Container Type: Liquid
+Container Weight: 1.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
