@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         // Create a sample SystemAdmin
         SystemAdmin admin = new SystemAdmin("admin123", "12345");
 
-
+        ArrayList<Container> numContainer1 = new ArrayList<>();
         // Create a sample Port and associate it with the SystemAdmin
         Port port = new Port(
                 "PortName",
@@ -11,6 +13,7 @@ public class Main {
                 789.012,
                 1000.0,
                 true,
+                numContainer1,
                 admin
         );
         // Create a new Vehicle
