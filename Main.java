@@ -3,6 +3,7 @@ public class Main {
         // Create a sample SystemAdmin
         SystemAdmin admin = new SystemAdmin("admin123", "12345");
 
+
         // Create a sample Port and associate it with the SystemAdmin
         Port port = new Port(
                 "PortName",
@@ -12,10 +13,11 @@ public class Main {
                 true,
                 admin
         );
+        // Create a new Vehicle
+        Vehicles vehicles = new Ship("Ship1", 50, 50, 50, port, admin);
 
         // Create a PortManager and associate it with the Port and SystemAdmin
         PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
-        // Create a new Vehicle
 
 
         // Simulate user input for creating containers
@@ -33,8 +35,8 @@ public class Main {
         //portManager.Create();
         //portManager.Create();
 
-        portManager.weightEachTypeContainer();
-        portManager.weightEachTypeContainer();
+//        portManager.weightEachTypeContainer();
+//        portManager.weightEachTypeContainer();
 
 
          //Display all containers after creating
@@ -45,8 +47,6 @@ public class Main {
            // Simulate user input for deleting containers
 
         // Simulate user input for deleting containers
-
-
 
 //        // Specify the path to the container data file
 //        String filePath = "containerData.txt";

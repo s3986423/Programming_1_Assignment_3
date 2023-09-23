@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class Port {
@@ -8,7 +9,6 @@ public class Port {
     private double storingCapacity;
     private boolean landingAbility;
     private PortManager portManager;
-    private static int portNum = 0;
     private ArrayList<Container> containers;
     private ArrayList <Vehicles> vehicles;
     private ArrayList<Trip> trafficHistory;
@@ -17,8 +17,7 @@ public class Port {
     // Constructors (including overloaded constructors)
 
     public Port(String name, double latitude, double longitude, double storingCapacity, boolean landingAbility, SystemAdmin admin) {
-        this.portID = portNum;
-        portNum++;
+        this.portID = getLastPortID() + 1;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -30,6 +29,7 @@ public class Port {
         this.trafficHistory = new ArrayList<>();
         this.admin = admin;
         this.admin.getPortList().add(this);
+        this.writePortToFile(this, "portData.txt");
     }
 
     // Getter and setter methods
@@ -113,8 +113,56 @@ public class Port {
         this.trafficHistory = trafficHistory;
     }
 
+    public void writePortToFile(Port port, String filePath) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
+
+            // Write port information to the file
+            writer.write("Port ID: p-" + port.getPortID());
+            writer.newLine();
+            writer.write("Name: " + port.getName());
+            writer.newLine();
+            writer.write("Latitude: " + port.getLatitude());
+            writer.newLine();
+            writer.write("Longitude: " + port.getLongitude());
+            writer.newLine();
+            writer.write("Storing Capacity: " + port.getStoringCapacity());
+            writer.newLine();
+            writer.write("Landing Ability: " + port.getLandingAbility());
+            writer.newLine();
+            writer.write("Port Manager: " + (port.getPortManager() != null ? port.getPortManager().getUsername() : "None"));
+            writer.newLine();
+            writer.write("-----------------------------------");
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static int getLastPortID(){
+        String fileName = "portData.txt"; // Specify the file name
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            String lastPortID = null;
+
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("Port ID: p-")) {
+                    lastPortID = line.substring("Port ID: p-".length());
+                }
+            }
+            if (lastPortID != null) {
+                return Integer.parseInt(lastPortID);
+            } else {
+                return 0;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
     public Port(String name, double latitude, double longititude, double storingCapacity, boolean landingAbility, PortManager portManager, ArrayList<Container> containers, ArrayList<Vehicles> vehicles, ArrayList<Trip> trafficHistory, SystemAdmin admin) {
-        this.portID = portID;
+        this.portID = getLastPortID() + 1;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longititude;

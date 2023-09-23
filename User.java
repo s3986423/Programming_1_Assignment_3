@@ -87,38 +87,9 @@ public abstract class User {
             // Optionally, you can print a confirmation message
             System.out.println("Container added to the port.");
         }
-
-        // Write container data to the file
-        String filePath = "containerData.txt";
-        writeContainerToFile(container, filePath);
     }
 
-
-    // Method to write container data to a file
-    public void writeContainerToFile(Container container, String filePath) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
-
-            // Write container information to the file
-            writer.write("Container ID: c-" + container.getContainerID());
-            writer.newLine();
-            writer.write("Container Type: " + container.getClass().getSimpleName());
-            writer.newLine();
-            writer.write("Container Weight: " + container.getWeight());
-            writer.newLine();
-            writer.write("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
-            writer.newLine();
-            writer.write("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
-            writer.newLine();
-            writer.write("-----------------------------------");
-            writer.newLine();
-
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-        public static void readAndPrintContainerData(String filePath) {
+    public static void readAndPrintContainerData(String filePath) {
             try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                 String line;
 
@@ -265,6 +236,9 @@ public abstract class User {
                         + calContainerTypeWeight("dryStorage"));
                 break;
         }
+    }
+    public void listAllShipInPort() {
+
     }
 }
     interface CRUD{

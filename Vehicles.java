@@ -142,6 +142,7 @@ public abstract class Vehicles {
     public void refuel() {
         setCurrentFuel(this.fuelCapacity);
     }
+
 }
 class Ship extends Vehicles {
 

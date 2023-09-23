@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public abstract class Container {
     private int containerID;
@@ -13,8 +11,9 @@ public abstract class Container {
     }
 
     public Container(double weight) {
-        this.containerID = getLastContainerID()+1;
+        this.containerID = getLastContainerID() + 1;
         this.weight = weight;
+        this.writeContainerToFile(this, "containerData.txt");
     }
 
     public static int getLastContainerID(){
@@ -39,7 +38,28 @@ public abstract class Container {
         }
         return 0;
     }
-
+    // Write container data to the file
+    public void writeContainerToFile(Container container, String filePath) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
+            // Write container information to the file
+            writer.write("Container ID: c-" + container.getContainerID());
+            writer.newLine();
+            writer.write("Container Type: " + container.getClass().getSimpleName());
+            writer.newLine();
+            writer.write("Container Weight: " + container.getWeight());
+            writer.newLine();
+            writer.write("Fuel Per Km (Ship): " + container.getFuelPerKmShip());
+            writer.newLine();
+            writer.write("Fuel Per Km (Truck): " + container.getFuelPerKmTruck());
+            writer.newLine();
+            writer.write("-----------------------------------");
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     protected int getContainerID() {
         return containerID;
     }
