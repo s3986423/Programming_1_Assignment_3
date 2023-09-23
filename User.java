@@ -375,6 +375,7 @@ public abstract class User {
                     }
                     System.out.println("-------------------------------------------------");
                 case 4:
+
                     break;
                 default:
                     System.out.println("You did not enter a valid value");

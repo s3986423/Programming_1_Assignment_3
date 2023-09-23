@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public abstract class Container {
     private int containerID;
     private double weight;
@@ -5,15 +9,36 @@ public abstract class Container {
     protected double fuelPerKmShip;
     protected double fuelPerKmTruck;
     public Container() {
-        this.containerID = containerNum;
-        containerNum++;
+        this.containerID = getLastContainerID() + 1;
         this.weight = 0;
     }
 
     public Container(double weight) {
-        this.containerID = containerNum;
-        containerNum++;
+        this.containerID = getLastContainerID()+1;
         this.weight = weight;
+    }
+
+    public static int getLastContainerID(){
+        String fileName = "containerData.txt"; // Specify the file name
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            String lastContainerID = null;
+
+            while ((line = br.readLine()) != null) {
+                if (line.startsWith("Container ID: c-")) {
+                    lastContainerID = line.substring("Container ID: c-".length());
+                }
+            }
+            if (lastContainerID != null) {
+                return Integer.parseInt(lastContainerID);
+            } else {
+                return 0;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     protected int getContainerID() {
