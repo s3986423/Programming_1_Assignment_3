@@ -22,7 +22,8 @@ public class Main {
         // Create a PortManager and associate it with the Port and SystemAdmin
         PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
 
-
+        MainMenu menu = new MainMenu();
+        menu.displayMainMenu();
         // Simulate user input for creating containers
 //      portManager.Create();
 //        //Display all containers

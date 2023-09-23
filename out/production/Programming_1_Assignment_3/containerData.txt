@@ -34,9 +34,3 @@ Container Weight: 500.0
 Fuel Per Km (Ship): 4.8
 Fuel Per Km (Truck): 5.3
 -----------------------------------
-Container ID: c-6
-Container Type: Liquid
-Container Weight: 2.0
-Fuel Per Km (Ship): 0.0
-Fuel Per Km (Truck): 0.0
------------------------------------

@@ -12,14 +12,20 @@ public class MainMenu {
         System.out.println("s3974923, Nguyen Tran Tri An");
         System.out.println("====================================");
         System.out.println("CONTAINER PORT MANAGEMENT MAIN MENU");
-        System.out.println("Press a number to continue");
+        System.out.println("Press a number to continue:");
         System.out.println("'1' to go to Port Manager Menu ");
         System.out.println("'2' to go to System Admin Menu");
         System.out.println("'3' to exit ");
         int Menuchoice = scanner.nextInt();
+        AdminMenu adminMenu = new AdminMenu();
+        PortManagerMenu portManagerMenu = new PortManagerMenu();
         switch (Menuchoice){
             case 1:
-
+                portManagerMenu.displayPortManagerMenu();
+            case 2:
+                adminMenu.displayAdminMenu();
+            case 3:
+                break;
         }
     }
 }
