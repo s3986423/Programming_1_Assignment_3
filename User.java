@@ -214,24 +214,27 @@ public abstract class User {
             this.admin.getManagersList().add(this);
         }
 
-        public String getUsername() {
+        protected String getUsername() {
             return username;
         }
 
-        public void setUsername(String username) {
+        protected void setUsername(String username) {
             this.username = username;
+        }
+
+        protected Port getAssignedPort() {
+            return assignedPort;
         }
 
         @Override
         public void Create(){
             createContainerAtPort(this.assignedPort);
         }
-
-
         @Override
         public void Read() {
             readContainerAtPort(this.assignedPort);
         }
+        @Override
         public void Update() {
             updateContainerAtPort(this.assignedPort);
         }
@@ -332,6 +335,7 @@ public abstract class User {
                     System.out.println("-------------------------------------------------");
                     break;
                 case 2:
+                    
                     break;
                 case 3:
                     System.out.println("Enter the ID of the port you want to create the container at: ");
@@ -467,7 +471,8 @@ public abstract class User {
                         System.out.println("All Port Managers:");
                         for (PortManager manager : this.getManagersList()) {
                             // Modify this part to display relevant information about Port Managers
-                            System.out.println("Manager: " + manager.getUsername()); // Modify this line
+                            System.out.println("Manager: " + manager.getUsername());
+                            System.out.println("Assigned port: " + manager.getAssignedPort());// Modify this line
                             System.out.println("-----------------------------------");
                         }
                     }
