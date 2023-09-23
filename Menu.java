@@ -1,2 +1,2 @@
-public class Menu {
+public interface Menu {
 }
