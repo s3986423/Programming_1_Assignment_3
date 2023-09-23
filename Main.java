@@ -15,6 +15,8 @@ public class Main {
 
         // Create a PortManager and associate it with the Port and SystemAdmin
         PortManager portManager = new PortManager("managerUsername", "managerPassword", port, admin);
+        // Create a new Vehicle
+
 
         // Simulate user input for creating containers
 //      portManager.Create();
@@ -24,10 +26,12 @@ public class Main {
 //        portManager.Read();
 //        portManager.Delete();
 //        portManager.Read();
-
+          //admin.Create();
+          //admin.Update();
+          //admin.Delete();
          //Simulate user input for creating containers
-        portManager.Create();
-        portManager.Create();
+        //portManager.Create();
+        //portManager.Create();
 
 
          //Display all containers after creating

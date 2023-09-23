@@ -18,6 +18,22 @@ public abstract class User {
         this.password = password;
     }
 
+    protected String getUsername() {
+        return username;
+    }
+
+    protected void setUsername(String username) {
+        this.username = username;
+    }
+
+    protected String getPassword() {
+        return password;
+    }
+
+    protected void setPassword(String password) {
+        this.password = password;
+    }
+
     public void createContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
 
@@ -319,7 +335,7 @@ public abstract class User {
             int createChoice = adminCreate.nextInt();
             switch (createChoice) {
                 case 1:
-                    System.out.println("Enter the ID of the port you want to create the vehicle at: p-");
+                    System.out.println("Enter the ID of the port you want to create the vehicle at: ");
                     int portIDToCreate1 = adminCreate.nextInt();
                     boolean foundPort1 = false;
                     for (Port port : this.getPortList()) {
@@ -375,7 +391,46 @@ public abstract class User {
                     }
                     System.out.println("-------------------------------------------------");
                 case 4:
+                    boolean usernameExists = true;
+                    String managerUsername = "";
 
+                    while (usernameExists) {
+                        System.out.println("Please enter the username for the new Port Manager: ");
+                        managerUsername = adminCreate.next();
+
+                        // Check if the username already exists
+                        usernameExists = false;
+                        for (PortManager manager : this.getManagersList()) {
+                            if (manager.getUsername().equals(managerUsername)) {
+                                usernameExists = true;
+                                System.out.println("Username '" + managerUsername + "' already exists. Please choose a different username.");
+                                break;
+                            }
+                        }
+                    }
+
+                    System.out.println("Please enter the password for the new Port Manager: ");
+                    String managerPassword = adminCreate.next();
+
+                    System.out.println("Enter the ID of the port you want to assign to the new Port Manager: ");
+                    int portIDToAssign = adminCreate.nextInt();
+                    boolean foundPortForAssignment = false;
+                    Port assignedPort = null;
+
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToAssign) {
+                            assignedPort = port;
+                            foundPortForAssignment = true;
+                            break;
+                        }
+                    }
+
+                    if (foundPortForAssignment) {
+                        PortManager newManager = new PortManager(managerUsername, managerPassword, assignedPort, this);
+                        System.out.println("Port Manager " + managerUsername + " has been successfully created and assigned to Port " + assignedPort.getName());
+                    } else {
+                        System.out.println("Port with ID " + portIDToAssign + " not found. Port Manager creation failed.");
+                    }
                     break;
                 default:
                     System.out.println("You did not enter a valid value");
@@ -422,7 +477,7 @@ public abstract class User {
                     } else {
                         System.out.println("All Ports:");
                         for (Port port : this.getPortList()) {
-                            System.out.println("Port ID: p-" + port.getPortID());
+                            System.out.println("Port ID: " + port.getPortID());
                             System.out.println("Name: " + port.getName());
                             System.out.println("Latitude: " + port.getLatitude());
                             System.out.println("Longitude: " + port.getLongitude());
@@ -435,7 +490,7 @@ public abstract class User {
                     break;
                 case 3:
                     // Option 3: Read all containers at a port
-                    System.out.println("Enter the ID of the port you want to read containers from: p-");
+                    System.out.println("Enter the ID of the port you want to read containers from: ");
                     int portIDToReadContainers = adminRead.nextInt();
                     boolean foundPortForContainers = false;
                     for (Port port : this.getPortList()) {
@@ -456,7 +511,7 @@ public abstract class User {
                         }
                     }
                     if (!foundPortForContainers) {
-                        System.out.println("Port with ID p-" + portIDToReadContainers + " not found.");
+                        System.out.println("Port with ID " + portIDToReadContainers + " not found.");
                     }
                     break;
                 case 4:
@@ -492,9 +547,8 @@ public abstract class User {
                     } else {
                         System.out.println("All Port Managers:");
                         for (PortManager manager : this.getManagersList()) {
-                            // Modify this part to display relevant information about Port Managers
                             System.out.println("Manager: " + manager.getUsername());
-                            System.out.println("Assigned port: " + manager.getAssignedPort());// Modify this line
+                            System.out.println("Assigned port: " + manager.getAssignedPort());
                             System.out.println("-----------------------------------");
                         }
                     }
@@ -507,12 +561,235 @@ public abstract class User {
 
         @Override
         public void Update() {
+            Scanner adminUpdate = new Scanner(System.in);
+            System.out.println("Please choose what you want to update: ");
+            // Display update options to the user
+            System.out.println("'1' for Vehicle");
+            System.out.println("'2' for Port");
+            System.out.println("'3' for Container");
+            System.out.println("'4' for Manager");
 
+            int updateChoice = adminUpdate.nextInt();
+            switch (updateChoice) {
+                case 1:
+                    // Update Vehicle
+                    System.out.println("Enter the ID of the vehicle you want to update (number only): ");
+                    int vehicleIDToUpdate = adminUpdate.nextInt();
+                    boolean foundVehicleForUpdate = false;
+
+                    for (Vehicles vehicle : this.getVehiclesList()) {
+                        if (vehicle.getVehicleID() == vehicleIDToUpdate) {
+                            // Vehicle found, ask users to update the value
+                            System.out.println("Enter the new name for the vehicle: ");
+                            String newName = adminUpdate.next();
+
+                            System.out.println("Enter the new carrying capacity for the vehicle: ");
+                            double newCarryingCapacity = adminUpdate.nextDouble();
+
+                            System.out.println("Enter the new fuel capacity for the vehicle: ");
+                            double newFuelCapacity = adminUpdate.nextDouble();
+
+                            vehicle.setName(newName);
+                            vehicle.setCarryingCapacity(newCarryingCapacity);
+                            vehicle.setFuelCapacity(newFuelCapacity);
+
+                            this.getVehiclesList().remove(vehicle);
+
+                            System.out.println("Vehicle updated successfully.");
+                            foundVehicleForUpdate = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundVehicleForUpdate) {
+                        System.out.println("Vehicle with ID " + vehicleIDToUpdate + " not found.");
+                    }
+
+                case 2:
+                    // Update Port
+                    System.out.println("Enter the ID of the port you want to update: ");
+                    int portIDToUpdate = adminUpdate.nextInt();
+                    boolean foundPortForUpdate = false;
+
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToUpdate) {
+                            // Port found, ask users to update the value
+                            System.out.println("Enter the new name for the port: ");
+                            String newName = adminUpdate.next();
+
+                            System.out.println("Enter the new latitude for the port: ");
+                            double newLatitude = adminUpdate.nextDouble();
+
+                            System.out.println("Enter the new longitude for the port: ");
+                            double newLongitude = adminUpdate.nextDouble();
+
+                            System.out.println("Enter the new storing capacity for the port: ");
+                            double newStoringCapacity = adminUpdate.nextDouble();
+
+                            System.out.println("Change Landing Ability?");
+                            System.out.println("'1' for yes, any other key for no");
+                            int landChoice = adminUpdate.nextInt();
+                            boolean landingAbility = (landChoice == 1);
+
+                            // Update all the properties at once
+                            port.setName(newName);
+                            port.setLatitude(newLatitude);
+                            port.setLongitude(newLongitude);
+                            port.setStoringCapacity(newStoringCapacity);
+                            port.setLandingAbility(landingAbility);
+
+                            System.out.println("Port updated successfully.");
+                            foundPortForUpdate = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundPortForUpdate) {
+                        System.out.println("Port with ID " + portIDToUpdate + " not found.");
+                    }
+
+                case 3:
+                    // Update Container
+                    System.out.println("Enter the ID of the container you want to update (number only): ");
+                    int containerIDToUpdate = adminUpdate.nextInt();
+                    boolean foundContainerForUpdate = false;
+
+                    for (Port port : this.getPortList()) {
+                        for (Container container : port.getContainers()) {
+                            if (container.getContainerID() == containerIDToUpdate) {
+                                // Container found, now ask the user for the updated values
+                                System.out.println("Enter the new weight for the container: ");
+                                double newWeight = adminUpdate.nextDouble();
+
+                                // First, remove the existing container
+                                port.getContainers().remove(container);
+
+                                // Add the updated container to the port
+                                port.getContainers().add(container);
+
+                                System.out.println("Container updated successfully.");
+                                foundContainerForUpdate = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!foundContainerForUpdate) {
+                        System.out.println("Container with ID " + containerIDToUpdate + " not found.");
+                    }
+
+                    break;
+                case 4:
+
+            }
         }
 
         @Override
         public void Delete() {
+            Scanner adminDelete = new Scanner(System.in);
+            System.out.println("Please choose what you want to delete: ");
+            // Display delete options to the user
+            System.out.println("'1' to delete a Vehicle");
+            System.out.println("'2' to delete a Port");
+            System.out.println("'3' to delete a Container");
+            System.out.println("'4' to delete a Manager");
 
+            int deleteChoice = adminDelete.nextInt();
+            switch (deleteChoice) {
+                case 1:
+                    // Delete a Vehicle
+                    System.out.println("Enter the ID of the vehicle you want to delete (number only): ");
+                    int vehicleIDToDelete = adminDelete.nextInt();
+                    boolean foundVehicleForDeletion = false;
+
+                    for (Vehicles vehicle : this.getVehiclesList()) {
+                        if (vehicle.getVehicleID() == vehicleIDToDelete) {
+                            // Vehicle found, remove it from the list
+                            this.getVehiclesList().remove(vehicle);
+                            System.out.println("Vehicle with ID " + vehicleIDToDelete + " has been deleted.");
+                            foundVehicleForDeletion = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundVehicleForDeletion) {
+                        System.out.println("Vehicle with ID " + vehicleIDToDelete + " not found.");
+                    }
+                    break;
+
+                case 2:
+                    // Delete a Port
+                    System.out.println("Enter the ID of the port you want to delete: ");
+                    int portIDToDelete = adminDelete.nextInt();
+                    boolean foundPortForDeletion = false;
+
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToDelete) {
+                            // Port found, remove it from the list
+                            this.getPortList().remove(port);
+                            System.out.println("Port with ID " + portIDToDelete + " has been deleted.");
+                            foundPortForDeletion = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundPortForDeletion) {
+                        System.out.println("Port with ID " + portIDToDelete + " not found.");
+                    }
+                    break;
+
+                case 3:
+                    // Delete a Container
+                    System.out.println("Enter the ID of the container you want to delete (number only): ");
+                    int containerIDToDelete = adminDelete.nextInt();
+                    boolean foundContainerForDeletion = false;
+
+                    for (Port port : this.getPortList()) {
+                        for (Container container : port.getContainers()) {
+                            if (container.getContainerID() == containerIDToDelete) {
+                                // Container found, remove it from the port's containers
+                                port.getContainers().remove(container);
+                                System.out.println("Container with ID " + containerIDToDelete + " has been deleted.");
+                                foundContainerForDeletion = true;
+                                break;
+                            }
+                        }
+                        if (foundContainerForDeletion) {
+                            break;
+                        }
+                    }
+
+                    if (!foundContainerForDeletion) {
+                        System.out.println("Container with ID " + containerIDToDelete + " not found.");
+                    }
+                    break;
+
+                case 4:
+                    // Delete a Manager
+                    System.out.println("Enter the username of the manager you want to delete: ");
+                    String managerUsernameToDelete = adminDelete.next();
+                    boolean foundManagerForDeletion = false;
+
+                    for (PortManager manager : this.getManagersList()) {
+                        if (manager.getUsername().equals(managerUsernameToDelete)) {
+                            // Manager found, remove it from the list
+                            this.getManagersList().remove(manager);
+                            System.out.println("Manager with username '" + managerUsernameToDelete + "' has been deleted.");
+                            foundManagerForDeletion = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundManagerForDeletion) {
+                        System.out.println("Manager with username '" + managerUsernameToDelete + "' not found.");
+                    }
+                    break;
+
+                default:
+                    System.out.println("You did not enter a valid value.");
+                    break;
+            }
         }
+
     }
 
