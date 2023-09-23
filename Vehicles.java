@@ -30,7 +30,7 @@ public abstract class Vehicles {
         this.numContainer = new ArrayList<>();
         this.trip = new ArrayList<>();
         this.admin = admin;
-        this.admin.getVehiclesList().add(this);
+        admin.getVehiclesList().add(this);
     }
 
     protected int getVehicleID() {
@@ -40,6 +40,8 @@ public abstract class Vehicles {
     protected void setVehicleID(int vehicleID) {
         VehicleID = vehicleID;
     }
+
+    protected abstract String getIDprefix();
 
     protected String getName() {
         return name;
@@ -150,6 +152,11 @@ class Ship extends Vehicles {
     }
 
     @Override
+    protected String getIDprefix() {
+        return "sh-";
+    }
+
+    @Override
     public boolean calMove(Port port) {
         double distance = this.getCurrentPort().calDistance(port);
         double fuelPerKm = 0;
@@ -191,6 +198,11 @@ abstract class Truck extends Vehicles {
 
     public Truck(String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, SystemAdmin admin) {
         super(name, currentFuel, carryingCapacity, fuelCapacity, currentPort, admin);
+    }
+
+    @Override
+    protected String getIDprefix() {
+        return "tr-";
     }
 
     @Override
@@ -239,6 +251,7 @@ class basicTruck extends Truck {
     public basicTruck(String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, SystemAdmin admin) {
         super(name, currentFuel, carryingCapacity, fuelCapacity, currentPort, admin);
     }
+
     @Override
     public void load(Container container) {
         if (container instanceof Refrigerated || container instanceof Liquid) {
