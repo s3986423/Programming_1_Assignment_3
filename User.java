@@ -418,7 +418,7 @@ public abstract class User  {
                             break;
                     }
                     System.out.println("The port does not have any port manager by default, please update later!!!");
-                    Port newPort = new Port(portName, latitude, longitude, storingCapacity, landingAbility, this);
+                    Port newPort = new Port(portName, latitude, longitude, storingCapacity, landingAbility,new ArrayList<Container>(), this);
                     System.out.println("The port have been successfully created");
                     break;
                 case 3:

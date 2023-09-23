@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -31,6 +34,7 @@ public abstract class Vehicles {
         this.trip = new ArrayList<>();
         this.admin = admin;
         admin.getVehiclesList().add(this);
+        this.writeVehicleToFile(this, "VehiclesData.txt");
     }
 
     protected int getVehicleID() {
@@ -99,6 +103,32 @@ public abstract class Vehicles {
         this.trip = trip;
     }
 
+    // Write container data to the file
+    public void writeVehicleToFile(Vehicles vehicle, String filePath) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
+            // Write container information to the file
+            writer.write("Vehicle ID: " + vehicle.getIDprefix() + vehicle.getVehicleID());
+            writer.newLine();
+            writer.write("Vehicle Type: " + vehicle.getClass().getSimpleName());
+            writer.newLine();
+            writer.write("Vehicle name: " + vehicle.getName());
+            writer.newLine();
+            writer.write("Vehicle current fuel: " + vehicle.getCurrentFuel());
+            writer.newLine();
+            writer.write("Vehicle carrying capacity: " + vehicle.getCarryingCapacity());
+            writer.newLine();
+            writer.write("Vehicle fuel capacity: " + vehicle.getFuelCapacity());
+            writer.newLine();
+            writer.write("Vehicle current port: " + vehicle.getCurrentPort());
+            writer.newLine();
+            writer.write("-----------------------------------");
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public void load(Container container) {
         if (this.calCurrentCapacity() + container.getWeight() > this.getCarryingCapacity()) {
             System.out.println("The vehicle does not have enough capacity for this container");
@@ -192,15 +222,11 @@ class Ship extends Vehicles {
         this.setCurrentFuel(this.getCurrentFuel() - (distance * fuelPerKm));
     }
 }
-
 abstract class Truck extends Vehicles {
-    public Truck() {
-    }
-
+    public Truck() {}
     public Truck(String name, double currentFuel, double carryingCapacity, double fuelCapacity, Port currentPort, SystemAdmin admin) {
         super(name, currentFuel, carryingCapacity, fuelCapacity, currentPort, admin);
     }
-
     @Override
     protected String getIDprefix() {
         return "tr-";
