@@ -26,6 +26,7 @@ public abstract class Vehicles {
         this.carryingCapacity = carryingCapacity;
         this.fuelCapacity = fuelCapacity;
         this.currentPort = currentPort;
+        currentPort.getVehicles().add(this);
         this.numContainer = new ArrayList<>();
         this.trip = new ArrayList<>();
         this.admin = admin;
