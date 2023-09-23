@@ -335,7 +335,28 @@ public abstract class User {
                     System.out.println("-------------------------------------------------");
                     break;
                 case 2:
-                    
+                    System.out.println("Please input the port name: ");
+                    String portName = adminCreate.next();
+                    System.out.println("Please input the port latitude: ");
+                    double latitude = adminCreate.nextDouble();
+                    System.out.println("Please input the port longitude: ");
+                    double longitude = adminCreate.nextDouble();
+                    System.out.println("Please input the port storing capacity: ");
+                    double storingCapacity = adminCreate.nextDouble();
+                    System.out.println("Does the port have landing ability ?");
+                    System.out.println("'1' for yes, any other key for no");
+                    int landChoice = adminCreate.nextInt();
+                    boolean landingAbility = false;
+                    switch (landChoice){
+                        case 1:
+                            landingAbility = true;
+                            break;
+                        default:
+                            break;
+                    }
+                    System.out.println("The port does not have any port manager by default, please update later!!!");
+                    Port newPort = new Port(portName, latitude, longitude, storingCapacity, landingAbility, this);
+                    System.out.println("The port have been successfully created");
                     break;
                 case 3:
                     System.out.println("Enter the ID of the port you want to create the container at: ");
