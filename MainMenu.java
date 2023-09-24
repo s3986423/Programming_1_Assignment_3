@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class MainMenu {
-    public void displayMainMenu(){
+    public void displayMainMenu(SystemAdmin admin){
         Scanner scanner = new Scanner(System.in);
         System.out.println("COSC2081 GROUP ASSIGNMENT");
         System.out.println("CONTAINER PORT MANAGEMENT SYSTEM");
@@ -17,15 +18,14 @@ public class MainMenu {
         System.out.println("'2' to go to System Admin Menu");
         System.out.println("'3' to exit ");
         int menuchoice = scanner.nextInt();
-        AdminMenu adminMenu = new AdminMenu();
-        PortManagerMenu portManagerMenu = new PortManagerMenu();
+
 
         switch (menuchoice){
             case 1:
-                portManagerMenu.displayPortManagerMenu();
+                admin.getManagersList().get(0).displayMenu(admin, this);
                 break;
             case 2:
-                adminMenu.displayAdminMenu();
+                admin.displayMenu(admin,this);
                 break;
             case 3:
                 return; // Exit the loop and the menu

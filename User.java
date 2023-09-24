@@ -35,6 +35,8 @@ public abstract class User  {
         this.password = password;
     }
 
+    public abstract void displayMenu(SystemAdmin admin, MainMenu mainMenu);
+
     public void createContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
 
@@ -272,8 +274,74 @@ public abstract class User  {
             admin.getManagersList().add(this);
         }
 
+        @Override
+        public void displayMenu(SystemAdmin admin, MainMenu mainMenu) {
+            System.out.println("====================================");
+            System.out.println("Welcome to Port Manager Menu!");
+            System.out.println("'1' to Login ");
+            System.out.println("'2' to go back to Main Menu ");
 
+            Scanner scanner = new Scanner(System.in);
 
+            int PortManangerMenuChoice = scanner.nextInt();
+
+            switch (PortManangerMenuChoice) {
+                case 1:
+                    System.out.println("Enter username:");
+                    String username = scanner.next();
+                    for (PortManager portManager : admin.getManagersList()) {
+                        if (username.equals(portManager.getUsername())
+                        ) {
+                            System.out.println("Enter password:");
+                            String password = scanner.next();
+                            if (password.equals(portManager.getPassword())) {
+                                System.out.println("Login Successfully");
+                                portManager.PortManagerMenu(mainMenu);
+                            } else {
+                                System.out.println("Incorrect password, Try again !");
+                                this.displayMenu(admin, mainMenu);
+                            }
+                        } else {
+                            System.out.println("Incorrect username, Try again !");
+                            this.displayMenu(admin, mainMenu);
+                        }
+                    }
+                    break;
+                case 2:
+                    mainMenu.displayMainMenu(admin);
+                    break;
+            }
+        }
+
+        public void PortManagerMenu(MainMenu mainMenu){
+            System.out.println("====================================");
+            System.out.println("Welcome to the Menu of Port Manager");
+            System.out.println("'1' to Create Container");
+            System.out.println("'2' to Read Container");
+            System.out.println("'3' to Update Container");
+            System.out.println("'4' to Delete Container");
+            System.out.println("'5' to go back to main menu");
+            Scanner scanner = new Scanner(System.in);
+            int CRUDchoice = scanner.nextInt();
+            switch (CRUDchoice){
+                case 1:
+                    this.Create();
+                    this.PortManagerMenu(mainMenu);
+                case 2:
+                    this.Read();
+                    this.PortManagerMenu(mainMenu);
+                case 3:
+                    this.Update();
+                    this.PortManagerMenu(mainMenu);
+                case 4:
+                    this.Delete();
+                    this.PortManagerMenu(mainMenu);
+                case 5:
+                    System.out.println("Going back to Main Menu");
+                    System.out.println("----------------------------------------");
+                    mainMenu.displayMainMenu(admin);
+            }
+        }
         protected String getUsername() {
             return super.getUsername();
         }
@@ -313,6 +381,82 @@ public abstract class User  {
             this.portList = new ArrayList<>();
             this.managersList = new ArrayList<>();
             this.vehiclesList = new ArrayList<>();
+        }
+
+        @Override
+        public void displayMenu(SystemAdmin admin, MainMenu mainMenu) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("====================================");
+            System.out.println("Welcome to System Admin Menu");
+            System.out.println("'1' to Login");
+            System.out.println("'2' to Back to main menu");
+            int AdminMenuChoice = scanner.nextInt();
+
+            switch (AdminMenuChoice) {
+                case 1:
+                    System.out.println("Enter username:");
+                    String username = scanner.next();
+                    if (username.equals(admin.getUsername())) {
+                        System.out.println("Enter password:");
+                        String password = scanner.next();
+                        if (password.equals(admin.getPassword())) {
+                            System.out.println("Login Successfully");
+                            // Create an instance of AdminMenu
+                            admin.adminMenu(mainMenu);
+                        } else {
+                            System.out.println("Incorrect password, Try again !");
+                            this.displayMenu(admin, mainMenu);
+                        }
+                    } else {
+                        System.out.println("Incorrect username, Try again !");
+                        // Call the displayMenu method on the current instance
+                        this.displayMenu(admin, mainMenu);
+                    }
+                    break;
+                case 2:
+                    mainMenu.displayMainMenu(this);
+                    break;
+            }
+        }
+        public void adminMenu(MainMenu mainMenu) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("====================================");
+            System.out.println("Welcome to menu of System Admin");
+            System.out.println("'1' to Create");
+            System.out.println("'2' to Read");
+            System.out.println("'3' to Update");
+            System.out.println("'4' to Delete");
+            System.out.println("'5' to go back to main menu");
+
+
+            int adminMenuChoice = scanner.nextInt();
+
+            // Create an instance of SystemAdmin
+
+            switch (adminMenuChoice) {
+                case 1:
+                    this.Create();
+                    adminMenu(mainMenu);
+                    break;
+                case 2:
+                    this.Read();
+                    adminMenu(mainMenu);
+                    break;
+                case 3:
+                    this.Update();
+                    adminMenu(mainMenu);
+                    break;
+                case 4:
+                    this.Delete();
+                    adminMenu(mainMenu);
+                    break;
+                case 5:
+                    System.out.println("Going back to Main Menu");
+                    System.out.println("----------------------------------------");
+                    mainMenu.displayMainMenu(this);
+                default:
+                    return;
+            }
         }
 
         protected ArrayList<Vehicles> getVehiclesList() {

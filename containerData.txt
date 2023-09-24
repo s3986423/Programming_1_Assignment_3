@@ -70,3 +70,9 @@ Container Weight: 1.0
 Fuel Per Km (Ship): 0.0
 Fuel Per Km (Truck): 0.0
 -----------------------------------
+Container ID: c-12
+Container Type: Liquid
+Container Weight: 400.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
