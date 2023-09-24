@@ -1,8 +1,0 @@
-Port ID: p-1
-Name: PortName
-Latitude: 123.456
-Longitude: 789.012
-Storing Capacity: 1000.0
-Landing Ability: true
-Port Manager: None
------------------------------------

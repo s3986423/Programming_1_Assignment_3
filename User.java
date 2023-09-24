@@ -454,6 +454,7 @@ public abstract class User  {
                     System.out.println("Going back to Main Menu");
                     System.out.println("----------------------------------------");
                     mainMenu.displayMainMenu(this);
+                    break;
                 default:
                     return;
             }
@@ -522,9 +523,7 @@ public abstract class User  {
             System.out.println("'2' for Port");
             System.out.println("'3' for Container");
             System.out.println("'4' for Manager");
-            System.out.println("'5' to go back to CRUD Menu");
-
-
+            System.out.println("Enter any other number key to go back to admin menu");
             int createChoice = adminCreate.nextInt();
             switch (createChoice) {
                 case 1:
@@ -583,6 +582,7 @@ public abstract class User  {
                         System.out.println("The port ID does not exist");
                     }
                     System.out.println("-------------------------------------------------");
+                    break;
                 case 4:
                     boolean usernameExists = true;
                     String managerUsername = "";
@@ -625,10 +625,8 @@ public abstract class User  {
                         System.out.println("Port with ID " + portIDToAssign + " not found. Port Manager creation failed.");
                     }
                     break;
-                case 5:
-                    break;
                 default:
-                    System.out.println("You did not enter a valid value");
+                    System.out.println("Going back to admin menu");
                     break;
             }
 
@@ -644,7 +642,7 @@ public abstract class User  {
             System.out.println("'3' for all Containers at a port");
             System.out.println("'4' for all Containers on a vehicle");
             System.out.println("'5' for all Managers");
-            System.out.println("'6' to go back to CRUD Menu");
+            System.out.println("Enter any number key to go back to admin menu");
 
 
             int readChoice = adminRead.nextInt();
@@ -666,6 +664,7 @@ public abstract class User  {
                             System.out.println("-----------------------------------");
                         }
                     }
+                    break;
                 case 2:
                     // Option 2: Read all Ports
                     if (this.getPortList().isEmpty()) {
@@ -683,6 +682,7 @@ public abstract class User  {
                             System.out.println("-----------------------------------");
                         }
                     }
+                    break;
                 case 3:
                     // Option 3: Read all containers at a port
                     System.out.println("Enter the ID of the port you want to read containers from: ");
@@ -702,13 +702,12 @@ public abstract class User  {
                                 }
                             }
                             foundPortForContainers = true;
-
                         }
                     }
                     if (!foundPortForContainers) {
                         System.out.println("Port with ID " + portIDToReadContainers + " not found.");
                     }
-
+                    break;
                 case 4:
                     // Option 4: Read all containers on a vehicle
                     System.out.println("Enter the ID of the vehicle you want to read containers from (number only): ");
@@ -733,6 +732,7 @@ public abstract class User  {
                     if (!foundVehicleForContainers) {
                         System.out.println("Vehicle with ID " + vehicleIDToReadContainers + " not found.");
                     }
+                    break;
                 case 5:
                     // Option 5: Read all Port Managers
                     if (this.getManagersList().isEmpty()) {
@@ -745,10 +745,10 @@ public abstract class User  {
                             System.out.println("-----------------------------------");
                         }
                     }
-                case 6:
                     break;
                 default:
-                    System.out.println("You did not enter a valid value.");
+                    System.out.println("Going back to admin menu");
+                    break;
             }
         }
 
@@ -797,7 +797,7 @@ public abstract class User  {
                     if (!foundVehicleForUpdate) {
                         System.out.println("Vehicle with ID " + vehicleIDToUpdate + " not found.");
                     }
-
+                    break;
                 case 2:
                     // Update Port
                     System.out.println("Enter the ID of the port you want to update: ");
@@ -835,11 +835,10 @@ public abstract class User  {
                             foundPortForUpdate = true;
                         }
                     }
-
                     if (!foundPortForUpdate) {
                         System.out.println("Port with ID " + portIDToUpdate + " not found.");
                     }
-
+                    break;
                 case 3:
                     // Update Container
                     System.out.println("Enter the ID of the container you want to update (number only): ");
@@ -864,12 +863,13 @@ public abstract class User  {
                             }
                         }
                     }
-
                     if (!foundContainerForUpdate) {
                         System.out.println("Container with ID " + containerIDToUpdate + " not found.");
                     }
-                case 4:
-
+                    break;
+                default:
+                    System.out.println("Going back to admin menu");
+                    break;
             }
         }
 
@@ -900,11 +900,10 @@ public abstract class User  {
                             foundVehicleForDeletion = true;
                         }
                     }
-
                     if (!foundVehicleForDeletion) {
                         System.out.println("Vehicle with ID " + vehicleIDToDelete + " not found.");
                     }
-
+                    break;
                 case 2:
                     // Delete a Port
                     System.out.println("Enter the ID of the port you want to delete: ");
@@ -919,11 +918,10 @@ public abstract class User  {
                             foundPortForDeletion = true;
                         }
                     }
-
                     if (!foundPortForDeletion) {
                         System.out.println("Port with ID " + portIDToDelete + " not found.");
                     }
-
+                    break;
                 case 3:
                     // Delete a Container
                     System.out.println("Enter the ID of the container you want to delete (number only): ");
@@ -942,11 +940,10 @@ public abstract class User  {
                         if (foundContainerForDeletion) {
                         }
                     }
-
                     if (!foundContainerForDeletion) {
                         System.out.println("Container with ID " + containerIDToDelete + " not found.");
                     }
-
+                    break;
                 case 4:
                     // Delete a Manager
                     System.out.println("Enter the username of the manager you want to delete: ");
@@ -961,14 +958,13 @@ public abstract class User  {
                             foundManagerForDeletion = true;
                         }
                     }
-
                     if (!foundManagerForDeletion) {
                         System.out.println("Manager with username '" + managerUsernameToDelete + "' not found.");
                     }
-                case 5:
                     break;
                 default:
-                    System.out.println("You did not enter a valid value.");
+                    System.out.println("Going back to the admin menu");
+                    break;
             }
         }
 

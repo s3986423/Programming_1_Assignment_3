@@ -9,7 +9,6 @@ public class Main {
         // Create a new Vehicle
         MainMenu mainMenu = new MainMenu();
 
-
         // Create containers
 //        Container container1 = new Liquid(10.0);
 //        Container container2 = new Liquid(13.0);
@@ -43,7 +42,6 @@ public class Main {
 //        Container container30 = new openSide(333.3);
 
 
-        ArrayList<Container> numContainer1 = new ArrayList<>();
         // Create a sample Port and associate it with the SystemAdmin
 
         Port port = new Port(
@@ -54,6 +52,7 @@ public class Main {
                 true,
                 new ArrayList<>(),
                 admin);
+
         PortManager portManager = new PortManager("Khoa", "1234", port, admin);
 
 
