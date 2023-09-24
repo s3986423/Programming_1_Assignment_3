@@ -69,4 +69,24 @@ public class Trip {
     protected void setStatus(String status) {
         Status = status;
     }
+
+    public double getFuelConsumption() {
+        double fuelPerKm = 0;
+        String vehicleType = this.vehicles.getClass().getSimpleName();
+        if (vehicleType.equalsIgnoreCase("Ship")) {
+            for (Container container : this.vehicles.getNumContainer()) {
+                fuelPerKm += container.getFuelPerKmShip();
+            }
+        } else if (vehicleType.equalsIgnoreCase("basicTruck") || vehicleType.equalsIgnoreCase("reeferTruck") || vehicleType.equalsIgnoreCase("tankerTruck")){
+            for (Container container : this.vehicles.getNumContainer()) {
+                fuelPerKm += container.getFuelPerKmTruck();
+            }
+        }
+        // Calculate the distance between the current port and the destination port
+        double distance = this.getDeparturePort().calDistance(this.getArrivalPort());
+
+        // Calculate fuel consumption based on the container type and the fuel consumption rate
+        return fuelPerKm * distance;
+    }
+
 }

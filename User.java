@@ -37,6 +37,25 @@ public abstract class User  {
 
     public abstract void displayMenu(SystemAdmin admin, MainMenu mainMenu);
 
+    public double calculateFuelUsedInDay(Port port, LocalDate date) {
+        double totalFuelUsed = 0.0;
+
+        // Iterate through all the recorded trips
+        List<Trip> trips = port.getTrafficHistory();
+        for (Trip trip : trips) {
+            LocalDate tripDate = trip.getDepartureDate();
+            // Check if the trip's date matches the given date
+            if (tripDate != null && tripDate.equals(date)) {
+                // Calculate fuel consumption based on container type and vehicle type
+                double fuelConsumption = trip.getFuelConsumption();
+
+                // Add the fuel consumption of this trip to the total
+                totalFuelUsed += fuelConsumption;
+            }
+        }
+        return totalFuelUsed;
+    }
+
     public void createContainerAtPort(Port port) {
         Scanner scanner = new Scanner(System.in);
 
@@ -563,7 +582,7 @@ public abstract class User  {
                             break;
                     }
                     System.out.println("The port does not have any port manager by default, please update later!!!");
-                    Port newPort = new Port(portName, latitude, longitude, storingCapacity, landingAbility,new ArrayList<Container>(), this);
+                    Port newPort = new Port(portName, latitude, longitude, storingCapacity, landingAbility, this);
                     System.out.println("The port have been successfully created");
                     break;
                 case 3:

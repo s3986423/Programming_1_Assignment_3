@@ -1,6 +1,0 @@
-Container ID: c-1
-Container Type: Liquid
-Container Weight: 40.0
-Fuel Per Km (Ship): 0.0
-Fuel Per Km (Truck): 0.0
------------------------------------

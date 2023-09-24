@@ -1,9 +1,0 @@
-
-Vehicle ID: sh-0
-Vehicle Type: Ship
-Vehicle name: Name1
-Vehicle current fuel: 500.0
-Vehicle carrying capacity: 400.0
-Vehicle fuel capacity: 500.0
-Vehicle current port: Port@306a30c7
------------------------------------

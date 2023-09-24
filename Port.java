@@ -16,7 +16,7 @@ public class Port {
 
     // Constructors (including overloaded constructors)
 
-    public Port(String name, double latitude, double longitude, double storingCapacity, boolean landingAbility,ArrayList<Container> numContainer, SystemAdmin admin) {
+    public Port(String name, double latitude, double longitude, double storingCapacity, boolean landingAbility, SystemAdmin admin) {
         this.portID = getLastPortID() + 1;
         this.name = name;
         this.latitude = latitude;
@@ -24,7 +24,7 @@ public class Port {
         this.storingCapacity = storingCapacity;
         this.landingAbility = landingAbility;
         this.portManager = null; // Initialize to null by default
-        this.containers = numContainer;
+        this.containers = new ArrayList<>();
         this.vehicles = new ArrayList<>();
         this.trafficHistory = new ArrayList<>();
         this.admin = admin;

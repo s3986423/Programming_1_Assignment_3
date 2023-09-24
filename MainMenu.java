@@ -18,8 +18,6 @@ public class MainMenu {
         System.out.println("'2' to go to System Admin Menu");
         System.out.println("'3' to exit");
         int menuchoice = scanner.nextInt();
-
-
         switch (menuchoice){
             case 1:
                 admin.getManagersList().get(0).displayMenu(admin, this);
