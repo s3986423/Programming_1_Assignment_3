@@ -106,6 +106,7 @@ public class Main {
         Vehicles vehicle19 = new tankerTruck("Ship 4", 734, 900, 900, port2, admin);
         Vehicles vehicle20 = new tankerTruck("Ship 5", 758, 900, 900, port4, admin);
 
+
         Trip trip1 = new Trip(vehicle1, LocalDate.of(2023,9,20), LocalDate.of(2023,9,21), port1, port2, "completed");
         Trip trip2 = new Trip(vehicle1, LocalDate.of(2023,9,19), LocalDate.of(2023,9,22), port1, port2, "completed");
         Trip trip3 = new Trip(vehicle2, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,20), port1, port3, "completed");
@@ -131,8 +132,10 @@ public class Main {
         Trip trip23 = new Trip(vehicle13, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,22), port5, port1, "completed");
         Trip trip24 = new Trip(vehicle19, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,19), port4, port1, "completed");
         Trip trip25 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,28), port3, port2, "moving");
+
+
         System.out.println(admin.calculateFuelUsedInDay(port1, LocalDate.of(2023,9,20)));
-        //mainMenu.displayMainMenu(admin);
+        mainMenu.displayMainMenu(admin);
 
         // Create a PortManager and associate it with the Port and SystemAdmin
        

@@ -308,26 +308,35 @@ public abstract class User  {
                 case 1:
                     System.out.println("Enter username:");
                     String username = scanner.next();
+                    PortManager currentPortManager = null;
                     for (PortManager portManager : admin.getManagersList()) {
-                        if (username.equals(portManager.getUsername())
-                        ) {
-                            System.out.println("Enter password:");
-                            String password = scanner.next();
-                            if (password.equals(portManager.getPassword())) {
-                                System.out.println("Login Successfully");
-                                portManager.PortManagerMenu(mainMenu);
-                            } else {
-                                System.out.println("Incorrect password, Try again !");
-                                this.displayMenu(admin, mainMenu);
-                            }
+                        if (username.equals(portManager.getUsername())) {
+                            currentPortManager = portManager;
+                            break;
+                        }
+                    }
+                    if (currentPortManager == null) {
+                        System.out.println("Incorrect username, Try again !");
+                        this.displayMenu(admin, mainMenu);
+                        break;
+                    } else {
+                        System.out.println("Enter password:");
+                        String password = scanner.next();
+                        if (password.equals(currentPortManager.getPassword())) {
+                            System.out.println("Login Successfully");
+                            currentPortManager.PortManagerMenu(mainMenu);
+                            break;
                         } else {
-                            System.out.println("Incorrect username, Try again !");
+                            System.out.println("Incorrect password, try again !");
                             this.displayMenu(admin, mainMenu);
                         }
                     }
+
                     break;
                 case 2:
                     mainMenu.displayMainMenu(admin);
+                    break;
+                default:
                     break;
             }
         }
@@ -341,24 +350,29 @@ public abstract class User  {
             System.out.println("'4' to Delete Container");
             System.out.println("'5' to go back to main menu");
             Scanner scanner = new Scanner(System.in);
-            int CRUDchoice = scanner.nextInt();
-            switch (CRUDchoice){
+            int MenuChoice = scanner.nextInt();
+            switch (MenuChoice){
                 case 1:
                     this.Create();
                     this.PortManagerMenu(mainMenu);
+                    break;
                 case 2:
                     this.Read();
                     this.PortManagerMenu(mainMenu);
+                    break;
                 case 3:
                     this.Update();
                     this.PortManagerMenu(mainMenu);
+                    break;
                 case 4:
                     this.Delete();
                     this.PortManagerMenu(mainMenu);
+                    break;
                 case 5:
                     System.out.println("Going back to Main Menu");
                     System.out.println("----------------------------------------");
                     mainMenu.displayMainMenu(admin);
+                    break;
             }
         }
         protected String getUsername() {
@@ -422,19 +436,25 @@ public abstract class User  {
                             System.out.println("Login Successfully");
                             // Create an instance of AdminMenu
                             admin.adminMenu(mainMenu);
+                            break;
                         } else {
                             System.out.println("Incorrect password, Try again !");
                             this.displayMenu(admin, mainMenu);
+                            break;
                         }
                     } else {
-                        System.out.println("Incorrect username, Try again !");
+                        System.out.println("Incorrect username, try again !");
                         // Call the displayMenu method on the current instance
                         this.displayMenu(admin, mainMenu);
+                        break;
                     }
-                    break;
                 case 2:
                     mainMenu.displayMainMenu(this);
                     break;
+                default:
+                    System.out.println("Your input is invalid, try again !");
+                    // Call the displayMenu method on the current instance
+                    this.displayMenu(admin, mainMenu);
             }
         }
         public void adminMenu(MainMenu mainMenu) {
