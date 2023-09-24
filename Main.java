@@ -3,12 +3,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        MainMenu mainMenu = new MainMenu();
 
         // Create a sample SystemAdmin
         SystemAdmin admin = new SystemAdmin("admin123", "12345");
-
-        // Create a new Vehicle
-        MainMenu mainMenu = new MainMenu();
 
         // Create containers
         Container container1 = new Liquid(10.0);
@@ -78,12 +76,17 @@ public class Main {
                 1300.0,
                 false,
                 admin);
-        PortManager portManager1 = new PortManager("Khoa", "1234", port1, admin);
-        PortManager portManager2 = new PortManager("Huy", "1234", port2, admin);
+
+        //Create PortManagers and assigned them with the ports
+        PortManager portManager1 = new PortManager("Khoa", "s3986281", port1, admin);
+        PortManager portManager2 = new PortManager("Huy", "s3986423", port2, admin);
+        PortManager portManager3 = new PortManager("Tien", "s3975681", port3, admin);
+        PortManager portManager4 = new PortManager("An", "s3974923", port4, admin);
+        PortManager portManager5 = new PortManager("Mast", "s1234567", port5, admin);
 
         Vehicles vehicle1 = new basicTruck("Truck1", 769, 700, 1000, port1, admin);
         Vehicles vehicle2 = new basicTruck("Truck2", 570, 600, 900, port1, admin);
-
+        
 
         Trip trip1 = new Trip(vehicle1, LocalDate.of(2023,9,20), LocalDate.of(2023,9,21), port1, port2, "moving");
         Trip trip2 = new Trip(vehicle1, LocalDate.of(2023,9,19), LocalDate.of(2023,9,22), port1, port2, "moving");
