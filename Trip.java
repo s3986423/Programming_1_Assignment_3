@@ -98,11 +98,11 @@ public class Trip {
     public double getFuelConsumption() {
         double fuelPerKm = 0;
         String vehicleType = this.vehicles.getClass().getSimpleName();
-        if (vehicleType.equalsIgnoreCase("Ship")) {
+        if (this.vehicles instanceof Ship) {
             for (Container container : this.vehicles.getNumContainer()) {
                 fuelPerKm += container.getFuelPerKmShip();
             }
-        } else if (vehicleType.equalsIgnoreCase("basicTruck") || vehicleType.equalsIgnoreCase("reeferTruck") || vehicleType.equalsIgnoreCase("tankerTruck")){
+        } else if (this.vehicles instanceof basicTruck || this.vehicles instanceof reeferTruck || this.vehicles instanceof tankerTruck){
             for (Container container : this.vehicles.getNumContainer()) {
                 fuelPerKm += container.getFuelPerKmTruck();
             }

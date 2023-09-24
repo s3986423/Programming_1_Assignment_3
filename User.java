@@ -40,14 +40,12 @@ public abstract class User {
         // Iterate through all the recorded trips
         List<Trip> trips = port.getTrafficHistory();
         for (Trip trip : trips) {
-//            LocalDate tripDate = trip.getDepartureDate();
-//            System.out.println(tripDate);
-//            System.out.println(trip.getDepartureDate());
+            LocalDate tripDate = trip.getDepartureDate();
             // Check if the trip's date matches the given date
             if (trip.getDepartureDate() != null && trip.getDepartureDate().equals(date)) {
                 // Calculate fuel consumption based on container type and vehicle type
                 double fuelConsumption = trip.getFuelConsumption();
-
+                System.out.println("Trip fuel consumption: " + trip.getFuelConsumption());
                 // Add the fuel consumption of this trip to the total
                 totalFuelUsed += fuelConsumption;
             }

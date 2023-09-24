@@ -186,7 +186,6 @@ public class Main {
         vehicle20.getNumContainer().add(container24);
         vehicle20.getNumContainer().add(container29);
 
-
         Trip trip1 = new Trip(vehicle1, LocalDate.of(2023,9,18), LocalDate.of(2023,9,19), port1, port2, "completed", admin);
         Trip trip2 = new Trip(vehicle1, LocalDate.of(2023,9,19), LocalDate.of(2023,9,22), port2, port1, "completed", admin);
         Trip trip3 = new Trip(vehicle2, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,20), port1, port3, "completed", admin);
