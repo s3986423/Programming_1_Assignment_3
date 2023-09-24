@@ -89,6 +89,11 @@ public class Main {
                 1200.0,
                 false,
                 admin);
+        port4.getContainers().add(container18);
+        port4.getContainers().add(container21);
+        port4.getContainers().add(container3);
+        port4.getContainers().add(container6);
+
         Port port5 = new Port(
                 "Port5",
                 -62.41663,
@@ -96,6 +101,9 @@ public class Main {
                 1300.0,
                 false,
                 admin);
+        port5.getContainers().add(container10);
+        port5.getContainers().add(container13);
+        port5.getContainers().add(container23);
 
         //Create PortManagers and assigned them with the ports
         PortManager portManager1 = new PortManager("Khoa", "s3986281", port1, admin);
@@ -109,7 +117,12 @@ public class Main {
         Vehicles vehicle2 = new basicTruck("Basic Truck 2", 570, 700, 800, port1, admin);
         Vehicles vehicle3 = new basicTruck("Basic Truck 3", 678, 700, 800, port2, admin);
         Vehicles vehicle4 = new basicTruck("Basic Truck 4", 789, 700, 800, port2, admin);
+        vehicle4.getNumContainer().add(container30);
         Vehicles vehicle5 = new basicTruck("Basic Truck 5", 688, 700, 800, port3, admin);
+        vehicle5.getNumContainer().add(container11);
+        vehicle5.getNumContainer().add(container12);
+        vehicle5.getNumContainer().add(container22);
+        vehicle5.getNumContainer().add(container28);
         Vehicles vehicle6 = new reeferTruck("Reefer Truck 1", 654, 800, 900, null, admin);
         Vehicles vehicle7 = new reeferTruck("Reefer Truck 2", 779, 800, 900, null, admin);
         Vehicles vehicle8 = new reeferTruck("Reefer Truck 3", 765, 800, 900, null, admin);
@@ -118,23 +131,29 @@ public class Main {
         Vehicles vehicle11 = new tankerTruck("Tanker Truck 1", 799, 1000, 1000, null, admin);
         Vehicles vehicle12 = new tankerTruck("Tanker Truck 2", 856, 1000, 1000, null, admin);
         Vehicles vehicle13 = new tankerTruck("Tanker Truck 3", 866, 1000, 1000, null, admin);
-        Vehicles vehicle14 = new tankerTruck("Tanker Truck 4", 888, 1000, 1000, port3, admin);
-        Vehicles vehicle15 = new tankerTruck("Tanker Truck 5", 931, 1000, 1000, port5, admin);
-        Vehicles vehicle16 = new Ship("Ship 1", 699, 900, 900, port1, admin);
-        Vehicles vehicle17 = new Ship("Ship 2", 687, 900, 900, port3, admin);
-        Vehicles vehicle18 = new Ship("Ship 3", 787, 900, 900, port2, admin);
-        Vehicles vehicle19 = new Ship("Ship 4", 734, 900, 900, port2, admin);
+        Vehicles vehicle14 = new tankerTruck("Tanker Truck 4", 888, 1000, 1000, null, admin);
+        Vehicles vehicle15 = new tankerTruck("Tanker Truck 5", 931, 1000, 1000, port2, admin);
+        Vehicles vehicle16 = new Ship("Ship 1", 699, 900, 900, null, admin);
+        Vehicles vehicle17 = new Ship("Ship 2", 687, 900, 900, null, admin);
+        Vehicles vehicle18 = new Ship("Ship 3", 787, 900, 900, null, admin);
+        Vehicles vehicle19 = new Ship("Ship 4", 734, 900, 900, port5, admin);
+        vehicle19.getNumContainer().add(container4);
+        vehicle19.getNumContainer().add(container5);
+        vehicle19.getNumContainer().add(container17);
         Vehicles vehicle20 = new Ship("Ship 5", 758, 900, 900, port4, admin);
+        vehicle20.getNumContainer().add(container16);
+        vehicle20.getNumContainer().add(container24);
+        vehicle20.getNumContainer().add(container29);
 
 
 //        Trip trip1 = new Trip(vehicle1, LocalDate.of(2023,9,18), LocalDate.of(2023,9,19), port1, port2, "completed");
 //        Trip trip2 = new Trip(vehicle1, LocalDate.of(2023,9,19), LocalDate.of(2023,9,22), port2, port1, "completed");
 //        Trip trip3 = new Trip(vehicle2, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,20), port1, port3, "completed");
 //        Trip trip4 = new Trip(vehicle3, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port2, port3, "completed");
-//        Trip trip5 = new Trip(vehicle4, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,20), port2, port5, "completed");
-//        Trip trip6 = new Trip(vehicle5, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port3, port4, "completed");
-//        Trip trip7 = new Trip(vehicle6, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,25), port1, port4, "moving");
-//        Trip trip8 = new Trip(vehicle7, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,24), port2, port5, "moving");
+//        Trip trip5 = new Trip(vehicle4, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,20), port2, port1, "completed");
+//        Trip trip6 = new Trip(vehicle5, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port3, port1, "completed");
+//        Trip trip7 = new Trip(vehicle6, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,25), port1, port3, "moving");
+//        Trip trip8 = new Trip(vehicle7, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,24), port2, port3, "moving");
 //        Trip trip9 = new Trip(vehicle8, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,26), port3, port5, "moving");
 //        Trip trip10 = new Trip(vehicle9, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,29), port3, port2, "moving");
 //        Trip trip11 = new Trip(vehicle10, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,28), port5, port1, "moving");
@@ -143,8 +162,8 @@ public class Main {
 //        Trip trip14 = new Trip(vehicle13, LocalDate.of(2023, 9,22), LocalDate.of(2023, 9,26), port1, port2, "moving");
 //        Trip trip15 = new Trip(vehicle14, LocalDate.of(2023, 9,23), LocalDate.of(2023, 9,25), port3, port1, "moving");
 //        Trip trip16 = new Trip(vehicle15, LocalDate.of(2023, 9,23), LocalDate.of(2023, 9,24), port5, port2, "completed");
-//        Trip trip17 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,30), port3, port2, "moving");
-//        Trip trip18 = new Trip(vehicle17, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,29), port4, port3, "moving");
+//        Trip trip17 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,30), port3, port4, "moving");
+//        Trip trip18 = new Trip(vehicle17, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,29), port4, port5, "moving");
 //        Trip trip19 = new Trip(vehicle18, LocalDate.of(2023, 9,26), LocalDate.of(2023, 9,30), port1, port5, "moving");
 //        Trip trip20 = new Trip(vehicle19, LocalDate.of(2023, 9,15), LocalDate.of(2023, 9,22), port3, port5, "completed");
 //        Trip trip21 = new Trip(vehicle20, LocalDate.of(2023, 9,14), LocalDate.of(2023, 9,20), port1, port4, "completed");

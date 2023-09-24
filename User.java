@@ -2,21 +2,32 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public abstract class User  {
+public abstract class User implements statisticOperations{
     private String username;
     private String password;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    @Override
+    public void calFuelUsedInDay() {
+
+    }
+
+    @Override
+    public void listAllTripsInDay() {
+
+    }
+
+    @Override
+    public void listAllTripsInPeriod() {
+
     }
 
     protected String getUsername() {
@@ -37,7 +48,7 @@ public abstract class User  {
 
     public abstract void displayMenu(SystemAdmin admin, MainMenu mainMenu);
 
-    public double calculateFuelUsedInDay(Port port, LocalDate date) {
+    public double calFuelUsedInDay(Port port, LocalDate date) {
         double totalFuelUsed = 0.0;
 
         // Iterate through all the recorded trips
@@ -269,7 +280,7 @@ public abstract class User  {
     void Delete();
     }
     interface statisticOperations{
-    void calFuelUseInDay();
+    void calFuelUsedInDay();
     void weightEachTypeContainer();
     void listAllShipInPort();
     void listAllTripsInDay();
@@ -348,7 +359,9 @@ public abstract class User  {
             System.out.println("'2' to Read Container");
             System.out.println("'3' to Update Container");
             System.out.println("'4' to Delete Container");
-            System.out.println("'5' to go back to main menu");
+            System.out.println("'5' to perform statistic operations");
+            System.out.println("'6' to go back to main menu");
+
             Scanner scanner = new Scanner(System.in);
             int MenuChoice = scanner.nextInt();
             switch (MenuChoice){
@@ -369,9 +382,68 @@ public abstract class User  {
                     this.PortManagerMenu(mainMenu);
                     break;
                 case 5:
+                    this.statisticOperationsMenu();
+                    this.PortManagerMenu(mainMenu);
+                    break;
+                case 6:
                     System.out.println("Going back to Main Menu");
                     System.out.println("----------------------------------------");
                     mainMenu.displayMainMenu(admin);
+                    break;
+            }
+        }
+        public void statisticOperationsMenu() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Choose an operation");
+            System.out.println("'1' to calculate all fuel used in a day in a given port");
+            System.out.println("'2' to calculate total weight of a container type");
+            System.out.println("'3' list all ships in a specific port");
+            System.out.println("'4' list all trips in a day");
+            System.out.println("'5' list all trips form day A to day B");
+
+            int operationChoice = scanner.nextInt();
+            switch (operationChoice) {
+                case 1:
+                    System.out.println("Enter the ID of the port you want to calculate the fuel: ");
+                    int portIDToCreate1 = scanner.nextInt();
+                    boolean foundPort1 = false;
+                    Port portCal = null;
+                    for (Port port : this.admin.getPortList()) {
+                        if (port.getPortID() == portIDToCreate1) {
+                            portCal = port;
+                            foundPort1 = true;
+                            break;
+                        }
+                    }
+                    if (foundPort1 == false) {
+                        System.out.println("The port ID does not exist");
+                        break;
+                    } else {
+                        System.out.println("-------------------------------------------------");
+                        System.out.println("Please enter the year");
+                        int year = scanner.nextInt();
+                        System.out.println("Please enter the month");
+                        int month = scanner.nextInt();
+                        System.out.println("Please enter the date");
+                        int date = scanner.nextInt();
+                        LocalDate day = LocalDate.of(year, month, date);
+                        this.calFuelUsedInDay(portCal, day);
+                        break;
+                    }
+                case 2:
+                    
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                default:
+                    System.out.println("You did not enter a valid value");
                     break;
             }
         }
