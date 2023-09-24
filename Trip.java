@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Trip {
@@ -10,7 +13,7 @@ public class Trip {
 
     public Trip() {}
 
-    public Trip(Vehicles vehicles, LocalDate departureDate, LocalDate arrivalDate, Port departurePort, Port arrivalPort, String status) {
+    public Trip(Vehicles vehicles, LocalDate departureDate, LocalDate arrivalDate, Port departurePort, Port arrivalPort, String status, SystemAdmin admin) {
         this.vehicles = vehicles;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
@@ -20,8 +23,30 @@ public class Trip {
         vehicles.getTrip().add(this);
         departurePort.getTrafficHistory().add(this);
         arrivalPort.getTrafficHistory().add(this);
+        admin.getTripList().add(this);
+        writeTripToFile(this, "tripData.txt");
     }
-
+    public void writeTripToFile(Trip trip, String filePath) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
+            // Write container information to the file
+            writer.write("Departure Date: " + trip.departureDate);
+            writer.newLine();
+            writer.write("Arrival Date: " + trip.arrivalDate);
+            writer.newLine();
+            writer.write("Departure Port: " + trip.getDeparturePort().getName());
+            writer.newLine();
+            writer.write("Arrival Port: " + trip.getArrivalPort().getName());
+            writer.newLine();
+            writer.write("Status: " + trip.getStatus());
+            writer.newLine();
+            writer.write("-----------------------------------");
+            writer.newLine();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     protected Vehicles getVehicles() {
         return vehicles;
     }

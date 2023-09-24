@@ -1,0 +1,180 @@
+Container ID: c-1
+Container Type: Liquid
+Container Weight: 10.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-2
+Container Type: Liquid
+Container Weight: 13.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-3
+Container Type: Liquid
+Container Weight: 23.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-4
+Container Type: Liquid
+Container Weight: 36.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-5
+Container Type: Liquid
+Container Weight: 46.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-6
+Container Type: Liquid
+Container Weight: 82.46
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-7
+Container Type: dryStorage
+Container Weight: 20.1
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-8
+Container Type: dryStorage
+Container Weight: 30.2
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-9
+Container Type: dryStorage
+Container Weight: 40.3
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-10
+Container Type: dryStorage
+Container Weight: 50.4
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-11
+Container Type: dryStorage
+Container Weight: 60.5
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-12
+Container Type: dryStorage
+Container Weight: 70.6
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-13
+Container Type: Refrigerated
+Container Weight: 22.2
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-14
+Container Type: Refrigerated
+Container Weight: 33.3
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-15
+Container Type: Refrigerated
+Container Weight: 44.4
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-16
+Container Type: Refrigerated
+Container Weight: 55.5
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-17
+Container Type: Refrigerated
+Container Weight: 66.6
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-18
+Container Type: Refrigerated
+Container Weight: 77.7
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-19
+Container Type: openTop
+Container Weight: 80.3
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-20
+Container Type: openTop
+Container Weight: 90.4
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-21
+Container Type: openTop
+Container Weight: 100.5
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-22
+Container Type: openTop
+Container Weight: 110.6
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-23
+Container Type: openTop
+Container Weight: 120.7
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-24
+Container Type: openTop
+Container Weight: 130.8
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-25
+Container Type: openSide
+Container Weight: 88.8
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-26
+Container Type: openSide
+Container Weight: 99.9
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-27
+Container Type: openSide
+Container Weight: 100.0
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-28
+Container Type: openSide
+Container Weight: 111.1
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-29
+Container Type: openSide
+Container Weight: 222.2
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------
+Container ID: c-30
+Container Type: openSide
+Container Weight: 333.3
+Fuel Per Km (Ship): 0.0
+Fuel Per Km (Truck): 0.0
+-----------------------------------

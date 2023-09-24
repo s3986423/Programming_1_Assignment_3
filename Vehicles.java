@@ -13,7 +13,7 @@ public abstract class Vehicles {
     private double carryingCapacity;
     private double fuelCapacity;
     private Port currentPort;
-    private static int vehicleNum = 0;
+    private static int vehicleNum = 1;
     private ArrayList<Container> numContainer;
     private ArrayList<Trip> trip;
 
@@ -29,7 +29,9 @@ public abstract class Vehicles {
         this.carryingCapacity = carryingCapacity;
         this.fuelCapacity = fuelCapacity;
         this.currentPort = currentPort;
-        currentPort.getVehicles().add(this);
+        if (currentPort != null) {
+            currentPort.getVehicles().add(this);
+        }
         this.numContainer = new ArrayList<>();
         this.trip = new ArrayList<>();
         this.admin = admin;
@@ -101,6 +103,10 @@ public abstract class Vehicles {
 
     protected void setTrip(ArrayList<Trip> trip) {
         this.trip = trip;
+    }
+
+    public SystemAdmin getAdmin() {
+        return admin;
     }
 
     // Write container data to the file
@@ -204,7 +210,7 @@ class Ship extends Vehicles {
         if (!calMove(arrivalPort)) {
             System.out.println("This vehicle cannot move");
         } else {
-            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "moving");
+            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "moving", this.getAdmin());
         }
     }
 
@@ -255,7 +261,7 @@ abstract class Truck extends Vehicles {
         if (!calMove(arrivalPort)) {
             System.out.println("This vehicle cannot move");
         } else {
-            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "Moving");
+            Trip trip = new Trip(this, LocalDate.now(), arrivalDate, this.getCurrentPort(), arrivalPort, "Moving", this.getAdmin());
         }
     }
 

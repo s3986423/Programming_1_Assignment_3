@@ -6,7 +6,7 @@ import java.util.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-public abstract class User implements statisticOperations{
+public abstract class User {
     private String username;
     private String password;
 
@@ -15,20 +15,6 @@ public abstract class User implements statisticOperations{
         this.password = password;
     }
 
-    @Override
-    public void calFuelUsedInDay() {
-
-    }
-
-    @Override
-    public void listAllTripsInDay() {
-
-    }
-
-    @Override
-    public void listAllTripsInPeriod() {
-
-    }
 
     protected String getUsername() {
         return username;
@@ -54,9 +40,11 @@ public abstract class User implements statisticOperations{
         // Iterate through all the recorded trips
         List<Trip> trips = port.getTrafficHistory();
         for (Trip trip : trips) {
-            LocalDate tripDate = trip.getDepartureDate();
+//            LocalDate tripDate = trip.getDepartureDate();
+//            System.out.println(tripDate);
+//            System.out.println(trip.getDepartureDate());
             // Check if the trip's date matches the given date
-            if (tripDate != null && tripDate.equals(date)) {
+            if (trip.getDepartureDate() != null && trip.getDepartureDate().equals(date)) {
                 // Calculate fuel consumption based on container type and vehicle type
                 double fuelConsumption = trip.getFuelConsumption();
 
@@ -269,8 +257,19 @@ public abstract class User implements statisticOperations{
                 break;
         }
     }
-    public void listAllShipInPort() {
-
+    public void listAllShipInPort(Port port) {
+        for (Vehicles vehicle : port.getVehicles()){
+            if (vehicle.getClass().getSimpleName() == "Ship") {
+                System.out.println("Vehicle ID: " + vehicle.getIDprefix() + vehicle.getVehicleID());
+                System.out.println("Type of vehicle: " + vehicle.getClass().getSimpleName());
+                System.out.println("Name: " + vehicle.getName());
+                System.out.println("Current Fuel: " + vehicle.getCurrentFuel());
+                System.out.println("Carrying Capacity: " + vehicle.getCarryingCapacity());
+                System.out.println("Fuel Capacity: " + vehicle.getFuelCapacity());
+                System.out.println("Current Port: " + (vehicle.getCurrentPort() != null ? vehicle.getCurrentPort().getName() : "None"));
+                System.out.println("-----------------------------------");
+            }
+        }
     }
 }
     interface CRUD{
@@ -279,14 +278,7 @@ public abstract class User implements statisticOperations{
     void Update();
     void Delete();
     }
-    interface statisticOperations{
-    void calFuelUsedInDay();
-    void weightEachTypeContainer();
-    void listAllShipInPort();
-    void listAllTripsInDay();
-    void listAllTripsInPeriod();
-//
-    }
+
     class PortManager extends User implements CRUD  {
         private Port assignedPort; // Reference to the port managed by this manager
         private SystemAdmin admin;
@@ -399,7 +391,7 @@ public abstract class User implements statisticOperations{
             System.out.println("'2' to calculate total weight of a container type");
             System.out.println("'3' list all ships in a specific port");
             System.out.println("'4' list all trips in a day");
-            System.out.println("'5' list all trips form day A to day B");
+            System.out.println("'5' list all trips from day A to day B");
 
             int operationChoice = scanner.nextInt();
             switch (operationChoice) {
@@ -419,7 +411,7 @@ public abstract class User implements statisticOperations{
                         System.out.println("The port ID does not exist");
                         break;
                     } else {
-                        System.out.println("-------------------------------------------------");
+                        System.out.println("Next, you will enter the date that you want to calculate the fuel for");
                         System.out.println("Please enter the year");
                         int year = scanner.nextInt();
                         System.out.println("Please enter the month");
@@ -431,16 +423,55 @@ public abstract class User implements statisticOperations{
                         break;
                     }
                 case 2:
-                    
+                    this.weightEachTypeContainer();
                     break;
                 case 3:
-
-                    break;
+                    System.out.println("Enter the ID of the port you want to list all the ships: ");
+                    int portIDToList = scanner.nextInt();
+                    boolean foundPort2 = false;
+                    Port portList = null;
+                    for (Port port : this.admin.getPortList()) {
+                        if (port.getPortID() == portIDToList) {
+                            portList = port;
+                            foundPort2 = true;
+                            break;
+                        }
+                    }
+                    if (foundPort2 == false) {
+                        System.out.println("The port ID does not exist");
+                        break;
+                    } else {
+                    this.listAllShipInPort(portList);
+                    break;}
                 case 4:
-
+                    System.out.println("Next, you will enter the date that you want to list all the trip: ");
+                    System.out.println("Please enter the year: ");
+                    int year = scanner.nextInt();
+                    System.out.println("Please enter the month: ");
+                    int month = scanner.nextInt();
+                    System.out.println("Please enter the date: ");
+                    int date = scanner.nextInt();
+                    LocalDate day = LocalDate.of(year, month, date);
+                    this.admin.listTripsWithinDate(day);
                     break;
                 case 5:
-
+                    System.out.println("Please enter day A: ");
+                    System.out.println("Please enter the year: ");
+                    int yearA = scanner.nextInt();
+                    System.out.println("Please enter the month: ");
+                    int monthA = scanner.nextInt();
+                    System.out.println("Please enter the date: ");
+                    int dateA = scanner.nextInt();
+                    LocalDate dayA = LocalDate.of(yearA, monthA, dateA);
+                    System.out.println("Please enter day B: ");
+                    System.out.println("Please enter the year: ");
+                    int yearB = scanner.nextInt();
+                    System.out.println("Please enter the month: ");
+                    int monthB = scanner.nextInt();
+                    System.out.println("Please enter the date: ");
+                    int dateB = scanner.nextInt();
+                    LocalDate dayB = LocalDate.of(yearB, monthB, dateB);
+                    this.admin.listTripsInDateRange(dayA, dayB);
                     break;
                 default:
                     System.out.println("You did not enter a valid value");
@@ -480,12 +511,14 @@ public abstract class User implements statisticOperations{
         private ArrayList<Port> portList;
         private ArrayList<Vehicles> vehiclesList;
         private ArrayList<PortManager> managersList;
+        private ArrayList<Trip> tripList;
 
         public SystemAdmin(String username, String password){
             super(username, password);
             this.portList = new ArrayList<>();
             this.managersList = new ArrayList<>();
             this.vehiclesList = new ArrayList<>();
+            this.tripList = new ArrayList<>();
         }
 
         @Override
@@ -537,7 +570,8 @@ public abstract class User implements statisticOperations{
             System.out.println("'2' to Read");
             System.out.println("'3' to Update");
             System.out.println("'4' to Delete");
-            System.out.println("'5' to go back to main menu");
+            System.out.println("'5' to perform statistic operations");
+            System.out.println("'6' to go back to main menu");
 
 
             int adminMenuChoice = scanner.nextInt();
@@ -562,6 +596,10 @@ public abstract class User implements statisticOperations{
                     adminMenu(mainMenu);
                     break;
                 case 5:
+                    this.statisticOperationsMenu();
+                    adminMenu(mainMenu);
+                    break;
+                case 6:
                     System.out.println("Going back to Main Menu");
                     System.out.println("----------------------------------------");
                     mainMenu.displayMainMenu(this);
@@ -569,6 +607,103 @@ public abstract class User implements statisticOperations{
                 default:
                     return;
             }
+        }
+        public void statisticOperationsMenu() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Choose an operation");
+            System.out.println("'1' to calculate all fuel used in a day in a given port");
+            System.out.println("'2' to calculate total weight of a container type");
+            System.out.println("'3' list all ships in a specific port");
+            System.out.println("'4' list all trips in a day");
+            System.out.println("'5' list all trips from day A to day B");
+
+            int operationChoice = scanner.nextInt();
+            switch (operationChoice) {
+                case 1:
+                    System.out.println("Enter the ID of the port you want to calculate the fuel: ");
+                    int portIDToCreate1 = scanner.nextInt();
+                    boolean foundPort1 = false;
+                    Port portCal = null;
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToCreate1) {
+                            portCal = port;
+                            foundPort1 = true;
+                            break;
+                        }
+                    }
+                    if (foundPort1 == false) {
+                        System.out.println("The port ID does not exist");
+                        break;
+                    } else {
+                        System.out.println("Next, you will enter the date that you want to calculate the fuel for");
+                        System.out.println("Please enter the year");
+                        int year = scanner.nextInt();
+                        System.out.println("Please enter the month");
+                        int month = scanner.nextInt();
+                        System.out.println("Please enter the date");
+                        int date = scanner.nextInt();
+                        LocalDate day = LocalDate.of(year, month, date);
+                        System.out.println("Fuel used in " + day + "is: " + this.calFuelUsedInDay(portCal, day));
+                        break;
+                    }
+                case 2:
+                    this.weightEachTypeContainer();
+                    break;
+                case 3:
+                    System.out.println("Enter the ID of the port you want to list all the ships: ");
+                    int portIDToList = scanner.nextInt();
+                    boolean foundPort2 = false;
+                    Port portList = null;
+                    for (Port port : this.getPortList()) {
+                        if (port.getPortID() == portIDToList) {
+                            portList = port;
+                            foundPort2 = true;
+                            break;
+                        }
+                    }
+                    if (foundPort2 == false) {
+                        System.out.println("The port ID does not exist");
+                        break;
+                    } else {
+                        this.listAllShipInPort(portList);
+                        break;}
+                case 4:
+                    System.out.println("Next, you will enter the date that you want to list all the trip: ");
+                    System.out.println("Please enter the year: ");
+                    int year = scanner.nextInt();
+                    System.out.println("Please enter the month: ");
+                    int month = scanner.nextInt();
+                    System.out.println("Please enter the date: ");
+                    int date = scanner.nextInt();
+                    LocalDate day = LocalDate.of(year, month, date);
+                    this.listTripsWithinDate(day);
+                    break;
+                case 5:
+                    System.out.println("Please enter day A");
+                    System.out.println("Please enter the year: ");
+                    int yearA = scanner.nextInt();
+                    System.out.println("Please enter the month: ");
+                    int monthA = scanner.nextInt();
+                    System.out.println("Please enter the date: ");
+                    int dateA = scanner.nextInt();
+                    LocalDate dayA = LocalDate.of(yearA, monthA, dateA);
+                    System.out.println("Please enter day B");
+                    System.out.println("Please enter the year: ");
+                    int yearB = scanner.nextInt();
+                    System.out.println("Please enter the month: ");
+                    int monthB = scanner.nextInt();
+                    System.out.println("Please enter the date: ");
+                    int dateB = scanner.nextInt();
+                    LocalDate dayB = LocalDate.of(yearB, monthB, dateB);
+                    this.listTripsInDateRange(dayA, dayB);
+                    break;
+                default:
+                    System.out.println("You did not enter a valid value");
+                    break;
+            }
+        }
+        protected ArrayList<Trip> getTripList() {
+            return tripList;
         }
 
         protected ArrayList<Vehicles> getVehiclesList() {
@@ -581,6 +716,45 @@ public abstract class User implements statisticOperations{
 
         protected ArrayList<Port> getPortList() {
             return portList;
+        }
+
+        public void listTripsWithinDate(LocalDate targetDate) {
+            System.out.println("Trips overlapping with the date " + targetDate + ":");
+
+            for (Trip trip : this.getTripList()) {
+                LocalDate departureDate = trip.getDepartureDate();
+                LocalDate arrivalDate = trip.getArrivalDate();
+
+                if ((departureDate.isEqual(targetDate) || departureDate.isBefore(targetDate))
+                        && (arrivalDate.isEqual(targetDate) || arrivalDate.isAfter(targetDate))) {
+
+                    System.out.println("Departure Date: " + departureDate);
+                    System.out.println("Arrival Date: " + arrivalDate);
+                    System.out.println("Departure Port: " + trip.getDeparturePort().getName());
+                    System.out.println("Arrival Port: " + trip.getArrivalPort().getName());
+                    System.out.println("Status: " + trip.getStatus());
+                    System.out.println("-----------------------------------");
+                }
+            }
+        }
+        public void listTripsInDateRange(LocalDate fromDate, LocalDate toDate) {
+            System.out.println("Trips within the date range " + fromDate + " to " + toDate + ":");
+
+            for (Trip trip : this.getTripList()) {
+                LocalDate departureDate = trip.getDepartureDate();
+                LocalDate arrivalDate = trip.getArrivalDate();
+
+                if ((departureDate.isEqual(fromDate) || departureDate.isAfter(fromDate))
+                        && (arrivalDate.isEqual(toDate) || arrivalDate.isBefore(toDate))) {
+
+                    System.out.println("Departure Date: " + departureDate);
+                    System.out.println("Arrival Date: " + arrivalDate);
+                    System.out.println("Departure Port: " + trip.getDeparturePort().getName());
+                    System.out.println("Arrival Port: " + trip.getArrivalPort().getName());
+                    System.out.println("Status: " + trip.getStatus());
+                    System.out.println("-----------------------------------");
+                }
+            }
         }
 
         private void createVehicleAtPort (Port port) {
@@ -621,8 +795,6 @@ public abstract class User implements statisticOperations{
             }
             System.out.println("---");
         }
-
-
 
 
         @Override

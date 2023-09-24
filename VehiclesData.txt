@@ -1,16 +1,160 @@
-Vehicle ID: tr-0
-Vehicle Type: tankerTruck
-Vehicle name: Huy
-Vehicle current fuel: 700.0
+Vehicle ID: tr-1
+Vehicle Type: basicTruck
+Vehicle name: Basic Truck 1
+Vehicle current fuel: 769.0
 Vehicle carrying capacity: 700.0
-Vehicle fuel capacity: 700.0
-Vehicle current port: Port@41cf53f9
+Vehicle fuel capacity: 800.0
+Vehicle current port: Port@1a6c5a9e
 -----------------------------------
-Vehicle ID: tr-0
-Vehicle Type: tankerTruck
-Vehicle name: tanker
-Vehicle current fuel: 700.0
+Vehicle ID: tr-2
+Vehicle Type: basicTruck
+Vehicle name: Basic Truck 2
+Vehicle current fuel: 570.0
 Vehicle carrying capacity: 700.0
-Vehicle fuel capacity: 700.0
-Vehicle current port: Port@41cf53f9
+Vehicle fuel capacity: 800.0
+Vehicle current port: Port@1a6c5a9e
+-----------------------------------
+Vehicle ID: tr-3
+Vehicle Type: basicTruck
+Vehicle name: Basic Truck 3
+Vehicle current fuel: 678.0
+Vehicle carrying capacity: 700.0
+Vehicle fuel capacity: 800.0
+Vehicle current port: Port@37bba400
+-----------------------------------
+Vehicle ID: tr-4
+Vehicle Type: basicTruck
+Vehicle name: Basic Truck 4
+Vehicle current fuel: 789.0
+Vehicle carrying capacity: 700.0
+Vehicle fuel capacity: 800.0
+Vehicle current port: Port@37bba400
+-----------------------------------
+Vehicle ID: tr-5
+Vehicle Type: basicTruck
+Vehicle name: Basic Truck 5
+Vehicle current fuel: 688.0
+Vehicle carrying capacity: 700.0
+Vehicle fuel capacity: 800.0
+Vehicle current port: Port@179d3b25
+-----------------------------------
+Vehicle ID: tr-6
+Vehicle Type: reeferTruck
+Vehicle name: Reefer Truck 1
+Vehicle current fuel: 654.0
+Vehicle carrying capacity: 800.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-7
+Vehicle Type: reeferTruck
+Vehicle name: Reefer Truck 2
+Vehicle current fuel: 779.0
+Vehicle carrying capacity: 800.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-8
+Vehicle Type: reeferTruck
+Vehicle name: Reefer Truck 3
+Vehicle current fuel: 765.0
+Vehicle carrying capacity: 800.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-9
+Vehicle Type: reeferTruck
+Vehicle name: Reefer Truck 4
+Vehicle current fuel: 568.0
+Vehicle carrying capacity: 800.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-10
+Vehicle Type: reeferTruck
+Vehicle name: Reefer Truck 5
+Vehicle current fuel: 566.0
+Vehicle carrying capacity: 800.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-11
+Vehicle Type: tankerTruck
+Vehicle name: Tanker Truck 1
+Vehicle current fuel: 799.0
+Vehicle carrying capacity: 1000.0
+Vehicle fuel capacity: 1000.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-12
+Vehicle Type: tankerTruck
+Vehicle name: Tanker Truck 2
+Vehicle current fuel: 856.0
+Vehicle carrying capacity: 1000.0
+Vehicle fuel capacity: 1000.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-13
+Vehicle Type: tankerTruck
+Vehicle name: Tanker Truck 3
+Vehicle current fuel: 866.0
+Vehicle carrying capacity: 1000.0
+Vehicle fuel capacity: 1000.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-14
+Vehicle Type: tankerTruck
+Vehicle name: Tanker Truck 4
+Vehicle current fuel: 888.0
+Vehicle carrying capacity: 1000.0
+Vehicle fuel capacity: 1000.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: tr-15
+Vehicle Type: tankerTruck
+Vehicle name: Tanker Truck 5
+Vehicle current fuel: 931.0
+Vehicle carrying capacity: 1000.0
+Vehicle fuel capacity: 1000.0
+Vehicle current port: Port@37bba400
+-----------------------------------
+Vehicle ID: sh-16
+Vehicle Type: Ship
+Vehicle name: Ship 1
+Vehicle current fuel: 699.0
+Vehicle carrying capacity: 900.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: sh-17
+Vehicle Type: Ship
+Vehicle name: Ship 2
+Vehicle current fuel: 687.0
+Vehicle carrying capacity: 900.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: sh-18
+Vehicle Type: Ship
+Vehicle name: Ship 3
+Vehicle current fuel: 787.0
+Vehicle carrying capacity: 900.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: null
+-----------------------------------
+Vehicle ID: sh-19
+Vehicle Type: Ship
+Vehicle name: Ship 4
+Vehicle current fuel: 734.0
+Vehicle carrying capacity: 900.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: Port@49c2faae
+-----------------------------------
+Vehicle ID: sh-20
+Vehicle Type: Ship
+Vehicle name: Ship 5
+Vehicle current fuel: 758.0
+Vehicle carrying capacity: 900.0
+Vehicle fuel capacity: 900.0
+Vehicle current port: Port@20ad9418
 -----------------------------------

@@ -1,8 +1,16 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        // Call the method to delete the content of the text file
+        deleteTextFileContent("containerData.txt");
+        deleteTextFileContent("portData.txt");
+        deleteTextFileContent("VehiclesData.txt");
+        deleteTextFileContent("tripData.txt");
         // Create a sample SystemAdmin
         SystemAdmin admin = new SystemAdmin("admin123", "12345");
         initializeData(admin);
@@ -146,31 +154,50 @@ public class Main {
         vehicle20.getNumContainer().add(container29);
 
 
-//        Trip trip1 = new Trip(vehicle1, LocalDate.of(2023,9,18), LocalDate.of(2023,9,19), port1, port2, "completed");
-//        Trip trip2 = new Trip(vehicle1, LocalDate.of(2023,9,19), LocalDate.of(2023,9,22), port2, port1, "completed");
-//        Trip trip3 = new Trip(vehicle2, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,20), port1, port3, "completed");
-//        Trip trip4 = new Trip(vehicle3, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port2, port3, "completed");
-//        Trip trip5 = new Trip(vehicle4, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,20), port2, port1, "completed");
-//        Trip trip6 = new Trip(vehicle5, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port3, port1, "completed");
-//        Trip trip7 = new Trip(vehicle6, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,25), port1, port3, "moving");
-//        Trip trip8 = new Trip(vehicle7, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,24), port2, port3, "moving");
-//        Trip trip9 = new Trip(vehicle8, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,26), port3, port5, "moving");
-//        Trip trip10 = new Trip(vehicle9, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,29), port3, port2, "moving");
-//        Trip trip11 = new Trip(vehicle10, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,28), port5, port1, "moving");
-//        Trip trip12 = new Trip(vehicle11, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,27), port5, port2, "moving");
-//        Trip trip13 = new Trip(vehicle12, LocalDate.of(2023, 9,22), LocalDate.of(2023, 9,26), port4, port2, "moving");
-//        Trip trip14 = new Trip(vehicle13, LocalDate.of(2023, 9,22), LocalDate.of(2023, 9,26), port1, port2, "moving");
-//        Trip trip15 = new Trip(vehicle14, LocalDate.of(2023, 9,23), LocalDate.of(2023, 9,25), port3, port1, "moving");
-//        Trip trip16 = new Trip(vehicle15, LocalDate.of(2023, 9,23), LocalDate.of(2023, 9,24), port5, port2, "completed");
-//        Trip trip17 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,30), port3, port4, "moving");
-//        Trip trip18 = new Trip(vehicle17, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,29), port4, port5, "moving");
-//        Trip trip19 = new Trip(vehicle18, LocalDate.of(2023, 9,26), LocalDate.of(2023, 9,30), port1, port5, "moving");
-//        Trip trip20 = new Trip(vehicle19, LocalDate.of(2023, 9,15), LocalDate.of(2023, 9,22), port3, port5, "completed");
-//        Trip trip21 = new Trip(vehicle20, LocalDate.of(2023, 9,14), LocalDate.of(2023, 9,20), port1, port4, "completed");
-//        Trip trip22 = new Trip(vehicle14, LocalDate.of(2023, 9,12), LocalDate.of(2023, 9,17), port5, port3, "completed");
-//        Trip trip23 = new Trip(vehicle13, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,22), port5, port1, "completed");
-//        Trip trip24 = new Trip(vehicle19, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,19), port4, port1, "completed");
-//        Trip trip25 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,28), port3, port2, "moving");
-
+        Trip trip1 = new Trip(vehicle1, LocalDate.of(2023,9,18), LocalDate.of(2023,9,19), port1, port2, "completed", admin);
+        Trip trip2 = new Trip(vehicle1, LocalDate.of(2023,9,19), LocalDate.of(2023,9,22), port2, port1, "completed", admin);
+        Trip trip3 = new Trip(vehicle2, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,20), port1, port3, "completed", admin);
+        Trip trip4 = new Trip(vehicle3, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port2, port3, "completed", admin);
+        Trip trip5 = new Trip(vehicle4, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,20), port2, port1, "completed", admin);
+        Trip trip6 = new Trip(vehicle5, LocalDate.of(2023, 9,17), LocalDate.of(2023, 9,20), port3, port1, "completed", admin);
+        Trip trip7 = new Trip(vehicle6, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,25), port1, port3, "moving", admin);
+        Trip trip8 = new Trip(vehicle7, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,24), port2, port3, "moving", admin);
+        Trip trip9 = new Trip(vehicle8, LocalDate.of(2023, 9,19), LocalDate.of(2023, 9,26), port3, port5, "moving", admin);
+        Trip trip10 = new Trip(vehicle9, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,29), port3, port2, "moving", admin);
+        Trip trip11 = new Trip(vehicle10, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,28), port5, port1, "moving", admin);
+        Trip trip12 = new Trip(vehicle11, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,27), port5, port2, "moving", admin);
+        Trip trip13 = new Trip(vehicle12, LocalDate.of(2023, 9,22), LocalDate.of(2023, 9,26), port4, port2, "moving",admin);
+        Trip trip14 = new Trip(vehicle13, LocalDate.of(2023, 9,22), LocalDate.of(2023, 9,26), port1, port2, "moving", admin);
+        Trip trip15 = new Trip(vehicle14, LocalDate.of(2023, 9,23), LocalDate.of(2023, 9,25), port3, port1, "moving", admin);
+        Trip trip16 = new Trip(vehicle15, LocalDate.of(2023, 9,23), LocalDate.of(2023, 9,24), port5, port2, "completed", admin);
+        Trip trip17 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,30), port3, port4, "moving", admin);
+        Trip trip18 = new Trip(vehicle17, LocalDate.of(2023, 9,25), LocalDate.of(2023, 9,29), port4, port5, "moving", admin);
+        Trip trip19 = new Trip(vehicle18, LocalDate.of(2023, 9,26), LocalDate.of(2023, 9,30), port1, port5, "moving", admin);
+        Trip trip20 = new Trip(vehicle19, LocalDate.of(2023, 9,15), LocalDate.of(2023, 9,22), port3, port5, "completed", admin);
+        Trip trip21 = new Trip(vehicle20, LocalDate.of(2023, 9,14), LocalDate.of(2023, 9,20), port1, port4, "completed", admin);
+        Trip trip22 = new Trip(vehicle14, LocalDate.of(2023, 9,12), LocalDate.of(2023, 9,17), port5, port3, "completed", admin);
+        Trip trip23 = new Trip(vehicle13, LocalDate.of(2023, 9,18), LocalDate.of(2023, 9,22), port5, port1, "completed", admin);
+        Trip trip24 = new Trip(vehicle19, LocalDate.of(2023, 9,16), LocalDate.of(2023, 9,19), port4, port1, "completed", admin);
+        Trip trip25 = new Trip(vehicle16, LocalDate.of(2023, 9,24), LocalDate.of(2023, 9,28), port3, port2, "moving", admin);
     }
+    public static void deleteTextFileContent(String fileName) {
+        try {
+            // Get the path to the current directory where the .java file is located
+            String currentDirectory = System.getProperty("user.dir");
+
+            // Construct the full path to the text file in the same directory
+            String filePath = currentDirectory + File.separator + fileName;
+
+            // Create a FileWriter to write an empty string to the file
+            FileWriter writer = new FileWriter(filePath);
+            writer.write(""); // Write an empty string to clear the file
+            writer.close();
+
+            System.out.println("Content of " + fileName + " has been deleted.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("An error occurred while deleting the content of the file.");
+        }
+    }
+
 }
