@@ -1,0 +1,16 @@
+Vehicle ID: tr-0
+Vehicle Type: tankerTruck
+Vehicle name: Huy
+Vehicle current fuel: 700.0
+Vehicle carrying capacity: 700.0
+Vehicle fuel capacity: 700.0
+Vehicle current port: Port@41cf53f9
+-----------------------------------
+Vehicle ID: tr-0
+Vehicle Type: tankerTruck
+Vehicle name: tanker
+Vehicle current fuel: 700.0
+Vehicle carrying capacity: 700.0
+Vehicle fuel capacity: 700.0
+Vehicle current port: Port@41cf53f9
+-----------------------------------

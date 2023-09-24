@@ -514,7 +514,7 @@ public abstract class User  {
         private void createVehicleAtPort (Port port) {
             Scanner createVehicle = new Scanner(System.in);
             System.out.println("Please input the name of your vehicle: ");
-            String vehicleName = createVehicle.next();
+            String vehicleName = createVehicle.nextLine();
             System.out.println("---");
             System.out.println("Please input your vehicle carrying capacity: ");
             double carryingCapacity = createVehicle.nextDouble();
@@ -583,7 +583,7 @@ public abstract class User  {
                     break;
                 case 2:
                     System.out.println("Please input the port name: ");
-                    String portName = adminCreate.next();
+                    String portName = adminCreate.nextLine();
                     System.out.println("Please input the port latitude: ");
                     double latitude = adminCreate.nextDouble();
                     System.out.println("Please input the port longitude: ");
@@ -628,7 +628,7 @@ public abstract class User  {
 
                     while (usernameExists) {
                         System.out.println("Please enter the username for the new Port Manager: ");
-                        managerUsername = adminCreate.next();
+                        managerUsername = adminCreate.nextLine();
 
                         // Check if the username already exists
                         usernameExists = false;
@@ -642,7 +642,7 @@ public abstract class User  {
                     }
 
                     System.out.println("Please enter the password for the new Port Manager: ");
-                    String managerPassword = adminCreate.next();
+                    String managerPassword = adminCreate.nextLine();
 
                     System.out.println("Enter the ID of the port you want to assign to the new Port Manager: ");
                     int portIDToAssign = adminCreate.nextInt();
@@ -814,7 +814,8 @@ public abstract class User  {
                         if (vehicle.getVehicleID() == vehicleIDToUpdate) {
                             // Vehicle found, ask users to update the value
                             System.out.println("Enter the new name for the vehicle: ");
-                            String newName = adminUpdate.next();
+                            String newName = adminUpdate.nextLine();
+                            String aNewName = adminUpdate.nextLine();
 
                             System.out.println("Enter the new carrying capacity for the vehicle: ");
                             double newCarryingCapacity = adminUpdate.nextDouble();
@@ -822,14 +823,13 @@ public abstract class User  {
                             System.out.println("Enter the new fuel capacity for the vehicle: ");
                             double newFuelCapacity = adminUpdate.nextDouble();
 
-                            vehicle.setName(newName);
+                            vehicle.setName(aNewName);
                             vehicle.setCarryingCapacity(newCarryingCapacity);
                             vehicle.setFuelCapacity(newFuelCapacity);
 
-                            this.getVehiclesList().remove(vehicle);
-
                             System.out.println("Vehicle updated successfully.");
                             foundVehicleForUpdate = true;
+                            break;
                         }
                     }
 
@@ -847,7 +847,7 @@ public abstract class User  {
                         if (port.getPortID() == portIDToUpdate) {
                             // Port found, ask users to update the value
                             System.out.println("Enter the new name for the port: ");
-                            String newName = adminUpdate.next();
+                            String newName = adminUpdate.nextLine();
 
                             System.out.println("Enter the new latitude for the port: ");
                             double newLatitude = adminUpdate.nextDouble();
@@ -986,7 +986,7 @@ public abstract class User  {
                 case 4:
                     // Delete a Manager
                     System.out.println("Enter the username of the manager you want to delete: ");
-                    String managerUsernameToDelete = adminDelete.next();
+                    String managerUsernameToDelete = adminDelete.nextLine();
                     boolean foundManagerForDeletion = false;
 
                     for (PortManager manager : this.getManagersList()) {

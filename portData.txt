@@ -1,0 +1,40 @@
+Port ID: p-1
+Name: Port1
+Latitude: 123.45612
+Longitude: 90.74623
+Storing Capacity: 1500.0
+Landing Ability: true
+Port Manager: None
+-----------------------------------
+Port ID: p-2
+Name: Port2
+Latitude: 127.34698
+Longitude: 189.09647
+Storing Capacity: 1200.0
+Landing Ability: true
+Port Manager: None
+-----------------------------------
+Port ID: p-3
+Name: Port3
+Latitude: -36.15537
+Longitude: -155.86624
+Storing Capacity: 1000.0
+Landing Ability: true
+Port Manager: None
+-----------------------------------
+Port ID: p-4
+Name: Port4
+Latitude: 33.43349
+Longitude: 75.57086
+Storing Capacity: 1200.0
+Landing Ability: false
+Port Manager: None
+-----------------------------------
+Port ID: p-5
+Name: Port5
+Latitude: -62.41663
+Longitude: 143.16146
+Storing Capacity: 1300.0
+Landing Ability: false
+Port Manager: None
+-----------------------------------
