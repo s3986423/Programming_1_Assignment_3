@@ -51,6 +51,23 @@ public class Main {
         Container container28 = new openSide(111.1);
         Container container29 = new openSide(222.2);
         Container container30 = new openSide(333.3);
+        Container container31 = new openTop(99.9);
+        Container container32 = new openSide(99.9);
+        Container container33 = new dryStorage(99.9);
+        Container container34 = new Refrigerated(99.9);
+        Container container35 = new Refrigerated(99.9);
+        Container container36 = new Refrigerated(99.9);
+        Container container37 = new Refrigerated(99.9);
+        Container container38 = new Refrigerated(99.9);
+        Container container39 = new Liquid(99.9);
+        Container container40 = new Liquid(99.9);
+        Container container41 = new Liquid(99.9);
+        Container container42 = new Liquid(99.9);
+        Container container43 = new Liquid(99.9);
+        Container container44 = new Liquid(99.9);
+        Container container45 = new dryStorage(99.9);
+        Container container46 = new Refrigerated(99.9);
+
 
         // Create a sample Port and associate it with the SystemAdmin
         Port port1 = new Port(
@@ -122,8 +139,11 @@ public class Main {
 
         // Create vehicles and assign it to a specific port
         Vehicles vehicle1 = new basicTruck("Basic Truck 1", 769, 700, 800, port1, admin);
+        vehicle1.getNumContainer().add(container31);
         Vehicles vehicle2 = new basicTruck("Basic Truck 2", 570, 700, 800, port1, admin);
+        vehicle2.getNumContainer().add(container32);
         Vehicles vehicle3 = new basicTruck("Basic Truck 3", 678, 700, 800, port2, admin);
+        vehicle3.getNumContainer().add(container33);
         Vehicles vehicle4 = new basicTruck("Basic Truck 4", 789, 700, 800, port2, admin);
         vehicle4.getNumContainer().add(container30);
         Vehicles vehicle5 = new basicTruck("Basic Truck 5", 688, 700, 800, port3, admin);
@@ -132,18 +152,31 @@ public class Main {
         vehicle5.getNumContainer().add(container22);
         vehicle5.getNumContainer().add(container28);
         Vehicles vehicle6 = new reeferTruck("Reefer Truck 1", 654, 800, 900, null, admin);
+        vehicle6.getNumContainer().add(container34);
         Vehicles vehicle7 = new reeferTruck("Reefer Truck 2", 779, 800, 900, null, admin);
+        vehicle7.getNumContainer().add(container35);
         Vehicles vehicle8 = new reeferTruck("Reefer Truck 3", 765, 800, 900, null, admin);
+        vehicle8.getNumContainer().add(container36);
         Vehicles vehicle9 = new reeferTruck("Reefer Truck 4", 568, 800, 900, null, admin);
+        vehicle9.getNumContainer().add(container37);
         Vehicles vehicle10 = new reeferTruck("Reefer Truck 5", 566, 800, 900, null, admin);
+        vehicle10.getNumContainer().add(container38);
         Vehicles vehicle11 = new tankerTruck("Tanker Truck 1", 799, 1000, 1000, null, admin);
+        vehicle11.getNumContainer().add(container39);
         Vehicles vehicle12 = new tankerTruck("Tanker Truck 2", 856, 1000, 1000, null, admin);
+        vehicle12.getNumContainer().add(container40);
         Vehicles vehicle13 = new tankerTruck("Tanker Truck 3", 866, 1000, 1000, null, admin);
+        vehicle13.getNumContainer().add(container41);
         Vehicles vehicle14 = new tankerTruck("Tanker Truck 4", 888, 1000, 1000, null, admin);
+        vehicle14.getNumContainer().add(container42);
         Vehicles vehicle15 = new tankerTruck("Tanker Truck 5", 931, 1000, 1000, port2, admin);
+        vehicle15.getNumContainer().add(container43);
         Vehicles vehicle16 = new Ship("Ship 1", 699, 900, 900, null, admin);
+        vehicle16.getNumContainer().add(container44);
         Vehicles vehicle17 = new Ship("Ship 2", 687, 900, 900, null, admin);
+        vehicle16.getNumContainer().add(container45);
         Vehicles vehicle18 = new Ship("Ship 3", 787, 900, 900, null, admin);
+        vehicle16.getNumContainer().add(container46);
         Vehicles vehicle19 = new Ship("Ship 4", 734, 900, 900, port5, admin);
         vehicle19.getNumContainer().add(container4);
         vehicle19.getNumContainer().add(container5);
